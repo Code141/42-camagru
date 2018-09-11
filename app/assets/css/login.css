@@ -1,0 +1,48 @@
+/*-------------- LOGIN ---------------*/
+
+section#login h1,
+section#login h2
+{
+	display : block;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+section#login label
+{
+	display: block;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	font-size : 22px;
+}
+
+section#login .cadre
+{
+	width : 260px;
+}
+
+section#login input
+{
+	width : 238px;
+	margin-bottom: 30px;
+}
+
+section#login button
+{
+	height: 28px;
+	width : 260px;
+	margin-bottom: 30px;
+}
+
+section#login p
+{
+	display: block;
+	float: left;
+}
+
+section#login p+p
+{
+	float: right;
+}
+
+

@@ -1,0 +1,36 @@
+/*------------- REGISTER -------------*/
+
+section#register h1
+{
+	display : block;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+section#register .cadre
+{
+	width : 260px;
+}
+
+section#register label
+{
+	display: block;
+	font-size : 19px;
+	margin-left: 10px;
+	margin-bottom: 6px;
+}
+
+section#register input,
+section#register button
+{
+	width : 238px;
+	margin-bottom: 10px;
+}
+
+section#register button
+{
+	height: 28px;
+	width : 260px;
+	margin-top: 20px;
+}
+

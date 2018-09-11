@@ -1,0 +1,85 @@
+/*--------------- USER ---------------*/
+
+section#user
+{
+	width: 80%;
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+}
+
+section#user label
+{
+	display: block;
+	padding: 10px;
+	height: 16px;
+	overflow : hidden;
+	transition: height 0.5s;
+	cursor: pointer;
+}
+
+section#user input[type="radio"]
+{
+	display:none;
+}
+
+section#user label:hover
+{
+	background-color: #eee;
+}
+
+
+section#user label p.field_name
+{
+	float: left;
+	width: 20%;
+	color: black;
+	font-weight: bold;
+}
+
+section#user label p.field_value
+{
+	float: left;
+	width: 200px;
+	transition: opacity 0.3s;
+}
+section#user label  p.modify
+{
+	float: right;
+	transition: opacity 0.3s;
+}
+
+section#user label:hover p.modify
+{
+	color: red;
+}
+
+section#user label div.hidden
+{
+	clear: both;
+	float: left;
+	opacity : 0;
+	transition: opacity 0.5s;
+	margin-top: 15px;
+}
+
+section#user input[type="radio"]:checked + label
+{
+	height: 100px;
+	background-color: #eee;
+	transition: height 0.5s;
+	cursor: pointer;
+}
+
+section#user input[type="radio"]:checked + label p.modify,
+section#user input[type="radio"]:checked + label p.field_value
+{
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+section#user input[type="radio"]:checked + label div.hidden
+{
+	opacity : 1;
+	transition: opacity 1s;
+}
+

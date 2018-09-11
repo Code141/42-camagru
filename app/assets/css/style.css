@@ -1,0 +1,196 @@
+@font-face {
+	font-family: 'din1451';
+	src: url('font/din1451stdengschrift.ttf');
+}
+
+@font-face {
+	font-family: 'geo';
+	src: url('font/GeosansLight.ttf');
+}
+
+@font-face {
+	font-family: 'geo-oblique';
+	src: url('font/GeosansLight-Oblique.ttf');
+}
+
+body {
+	color: #000000;
+	font-family: geo;
+
+	user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+a {
+	text-decoration: none;
+	font-style: none;
+	color: #0000FF;
+}
+
+h1 {
+	font-size : 30px;
+	font-family: din1451;
+}
+
+h2 {
+	font-size : 20px;
+	font-family: din1451;
+}
+
+/*------------------------------------*/
+section
+{
+	margin-top: 50px;
+}
+
+.center
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.cadre
+{
+	padding : 20px;
+	border-radius: 6px;
+	border: 1px solid grey;
+	background-color : #eee;
+}
+
+.error
+{
+	border-color: red;
+}
+input,
+button
+{
+	padding: 5px 10px 5px 10px;
+	border-radius: 3px;
+	border: 1px solid grey;
+}
+
+button
+{
+	background-color: #ccc;
+}
+
+button:hover
+{
+	background-color: #aaaaaa;
+}
+
+label
+{
+}
+
+/*-------------- HEADER --------------*/
+
+header {
+	position: fixed;
+	top: 0px;
+	width : 100%;
+	height : 42px;
+	background-color : #eee;
+	border-bottom: 1px solid grey;
+}
+
+h1#title {
+	padding-top : 10px;
+	padding-left : 10px;
+	float: left;
+}
+
+nav {
+	float: left;
+	margin-top : 8px;
+	margin-left : 15px;
+	margin-right : 15px;
+}
+
+nav a + a {
+	margin-left : 10px;
+}
+
+nav ul {
+}
+
+/*-------------- TO LOG --------------*/
+
+div#to_log
+{
+	float: right;
+}
+
+div#to_log button
+{
+	display: block;
+	float: left;
+	padding: 5px 10px 5px 10px;
+	border-radius: 3px;
+	border: 1px solid grey;
+	margin: 8px 8px 8px 0px;
+}
+
+/*----------- USER LOGGUED -----------*/
+
+div#user_loggued
+{
+	float: right;
+}
+
+/*------------------*/
+
+/*
+section {
+	float :left;
+	width : 100vw;
+	background-color : #ff0000;
+	height: calc(100vh - 75px - 75px);;
+}
+*/
+
+aside {
+	float : right;
+	width : 30vw;
+	background-color : #00ff00;
+	top : 100px;
+	height: calc(100vh - 75px - 75px);;
+}
+
+footer {
+	position : fixed;
+	bottom : 0px;
+	width : 100%;
+	height : 42px;
+	background-color : #0000ff;
+}
+
+
+/*------------- GALLERIE -------------*/
+
+section#gallery  {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+div.gallery {
+	width: 20%;  /* Or whatever */
+	height: 20%; /* Or whatever */
+	border : 2px solid black;
+}
+
+div.gallery img {
+	width : 100%;
+	height : 100%;
+
+}
+
+/*------------------*/
+
