@@ -14,8 +14,12 @@
 	<link rel="stylesheet" href="<?php echo CSS_PATH;?>login.css" media="all">
 	<link rel="stylesheet" href="<?php echo CSS_PATH;?>register.css" media="all">
 	<link rel="stylesheet" href="<?php echo CSS_PATH;?>user.css" media="all">
+	<link rel="stylesheet" href="<?php echo CSS_PATH;?>editor.css" media="all">
+	<link rel="stylesheet" href="<?php echo CSS_PATH;?>gallery.css" media="all">
 
+<!----------
 	<script src="<?php echo JS_PATH;?>lib/three/three.min.js"></script>
+---------->
 
 </head>
 <body>

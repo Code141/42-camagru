@@ -24,7 +24,7 @@ class Login extends Controller
 		$data['encrypted_password'] = hash('sha512', $_POST['password']);
 		$data['dblogin'] = $this->load->model('login', 'login', $data);
 
-		$data = $this->load->script('php', 'login', $data);
+		$this->load->script('php', 'login', $data);
 		login($data);
 	}
 
@@ -44,9 +44,22 @@ class Login extends Controller
 		$this->load->view('html_stop', $data);
 	}
 
+	public function restricted($params = NULL)
+	{
+		$data['title'] = 'Login';
+		$data['error'] = $params[0];
+
+		$this->load->view('html_start', $data);
+		$this->load->view('header', $data);
+
+		$this->load->view('login/restricted', $data);
+
+		$this->load->view('footer', $data);
+		$this->load->view('html_stop', $data);
+	}
+
 	public function error($params = NULL)
 	{
-
 		$data['title'] = 'Login';
 		$data['error'] = $params[0];
 
@@ -58,7 +71,5 @@ class Login extends Controller
 		$this->load->view('footer', $data);
 		$this->load->view('html_stop', $data);
 	}
-
-
 
 }

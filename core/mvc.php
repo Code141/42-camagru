@@ -1,5 +1,21 @@
 <?php
 
+class Model
+{
+	public function __construct()
+	{
+		try
+		{
+			$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+			$this->sql = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . '', DB_USER, DB_PASS, $pdo_options);
+		}
+		catch(Exception $e)
+		{
+			die ('Erreur : '.$e->getMessage());
+		}
+	}
+}
+
 class Loader
 {
 	public function model($controller, $model, $params = NULL)
@@ -21,3 +37,15 @@ class Loader
 		require(APP_PATH.'views/'.$file.'.php');
 	}
 }
+
+class Controller
+{
+	public function __construct()
+	{
+		$this->data['title'] = null;
+		$this->data['user'] = null;
+
+		$this->load = new Loader();
+	}
+}
+

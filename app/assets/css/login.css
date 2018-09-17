@@ -1,19 +1,13 @@
 /*-------------- LOGIN ---------------*/
 
-section#login h1,
-section#login h2
-{
-	display : block;
-	text-align: center;
-	margin-bottom: 20px;
-}
-
 section#login label
 {
 	display: block;
 	margin-bottom: 10px;
 	margin-left: 10px;
 	font-size : 22px;
+	color: white;
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
 }
 
 section#login .cadre

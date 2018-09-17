@@ -2,7 +2,18 @@
 
 section#user
 {
-	width: 80%;
+}
+
+section#user h1
+{
+	display : block;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+section#user form
+{
+	width: 500px;
 	border-top: 1px solid grey;
 	border-bottom: 1px solid grey;
 }
@@ -13,13 +24,8 @@ section#user label
 	padding: 10px;
 	height: 16px;
 	overflow : hidden;
-	transition: height 0.5s;
 	cursor: pointer;
-}
-
-section#user input[type="radio"]
-{
-	display:none;
+	transition: height 0.5s, background-color 0.5s;
 }
 
 section#user label:hover
@@ -27,12 +33,16 @@ section#user label:hover
 	background-color: #eee;
 }
 
+section#user input[type="radio"]
+{
+	display:none;
+}
+
 
 section#user label p.field_name
 {
 	float: left;
 	width: 20%;
-	color: black;
 	font-weight: bold;
 }
 
@@ -42,15 +52,15 @@ section#user label p.field_value
 	width: 200px;
 	transition: opacity 0.3s;
 }
-section#user label  p.modify
+section#user label p.modify
 {
 	float: right;
-	transition: opacity 0.3s;
 }
 
 section#user label:hover p.modify
 {
 	color: red;
+	transition: opacity 1s;
 }
 
 section#user label div.hidden
@@ -64,9 +74,9 @@ section#user label div.hidden
 
 section#user input[type="radio"]:checked + label
 {
-	height: 100px;
+	height: 65px;
 	background-color: #eee;
-	transition: height 0.5s;
+	transition: height 0.5s, background-color 0.5s;
 	cursor: pointer;
 }
 

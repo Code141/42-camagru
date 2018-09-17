@@ -1,13 +1,16 @@
 <section id="login" class="center">
 	<h1>
-		LOG IN CAMAGRU
+		RESTRICTED AREA
 	</h1>
+	<h2>
+	You must log in before access to this section
+	</h2>
 	<div class="cadre">
 		<form action="<?php echo SITE_ROOT; ?>/login/checklogin/" method="POST">
 			<label for="email">
-				Email addres
+				Email address
 			</label>
-			<input type="email" name="email" value="lambinet.141@gmail.com">
+			<input type="email" name="email" value="admin@test.fr">
 			<label for="password">
 				Password
 			</label>

@@ -1,0 +1,33 @@
+section#editor
+{
+	width : 70vw;
+	float:left;
+	height: calc(100vh - 42px - 42px);;
+}
+
+aside.left
+{
+	float:left;
+	width : 30vw;
+	background-color : #aaffaa;
+	height: calc(100vh - 42px - 42px);;
+}
+
+aside.right
+{
+	float:right;
+	width : 30vw;
+	background-color : #aaffaa;
+	height: calc(100vh - 42px - 42px);;
+}
+
+#container {
+    margin: 0px auto;
+}
+
+#videoElement {
+    width: 100%;
+    background-color: #666;
+}
+
+

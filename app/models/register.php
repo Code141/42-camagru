@@ -8,7 +8,7 @@ class Db_register extends Model
 			SELECT *
 			FROM user
 			WHERE
-			mail = '" . $data['register']['email'] . "'
+			email = '" . $data['register']['email'] . "'
 			");
 		return ($requeteBase);
 	}

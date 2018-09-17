@@ -2,13 +2,14 @@
 
 class register extends Controller
 {
+
 	public function main($params = NULL)
 	{
 		$this->data['title'] = 'Home - Gal';
 
 		$this->load->view('html_start', $this->data);
 		$this->load->view('header', $this->data);
-		$this->load->view('register', $this->data);
+		$this->load->view('register/register', $this->data);
 		$this->load->view('footer', $this->data);
 		$this->load->view('html_stop', $this->data);
 	}
@@ -28,6 +29,10 @@ class register extends Controller
 			error("Email already registered");
 		else
 			$this->load->model('register', 'register', $data);
+
+		$this->load->script('php', 'mail/email_validator', $data);
+
+		email_validator($data['register']);
 
 		header('location:'.SITE_ROOT.'/register/register_success/');
 

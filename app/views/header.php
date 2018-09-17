@@ -1,19 +1,16 @@
 <header>
+<nav>
 	<h1 id="title">
-		CAMAGRU
+		<a href="/camagru/home">
+				CAMAGRU
+		</a>
 	</h1>
-	<nav>
-		<ul>
-			<a href="/camagru/home">
-				<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-21-home.png"; ?>">
-			</a>
-			<a href="/camagru/gallery">
-				<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-157-show-thumbnails.png"; ?>">
-			</a>
-			<a href="/camagru/editor">
-				<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-139-picture.png"; ?>">
-			</a>
-		</ul>
+		<a href="/camagru/gallery">
+			<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-157-show-thumbnails.png"; ?>">
+		</a>
+		<a href="/camagru/editor">
+			<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-139-picture.png"; ?>">
+		</a>
 	</nav>
 	<?php
 		if (isset($_SESSION['user']))
