@@ -6,10 +6,11 @@
 		</a>
 	</h1>
 		<a href="/camagru/gallery">
-			<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-157-show-thumbnails.png"; ?>">
-		</a>
-		<a href="/camagru/editor">
 			<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-139-picture.png"; ?>">
+		</a>
+
+		<a href="/camagru/editor">
+			<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-12-camera.png"; ?>">
 		</a>
 	</nav>
 	<?php

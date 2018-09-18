@@ -7,7 +7,7 @@
 		</p>
 
 		<a href="<?php echo SITE_ROOT; ?>/user/">
-			<img src="<?php echo IMG_PATH . "glyphicons/glyphicons-138-cogwheels.png"; ?>">
+			<img src="<?php echo IMG_PATH . "glyphicons/glyphicons-353-nameplate.png"; ?>">
 		</a>
 
 		<a href="<?php echo SITE_ROOT; ?>/login/logout" id="logout">

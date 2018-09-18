@@ -134,8 +134,7 @@ nav {
 nav h1#title {
 	font-size : 36px;
 	float: left;
-	margin-top: 8px;
-	margin-bottom: auto;
+	margin: 8px 0px 0px 0px;
 	text-shadow: 1px 1px 0px #fff;
 }
 
@@ -155,8 +154,9 @@ nav a
 	float: left;
 	height: 42px;
 	display: flex;
-	margin-left : 10px;
+	margin-left : 20px;
 }
+
 
 nav a img
 {
@@ -196,6 +196,7 @@ div#user_loggued nav p
 	float: left;
 	margin: auto;
 }
+
 /*------------------*/
 
 /*
