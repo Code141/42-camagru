@@ -4,9 +4,12 @@ class editor extends Controller
 {
 	public function	__construct()
 	{
-		$this->data['title'] = 'Editor';
 		if (!is_loggued())
 			redirect('/login/restricted');
+
+		$this->data['title'] = 'Editor';
+		$this->data['css']['0'] = 'editor';
+		$this->data['js']['0'] = 'send_picture';
 		parent::__construct();
 	}
 

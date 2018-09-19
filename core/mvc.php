@@ -60,14 +60,21 @@ class Controller
 	public function __construct()
 	{
 		$this->load = new Loader();
-		$this->load->view('html_start', $this->data);
-		$this->load->view('header', $this->data);
+
+		if (!is_ajax_query())
+		{
+			$this->load->view('html_start', $this->data);
+			$this->load->view('header', $this->data);
+		}
 	}
 	
 	public function __destruct()
 	{
-		$this->load->view('footer');
-		$this->load->view('html_stop');
+		if (!is_ajax_query())
+		{
+			$this->load->view('footer');
+			$this->load->view('html_stop');
+		}
 	}
 }
 

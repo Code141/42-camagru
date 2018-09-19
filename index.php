@@ -26,6 +26,13 @@ if ($controller !== "login"
 }
 
 
+function	is_ajax_query()
+{
+	if (isset($_GET['is_ajax']))
+		return ((intval($_GET['is_ajax'])) ? TRUE : FALSE);
+	else
+		return (FALSE);
+}
 
 function	is_loggued()
 {

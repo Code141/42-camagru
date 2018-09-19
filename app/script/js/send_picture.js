@@ -29,7 +29,7 @@ function xhr_upload(blobOrFile) {
 	formData.append("img", blobOrFile);
 
 	var xhr = new XMLHttpRequest();
-	xhr.open('POST', '/camagru/editor/new_pic', true);
+	xhr.open('POST', '/camagru/editor/new_pic?is_ajax=1', true);
 
 	// xhr.onload = function(e) { ... };
 

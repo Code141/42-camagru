@@ -2,6 +2,13 @@
 
 class gallery extends Controller
 {
+	public function	__construct()
+	{
+		$this->data['title'] = "Gallery";
+		$this->data['css']['0'] = 'gallery';
+		parent::__construct();
+	}
+
 	public function main($params = NULL)
 	{
 

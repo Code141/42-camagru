@@ -5,6 +5,7 @@ class Login extends Controller
 	public function	__construct()
 	{
 		$this->data['title'] = "Login";
+		$this->data['css']['0'] = 'login';
 		if (is_loggued())
 			redirect('/user');
 		parent::__construct($this->data);

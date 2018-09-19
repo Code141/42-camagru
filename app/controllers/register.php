@@ -6,6 +6,7 @@ class register extends Controller
 	{
 		if (is_loggued())
 			redirect('/user');
+		$this->data['css']['0'] = 'register';
 		parent::__construct();
 	}
 

@@ -4,13 +4,12 @@ class user extends Controller
 {
 	public function	__construct()
 	{
-		if (empty($_SESSION['user']))
-		{
-			header('location:'.SITE_ROOT.'/home');
-			die();
-		}
+		if (!is_loggued())
+			redirect('/login/restricted');
+		$this->data['css']['0'] = 'user';
 		parent::__construct();
 	}
+
 	public function main($params = NULL)
 	{
 		$this->data['title'] = 'User';
@@ -22,10 +21,8 @@ class user extends Controller
 
 	public function change($params = NULL)
 	{
-
 		echo '<section>';
 		print_r($_POST);
 		echo '</section>';
-
 	}
 }

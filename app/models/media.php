@@ -13,7 +13,9 @@ class Db_media extends Model
 				)
 		";
 		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm->bindParam("id_user", loggued_id(), PDO::PARAM_INT);
+		$loggued_id = loggued_id();
+
+		$pdo_stm->bindParam("id_user", $loggued_id, PDO::PARAM_INT);
 		$pdo_stm = $this->execute_pdo($pdo_stm);
 		return ($this->pdo->lastInsertId());
 	}
@@ -25,6 +27,7 @@ class Db_media extends Model
 			FROM media m
 			LEFT JOIN user u
 			ON m.id_user = u.id
+			ORDER BY id DESC
 			LIMIT :start, :offset
 		";
 		$pdo_stm = $this->pdo->prepare($sql);

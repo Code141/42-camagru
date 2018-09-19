@@ -24,8 +24,6 @@ else
 	console.log("navigator.mediaDevices.getUserMedia IS NULL");
 }
 
-
-
 button.onclick = function() {
 
 	video_height = video.videoHeight;
