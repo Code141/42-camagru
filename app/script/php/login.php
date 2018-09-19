@@ -4,6 +4,7 @@ function	logout()
 {
 	$_SESSION['user'] = NULL;
 	header('location:'.SITE_ROOT);
+	die();
 }
 
 function	login($data)
@@ -40,8 +41,7 @@ function	login($data)
 	$_SESSION['user']['id'] = $data['dblogin']['id'];
 	$_SESSION['user']['email'] = $data['dblogin']['email'];
 	$_SESSION['user']['password_length'] = $data['password_length'];
-	$_SESSION['user']['firstname'] = $data['dblogin']['firstname'];
-	$_SESSION['user']['lastname'] = $data['dblogin']['lastname'];
+	$_SESSION['user']['username'] = $data['dblogin']['username'];
 	$_SESSION['user']['birthdate'] = $data['dblogin']['birthdate'];
 	$_SESSION['user']['gender'] = $data['dblogin']['gender'];
 	$_SESSION['user']['account_creation'] = $data['dblogin']['account_creation'];

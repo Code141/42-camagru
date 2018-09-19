@@ -45,38 +45,19 @@
 				</div>
 			</label>
 
-			<input type="radio" name="field" id="radio_firstname">
-			<label for="radio_firstname">
+			<input type="radio" name="field" id="radio_username">
+			<label for="radio_username">
 				<p class="field_name">
-					Firstname :
+					username :
 				</p>
 				<p class="field_value">
-					<?php echo $_SESSION['user']['firstname']; ?>
+					<?php echo $_SESSION['user']['username']; ?>
 				</p>
 				<p class="modify">
 					Modify
 				</p>
 				<div class="hidden">
-					<input type="text" name="firstname" value="<?php echo $_SESSION['user']['firstname']; ?>">
-					<button type="submit">
-						Modify
-					</button>
-				</div>
-			</label>
-
-			<input type="radio" name="field" id="radio_lastname">
-			<label for="radio_lastname">
-				<p class="field_name">
-					Lastname :
-				</p>
-				<p class="field_value">
-					<?php echo $_SESSION['user']['lastname']; ?>
-				</p>
-				<p class="modify">
-					Modify
-				</p>
-				<div class="hidden">
-					<input type="text" name="lastname" value="<?php echo $_SESSION['user']['lastname']; ?>">
+					<input type="text" name="username" value="<?php echo $_SESSION['user']['username']; ?>">
 					<button type="submit">
 						Modify
 					</button>

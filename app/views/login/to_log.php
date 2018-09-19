@@ -1,4 +1,4 @@
-<div id="to_log">
+<nav id="headlog">
 	<a href="<?php echo SITE_ROOT; ?>/login">
 		<button>
 			LOG IN
@@ -9,5 +9,4 @@
 			SING IN
 		</button>
 	</a>
-</div>
-
+</nav>

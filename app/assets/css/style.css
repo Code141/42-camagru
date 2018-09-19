@@ -115,9 +115,10 @@ label
 
 header {
 	position: sticky;
+	display: flex;
 	top: 0px;
-	width : 100%;
-	height : 42px;
+	width: 100%;
+	height: 42px;
 	background-color : #e6e6e6;
 	border-bottom: 1px solid grey;
 	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.8);
@@ -127,8 +128,6 @@ header {
 nav {
 	height : 42px;
 	float: left;
-	margin-right : 15px;
-	display: flex;
 }
 
 nav h1#title {
@@ -154,23 +153,52 @@ nav a
 	float: left;
 	height: 42px;
 	display: flex;
-	margin-left : 20px;
+	padding : 0px 10px 0px 10px;
+	color: black;
 }
 
+nav a:hover
+{
+	background-color: #888;
+	border-left: 1px solid #444;
+	border-right: 1px solid #aaa;
+	color: white;
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+}
+
+nav a:hover h1#title
+{
+	text-shadow: none;
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+}
+
+nav a
+{
+	border-left: 1px solid white;
+	border-right: 1px solid grey;
+}
 
 nav a img
 {
 	margin: auto;
 }
 
+div.padder
+{
+	flex: auto;
+	border-left: 1px solid white;
+	border-right: 1px solid grey;
+}
+
 /*-------------- TO LOG --------------*/
 
-div#to_log
+nav#headlog,
+nav#headlog
 {
 	float: right;
 }
 
-div#to_log button
+nav#to_log button
 {
 	display: block;
 	float: left;
@@ -182,19 +210,10 @@ div#to_log button
 
 /*----------- USER LOGGUED -----------*/
 
-div#user_loggued
-{
-	float: right;
-}
-
-div#user_loggued nav
-{
-}
-
-div#user_loggued nav p
+nav#headlog a p
 {
 	float: left;
-	margin: auto;
+	margin: auto 15px auto 0px;
 }
 
 /*------------------*/

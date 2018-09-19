@@ -17,14 +17,10 @@
 					Re-type password
 				</label>
 				<input type="password" name="passwordbis" value="" required>
-				<label for="firstname">
-					Firstname
+				<label for="username">
+					Username
 				</label>
-				<input type="text" name="firstname" value="" required>
-				<label for="Lastname">
-					Lastname
-				</label>
-				<input type="text" name="lastname" value="" required>
+				<input type="text" name="username" value="" required>
 				<label for="birthdate">
 					Birthdate
 				</label>

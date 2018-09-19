@@ -5,29 +5,35 @@ section#editor
 	height: calc(100vh - 42px - 42px);;
 }
 
-aside.left
-{
-	float:left;
-	width : 30vw;
-	background-color : #aaffaa;
-	height: calc(100vh - 42px - 42px);;
-}
-
-aside.right
-{
-	float:right;
-	width : 30vw;
-	background-color : #aaffaa;
-	height: calc(100vh - 42px - 42px);;
-}
-
 #container {
-    margin: 0px auto;
-}
-
-#videoElement {
+	height: 400px;
     width: 100%;
     background-color: #666;
 }
 
+#videoElement {
+	height: 100%;
+}
+
+
+aside.right
+{
+	position: absolute;
+	right : 0px;
+	width : 30vw;
+	background-color : #aaffaa;
+	height: calc(100vh - 42px - 42px);;
+}
+
+aside.right img
+{
+	max-width: calc(100% - 10px);
+	height: auto;
+	margin: 0px 5px 10px 5px;
+}
+
+aside.right img.sending
+{
+	opacity: 0.8;
+}
 

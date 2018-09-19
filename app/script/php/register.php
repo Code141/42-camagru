@@ -11,8 +11,7 @@ function	check_info()
 		"email",
 		"password",
 		"passwordbis",
-		"firstname",
-		"lastname",
+		"username",
 		"birthdate",
 		"gender"
 		);

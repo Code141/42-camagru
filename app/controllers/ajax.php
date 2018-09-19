@@ -5,42 +5,42 @@ class ajax extends Controller{
 
 
 	public function pullTree($params = NULL){	
-		$data['idUser'] = $params[0]; 
-		$data['marble']['mytree'] = $this->load->model('marble', 'getTree', $data);
+		$this->data['idUser'] = $params[0]; 
+		$this->data['marble']['mytree'] = $this->load->model('marble', 'getTree', $this->data);
 		echo '<script>';
-		while ($data_array = $data['marble']['mytree']->fetch()){
-			echo 'dataPuller.getTree('.$data['idUser'].', '.$data_array['id'].','.$data_array['id_parent_slice'].','.$data_array['id_objet'].');';
+		while ($this->data_array = $this->data['marble']['mytree']->fetch()){
+			echo 'dataPuller.getTree('.$this->data['idUser'].', '.$this->data_array['id'].','.$this->data_array['id_parent_slice'].','.$this->data_array['id_objet'].');';
 		}
-		$data['marble']['mytree']->closeCursor();
+		$this->data['marble']['mytree']->closeCursor();
 
 		echo '</script>';
 	}
 
 	public function pullSlice($params = NULL){	
-		$data['research'] = $params[0]; 
-		$data['marble']['slice'] = $this->load->model('marble', 'getSliceById', $data);
+		$this->data['research'] = $params[0]; 
+		$this->data['marble']['slice'] = $this->load->model('marble', 'getSliceById', $this->data);
 		echo '<script>';
 		
-		while ($data_array = $data['marble']['slice']->fetch()){
-			echo 'dataPuller.getSlice('.$data['research'].','.$data_array['id'].','.$data_array['id_adjectif'].','.$data_array['score'].');';
+		while ($this->data_array = $this->data['marble']['slice']->fetch()){
+			echo 'dataPuller.getSlice('.$this->data['research'].','.$this->data_array['id'].','.$this->data_array['id_adjectif'].','.$this->data_array['score'].');';
 		}
 		
-		$data['marble']['slice']->closeCursor();
+		$this->data['marble']['slice']->closeCursor();
 
 		echo '</script>';
 	}
 
 	public function pullObjet($params = NULL){	
-		$data['idObjet'] = $params[0]; 
-		$data['marble']['objet'] = $this->load->model('marble', 'getObjetName', $data);
+		$this->data['idObjet'] = $params[0]; 
+		$this->data['marble']['objet'] = $this->load->model('marble', 'getObjetName', $this->data);
 		
 		echo '<script>';
 		
-		while ($data_array = $data['marble']['objet']->fetch()){
-			echo 'dataPuller.getObjetName('.$data['idObjet'].',\''.$data_array['name'].'\');';
+		while ($this->data_array = $this->data['marble']['objet']->fetch()){
+			echo 'dataPuller.getObjetName('.$this->data['idObjet'].',\''.$this->data_array['name'].'\');';
 		}
 		
-		$data['marble']['objet']->closeCursor();
+		$this->data['marble']['objet']->closeCursor();
 
 		echo '</script>';
 	}
@@ -53,94 +53,94 @@ class ajax extends Controller{
 
 
 	public function searchByMetaphone($params = NULL){	
-		$data['research'] = $params['0'];
-		$data['marble']['adjectifs'] = $this->load->model('marble', 'searchByMetaphone', $data);
+		$this->data['research'] = $params['0'];
+		$this->data['marble']['adjectifs'] = $this->load->model('marble', 'searchByMetaphone', $this->data);
 
-		if(isset($data['marble']['adjectifs'])){
-			$this->load->view('ajax/searchbymetaphone', $data);
+		if(isset($this->data['marble']['adjectifs'])){
+			$this->load->view('ajax/searchbymetaphone', $this->data);
 		}
 	}
 
 
 	public function searchContextsForObjet($params = NULL){		
 
-		$data['research'] = $params['0'];
-		$data['name'] = $params['1'];
-		$data['marble']['adjectifs'] = $this->load->model('marble', 'searchSliceByObjetId', $data);
+		$this->data['research'] = $params['0'];
+		$this->data['name'] = $params['1'];
+		$this->data['marble']['adjectifs'] = $this->load->model('marble', 'searchSliceByObjetId', $this->data);
 
-		$this->load->view('ajax/searchcontextsforobjet', $data);
+		$this->load->view('ajax/searchcontextsforobjet', $this->data);
 
 	}
 
 
 	public function getSliceById($params = NULL)
 	{		
-		$data['research'] = $params['0'];//idslice
-		$data['ctxslice'] = $params['1'];
-		$data['name'] = $params['2'];
-		$data['sliceOwned'] = $params['3'];
-		$data['marble']['adjectifs'] = $this->load->model('marble', 'getSliceById', $data);
+		$this->data['research'] = $params['0'];//idslice
+		$this->data['ctxslice'] = $params['1'];
+		$this->data['name'] = $params['2'];
+		$this->data['sliceOwned'] = $params['3'];
+		$this->data['marble']['adjectifs'] = $this->load->model('marble', 'getSliceById', $this->data);
 
-		if(isset($data['marble']['adjectifs'])){
-			$this->load->view('ajax/slice', $data);
+		if(isset($this->data['marble']['adjectifs'])){
+			$this->load->view('ajax/slice', $this->data);
 		}
 	}
 
 
 	public function addAdjSlice($params = NULL)
 	{
-		$data['slice'] = $params[0]; 
-		$data['research'] = $params[1];
+		$this->data['slice'] = $params[0]; 
+		$this->data['research'] = $params[1];
 		//ASK IF ADJ EXIST AND GET HIS ID
-		$data['marble']['id_obj'] = $this->load->model('marble', 'searchObjets', $data);
-		while ($data_array = $data['marble']['id_obj']->fetch()){
-			$data['id_add_adj'] = $data_array['id'];	
+		$this->data['marble']['id_obj'] = $this->load->model('marble', 'searchObjets', $this->data);
+		while ($this->data_array = $this->data['marble']['id_obj']->fetch()){
+			$this->data['id_add_adj'] = $this->data_array['id'];	
 		}
-		$data['marble']['id_obj']->closeCursor();
+		$this->data['marble']['id_obj']->closeCursor();
 
 		//IF IT DON'T CREAT IT AND GET HER ID	
-		if(!isset($data['id_add_adj'])){
-			$this->load->model('marble', 'addAdjObjet', $data);	
-			$data['marble']['id_obj'] = $this->load->model('marble', 'searchObjets', $data);
-			while ($data_array = $data['marble']['id_obj']->fetch()){
-				$data['id_add_adj'] = $data_array['id'];
+		if(!isset($this->data['id_add_adj'])){
+			$this->load->model('marble', 'addAdjObjet', $this->data);	
+			$this->data['marble']['id_obj'] = $this->load->model('marble', 'searchObjets', $this->data);
+			while ($this->data_array = $this->data['marble']['id_obj']->fetch()){
+				$this->data['id_add_adj'] = $this->data_array['id'];
 			}
-			$data['marble']['id_obj']->closeCursor();
+			$this->data['marble']['id_obj']->closeCursor();
 		}
 		//FINALLY ADD TO SLICE THIS ADJ ID
-		$this->load->model('marble', 'addAdjSlice', $data);
+		$this->load->model('marble', 'addAdjSlice', $this->data);
 	}
 
 
 	public function destroyAdjSlice($params = NULL)
 	{
-		$data['destroyadjslice'] = $params[0]; 
-		$this->load->model('marble', 'destroyAdjSlice', $data);
+		$this->data['destroyadjslice'] = $params[0]; 
+		$this->load->model('marble', 'destroyAdjSlice', $this->data);
 	}
 
 
 
 	public function moveTreeNode($params = NULL){	
-		$data['slicetomove'] = $params['0'];
-		$data['moveto'] = $params['1'];
+		$this->data['slicetomove'] = $params['0'];
+		$this->data['moveto'] = $params['1'];
 
-		$this->load->model('marble', 'updateParentSlice', $data);
+		$this->load->model('marble', 'updateParentSlice', $this->data);
 	}
 
 	public function refreshtree($params = NULL){	
 
-		$data['research'] = $params['0'];
-		$data['marble']['objet_id'] = $this->load->model('marble', 'searchByMetaphone', $data);
-		$data['marble']['mytree'] = $this->load->model('marble', 'mytree', $data);
+		$this->data['research'] = $params['0'];
+		$this->data['marble']['objet_id'] = $this->load->model('marble', 'searchByMetaphone', $this->data);
+		$this->data['marble']['mytree'] = $this->load->model('marble', 'mytree', $this->data);
 
 		$this->load->script('php', 'tree/makeatree');
 
-		while ($data_array = $data['marble']['mytree']->fetch()){
-			$bddBranches[$data_array['id']]['id'] = $data_array['id'];
-			$bddBranches[$data_array['id']]['label'] = $data_array['name'];
-			$bddBranches[$data_array['id']]['parent_id'] = $data_array['id_parent_slice'];
+		while ($this->data_array = $this->data['marble']['mytree']->fetch()){
+			$bddBranches[$this->data_array['id']]['id'] = $this->data_array['id'];
+			$bddBranches[$this->data_array['id']]['label'] = $this->data_array['name'];
+			$bddBranches[$this->data_array['id']]['parent_id'] = $this->data_array['id_parent_slice'];
 		}
-		$data['marble']['mytree']->closeCursor();
+		$this->data['marble']['mytree']->closeCursor();
 
 		$userTree = createTree($bddBranches);
 		echo'
@@ -163,63 +163,63 @@ class ajax extends Controller{
 }
 
 public function addSlice($params = NULL){	
-	$data['research'] = $params['0'];
+	$this->data['research'] = $params['0'];
 
-	$data['marble']['objet_id'] = $this->load->model('marble', 'searchObjets', $data);
-	while ($data_array = $data['marble']['objet_id']->fetch()){
-		$data['objetid'] = $data_array['id'];
+	$this->data['marble']['objet_id'] = $this->load->model('marble', 'searchObjets', $this->data);
+	while ($this->data_array = $this->data['marble']['objet_id']->fetch()){
+		$this->data['objetid'] = $this->data_array['id'];
 	}
-	$data['marble']['objet_id']->closeCursor();
+	$this->data['marble']['objet_id']->closeCursor();
 
-	if (!isset($data['objetid'])) {
-		$this->load->model('marble', 'addAdjObjet', $data);
-		$data['marble']['objet_id'] = $this->load->model('marble', 'searchObjets', $data);
-		while ($data_array = $data['marble']['objet_id']->fetch()){
-			$data['objetid'] = $data_array['id'];
+	if (!isset($this->data['objetid'])) {
+		$this->load->model('marble', 'addAdjObjet', $this->data);
+		$this->data['marble']['objet_id'] = $this->load->model('marble', 'searchObjets', $this->data);
+		while ($this->data_array = $this->data['marble']['objet_id']->fetch()){
+			$this->data['objetid'] = $this->data_array['id'];
 		}
-		$data['marble']['objet_id']->closeCursor();
+		$this->data['marble']['objet_id']->closeCursor();
 	}
 
-	$this->load->model('marble', 'addSlice', $data);
+	$this->load->model('marble', 'addSlice', $this->data);
 }
 
 public function removeSlice($params = NULL){	
-	$data['research'] = $params['0'];
+	$this->data['research'] = $params['0'];
 
-	$data['marble']['objet_id'] = $this->load->model('marble', 'searchObjets', $data);
-	while ($data_array = $data['marble']['objet_id']->fetch()){
-		$data['objetid'] = $data_array['id'];
+	$this->data['marble']['objet_id'] = $this->load->model('marble', 'searchObjets', $this->data);
+	while ($this->data_array = $this->data['marble']['objet_id']->fetch()){
+		$this->data['objetid'] = $this->data_array['id'];
 	}
-	$data['marble']['objet_id']->closeCursor();
+	$this->data['marble']['objet_id']->closeCursor();
 
-	if (!isset($data['objetid'])) {
-		$this->load->model('marble', 'addAdjObjet', $data);
-		$data['marble']['objet_id'] = $this->load->model('marble', 'searchObjets', $data);
-		while ($data_array = $data['marble']['objet_id']->fetch()){
-			$data['objetid'] = $data_array['id'];
+	if (!isset($this->data['objetid'])) {
+		$this->load->model('marble', 'addAdjObjet', $this->data);
+		$this->data['marble']['objet_id'] = $this->load->model('marble', 'searchObjets', $this->data);
+		while ($this->data_array = $this->data['marble']['objet_id']->fetch()){
+			$this->data['objetid'] = $this->data_array['id'];
 		}
-		$data['marble']['objet_id']->closeCursor();
+		$this->data['marble']['objet_id']->closeCursor();
 	}
 
-	$this->load->model('marble', 'addSlice', $data);
+	$this->load->model('marble', 'addSlice', $this->data);
 }
 
 
 
 public function addFriend($params = NULL){	
-	$data['whichuserid'] = $params['0'];
-	$data['whichusername'] = $params['1'];
+	$this->data['whichuserid'] = $params['0'];
+	$this->data['whichusername'] = $params['1'];
 		// TODO VERIFIE AVANT D'AJOUTER
 	
-	$isafriend = $this->load->model('friends', 'isAFriend', $data);
+	$isafriend = $this->load->model('friends', 'isAFriend', $this->data);
 
 	$count = $isafriend->rowCount();
 	
 	if($count==0){
-		$this->load->model('friends', 'addFriend', $data);
-		echo 'An invitation has been sent to '.$data['whichusername'];
+		$this->load->model('friends', 'addFriend', $this->data);
+		echo 'An invitation has been sent to '.$this->data['whichusername'];
 	}elseif ($count==1){
-		echo 'You already asked '.$data['whichusername'].' to be your friend';
+		echo 'You already asked '.$this->data['whichusername'].' to be your friend';
 	}elseif($count ==2){
 		echo 'COPAIIIING';
 	}
@@ -235,12 +235,12 @@ public function addFriend($params = NULL){
 }
 
 public function acceptAsFriend($params = NULL){	
-	$data['whichuserid'] = $params['0'];
-	$data['whichusername'] = $params['1'];
+	$this->data['whichuserid'] = $params['0'];
+	$this->data['whichusername'] = $params['1'];
 		// TODO VERIFIE AVANT D'AJOUTER
 	
 	
-	$this->load->model('friends', 'addFriend', $data);
+	$this->load->model('friends', 'addFriend', $this->data);
 	echo'HALLELUYA !!';
 
 	
@@ -254,8 +254,8 @@ public function acceptAsFriend($params = NULL){
 }
 
 public function declineAsFriend($params = NULL){	
-	$data['whichuserid'] = $params['0'];
-	$data['whichusername'] = $params['1'];
+	$this->data['whichuserid'] = $params['0'];
+	$this->data['whichusername'] = $params['1'];
 		// TODO VERIFIE AVANT D'AJOUTER
 	
 	

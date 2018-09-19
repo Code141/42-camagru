@@ -1,6 +1,6 @@
 <?php
-if(!isset($data['error']['0'])){
-$data['error']['0'] = '';
+if(!isset($this->data['error']['0'])){
+$this->data['error']['0'] = '';
 }
 ?>
 

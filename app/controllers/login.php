@@ -2,74 +2,47 @@
 
 class Login extends Controller
 {
+	public function	__construct()
+	{
+		$this->data['title'] = "Login";
+		if (is_loggued())
+			redirect('/user');
+		parent::__construct($this->data);
+	}
 
 	public function main($params = NULL)
 	{
-		$data['title'] = 'Login';
-		$this->load->view('html_start', $data);
-		$this->load->view('header', $data);
-
-		$this->load->view('login/login', $data);
-
-		$this->load->view('footer', $data);
-		$this->load->view('html_stop', $data);
+		$this->load->view('login/login', $this->data);
 	}
 
 	public function checklogin($params = NULL)
 	{
-		$data['email'] = stripslashes($_POST['email']);
+		$this->data['email'] = stripslashes($_POST['email']);
+		$this->data['password_length'] = strlen($_POST['password']);
 
-		$data['password_length'] = strlen($_POST['password']);
+		$this->data['encrypted_password'] = hash('sha512', $_POST['password']);
+		$this->data['dblogin'] = $this->load->model('login', 'login', $this->data);
 
-		$data['encrypted_password'] = hash('sha512', $_POST['password']);
-		$data['dblogin'] = $this->load->model('login', 'login', $data);
-
-		$this->load->script('php', 'login', $data);
-		login($data);
-	}
-
-	public function logout($params = NULL)
-	{
-		$data = $this->load->script('php', 'login');
-		logout();
+		$this->load->script('php', 'login', $this->data);
+		login($this->data);
 	}
 
 	public function forgotten_password($params = NULL)
 	{
-		$data['title'] = 'Forgotten_Password';
-		$this->load->view('html_start', $data);
-
+		$this->data['title'] = 'Forgotten_Password';
 		echo "FORGOTTEN PASSWORD";
-
-		$this->load->view('html_stop', $data);
 	}
 
 	public function restricted($params = NULL)
 	{
-		$data['title'] = 'Login';
-		$data['error'] = $params[0];
-
-		$this->load->view('html_start', $data);
-		$this->load->view('header', $data);
-
-		$this->load->view('login/restricted', $data);
-
-		$this->load->view('footer', $data);
-		$this->load->view('html_stop', $data);
+		$this->data['error'] = $params[0];
+		$this->load->view('login/restricted', $this->data);
 	}
 
 	public function error($params = NULL)
 	{
-		$data['title'] = 'Login';
-		$data['error'] = $params[0];
-
-		$this->load->view('html_start', $data);
-		$this->load->view('header', $data);
-
-		$this->load->view('login/error', $data);
-
-		$this->load->view('footer', $data);
-		$this->load->view('html_stop', $data);
+		$this->data['error'] = $params[0];
+		$this->load->view('login/error', $this->data);
 	}
 
 }

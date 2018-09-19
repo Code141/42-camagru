@@ -1,12 +1,15 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+define('DEV_MODE', TRUE);
 
+if (DEV_MODE)
+{
+	error_reporting(E_ALL);
+	ini_set("display_errors", 1);
+}
 //--------------------VARIABLES D'ENVIRONEMENT
 
 define('APP_NAME', 'camagru');
-define('ENVIRONMENT', TRUE);
 
 define('SERVER_ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 define('SITE_ROOT', '/camagru');

@@ -2,17 +2,32 @@
 
 class Model
 {
-	public function __construct()
+	public function	__construct()
 	{
 		try
 		{
-			$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-			$this->sql = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . '', DB_USER, DB_PASS, $pdo_options);
+			$this->pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . '', DB_USER, DB_PASS);
+			if (DEV_MODE)
+				$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		}
-		catch(Exception $e)
+		catch(PDOException $exception)
 		{
-			die ('Erreur : '.$e->getMessage());
+			if (DEV_MODE)
+				die ('Erreur : ' . $exception->getMessage());
+			else
+			{
+				// send mail to admin
+				header('location:' . SITE_ROOT . '/error/');
+				die ();
+			}
 		}
+	}
+
+	public function	execute_pdo($pdo_stm)
+	{
+		// TRY / CATCH
+		$pdo_stm->execute();
+		return ($pdo_stm);
 	}
 }
 
@@ -22,8 +37,8 @@ class Loader
 	{
 		require_once(APP_PATH.'models/'.$controller.'.php');
 		$calledmodel = 'Db_'.$controller;
-		$this->db = new $calledmodel();
-		return($this->db->$model($params));
+		$this->pdo = new $calledmodel();
+		return($this->pdo->$model($params));
 	}
 
 	public function script($type, $file, array $data = NULL)
@@ -40,12 +55,19 @@ class Loader
 
 class Controller
 {
+	public $data;
+
 	public function __construct()
 	{
-		$this->data['title'] = null;
-		$this->data['user'] = null;
-
 		$this->load = new Loader();
+		$this->load->view('html_start', $this->data);
+		$this->load->view('header', $this->data);
+	}
+	
+	public function __destruct()
+	{
+		$this->load->view('footer');
+		$this->load->view('html_stop');
 	}
 }
 

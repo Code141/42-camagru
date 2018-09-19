@@ -16,9 +16,3 @@ $controller = ($request[0] != '') ? $request[0] : $defaultController;
 $action = (isset($request[1])) ? $request[1] : $defaultAction;
 $params = (isset($request[2])) ? array_slice($request, 2) : NULL;
 
-if ($controller !== "login")
-{
-	$_SESSION['last_url']['controller'] = $controller;
-	$_SESSION['last_url']['action'] = $action;
-	$_SESSION['last_url']['params'] = $params;
-}

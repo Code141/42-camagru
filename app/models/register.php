@@ -4,30 +4,41 @@ class Db_register extends Model
 {
 	function take_user_by_mail($data)
 	{
-		$requeteBase = $this->sql->query("
+		$sql = "
 			SELECT *
 			FROM user
 			WHERE
-			email = '" . $data['register']['email'] . "'
-			");
-		return ($requeteBase);
+			email = :email 
+		";
+		$pdo_stm = $this->pdo->prepare($sql);
+		$pdo_stm->bindParam("email", $data['register']['email'], PDO::PARAM_STR);
+		$pdo_stm = $this->execute_pdo($pdo_stm);
+		return ($pdo_stm);
 	}
 
 	function register($data)
 	{
-		$this->sql->exec("
+		$sql = "
 			INSERT INTO user
 			VALUES (
 				'',
-				'".$data['register']['email']."',
-				'".$data['register']['encrypted_password']."',
-				'".$data['register']['firstname']."',
-				'".$data['register']['lastname']."',
-				'".$data['register']['birthdate']."',
-				'".$data['register']['gender']."',
+				:email,
+				:password,
+				:username,
+				:birthdate,
+				:gender,
 				now(),
-				0)
-			"); 
+				0
+			)
+		"; 
+		$pdo_stm = $this->pdo->prepare($sql);
+		$pdo_stm->bindParam("email", $data['register']['email'], PDO::PARAM_STR);
+		$pdo_stm->bindParam("password", $data['register']['password'], PDO::PARAM_STR);
+		$pdo_stm->bindParam("username", $data['register']['username'], PDO::PARAM_STR);
+		$pdo_stm->bindParam("birthdate", $data['register']['birthdate'], PDO::PARAM_STR);
+		$pdo_stm->bindParam("gender", $data['register']['gender'], PDO::PARAM_STR);
+		$pdo_stm = $this->execute_pdo($pdo_stm);
+		return ($pdo_stm);
 	}
 }
 
