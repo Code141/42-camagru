@@ -3,7 +3,7 @@
 		ERROR WHILE LOG IN CAMAGRU
 	</h1>
 	<h2>
-	Reason : <?php echo $data['error']; ?>
+	Reason : <?php echo $this->data['error']; ?>
 	</h2>
 	<div class="cadre error">
 		<form action="<?php echo SITE_ROOT; ?>/login/checklogin/" method="POST">

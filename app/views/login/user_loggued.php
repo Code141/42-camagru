@@ -1,12 +1,12 @@
 <nav id="headlog">
+	<p>
+		Hello
+		<?php echo $_SESSION['user']['username']; ?>
+	</p>
 	<a href="<?php echo SITE_ROOT; ?>/user/">
-		<p>
-			Hello
-			<?php echo $_SESSION['user']['username']; ?>
-		</p>
-		<img src="<?php echo IMG_PATH . "glyphicons/glyphicons-353-nameplate.png"; ?>">
+		<button id="glyph_user" class="header_button glyph"></button>
 	</a>
 	<a href="<?php echo SITE_ROOT; ?>/logout" id="logout">
-		<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-388-log-out.png"; ?>">
+		<button id="glyph_logout" class="header_button glyph"></button>
 	</a>
 </nav>

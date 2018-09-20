@@ -35,8 +35,6 @@ h1 {
 	font-family: din1451;
 }
 
-
-
 h2 {
 	font-size : 20px;
 	font-family: din1451;
@@ -90,19 +88,20 @@ section
 }
 
 input,
-button
+button[type="submit"]
 {
 	padding: 5px 10px 5px 10px;
-	border-radius: 3px;
-	border: 1px solid grey;
+	border-radius: 4px;
+	border: 1px solid  rgba(0, 0, 0, 1);
+	box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
-button
+button[type="submit"]
 {
 	background-color: #ccc;
 }
 
-button:hover
+button[type="submit"]:hover
 {
 	background-color: #aaaaaa;
 }
@@ -133,16 +132,12 @@ nav {
 nav h1#title {
 	font-size : 36px;
 	float: left;
-	margin: 8px 0px 0px 0px;
+	margin: 8px 15px 0px 15px;
 	text-shadow: 1px 1px 0px #fff;
-}
-
-nav h1#title a
-{
 	color: black;
 }
 
-nav h1#title a:hover
+nav a:hover h1#title
 {
 	color: white;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
@@ -151,13 +146,29 @@ nav h1#title a:hover
 nav a
 {
 	float: left;
-	height: 42px;
 	display: flex;
-	padding : 0px 10px 0px 10px;
 	color: black;
 }
 
-nav a:hover
+nav p
+{
+	display: flex;
+	float: left;
+	height: 42px;
+	border-right: 1px solid grey;
+	text-align: center;
+	vertical-align: middle;
+}
+
+nav a button.header_button
+{
+	height: 42px;
+	width: 48px;
+	border-left: 1px solid white;
+	border-right: 1px solid grey;
+}
+
+nav a button.header_button:hover
 {
 	background-color: #888;
 	border-left: 1px solid #444;
@@ -172,22 +183,11 @@ nav a:hover h1#title
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
 }
 
-nav a
-{
-	border-left: 1px solid white;
-	border-right: 1px solid grey;
-}
-
-nav a img
-{
-	margin: auto;
-}
 
 div.padder
 {
 	flex: auto;
 	border-left: 1px solid white;
-	border-right: 1px solid grey;
 }
 
 /*-------------- TO LOG --------------*/

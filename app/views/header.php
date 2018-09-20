@@ -7,10 +7,10 @@
 		</h1>
 	</a>
 	<a href="/camagru/gallery">
-		<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-139-picture.png"; ?>">
+		<button id="glyph_gallery" class="header_button glyph"></button>
 	</a>
 	<a href="/camagru/editor">
-		<img src="<?php echo IMG_PATH . "/glyphicons/glyphicons-12-camera.png"; ?>">
+		<button id="glyph_editor" class="header_button glyph"></button>
 	</a>
 </nav>
 
@@ -19,9 +19,9 @@
 
 <?php
 	if (is_loggued())
-		$this->view('login/user_loggued', $data);
+		$this->load_view('login/user_loggued');
 	else
-		$this->view('login/to_log', $data);
+		$this->load_view('login/to_log');
 ?>
 
 </header>

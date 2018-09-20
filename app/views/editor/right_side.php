@@ -7,14 +7,15 @@
 
 
 <?php
-	foreach ($data['db']['user_media'] as $row => $user_media)
+	foreach ($this->data['db']['user_media'] as $user_media)
 	{
 ?>
 		<img src="<?php echo MEDIA_PATH . $user_media['id'];?>.png">
+		<button id="visibility" class="glyph"></button>
+		<button id="visibility_none" class="glyph"></button>
 <?php
 	}
 ?>
-
 	</div>
 
 </aside>

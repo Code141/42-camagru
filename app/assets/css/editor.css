@@ -7,8 +7,8 @@ section#editor
 
 #container {
 	height: 400px;
-    width: 100%;
-    background-color: #666;
+	width: 100%;
+	background-color: #666;
 }
 
 #videoElement {

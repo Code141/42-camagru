@@ -1,15 +1,13 @@
 <?php
 
-class editor extends Controller
+class editor extends Controller_restricted
 {
 	public function	__construct()
 	{
-		if (!is_loggued())
-			redirect('/login/restricted');
-
+//		if (!is_loggued())
+//			redirect('/login/restricted');
 		$this->data['title'] = 'Editor';
-		$this->data['css']['0'] = 'editor';
-		$this->data['js']['0'] = 'send_picture';
+		$this->files['css'][] = 'editor';
 		parent::__construct();
 	}
 
@@ -22,19 +20,19 @@ class editor extends Controller
 		$this->data['db']['user_media'] =
 			$this->data['db']['user_media']->fetchAll(PDO::FETCH_ASSOC);
 
-		$this->load->view('editor/editor', $this->data);
-		$this->load->view('editor/right_side', $this->data);
-		$this->load->script('js', 'webcam', $this->data);
+		$this->files['js'][] = 'send_picture';
+		$this->files['js'][] = 'webcam';
+		$this->files['views'][] = 'editor/editor';
+		$this->files['views'][] = 'editor/right_side';
 	}
 
 	public function new_pic($params = NULL)
 	{
-		print_r($_POST);
+		print_r('picture recieved: starting compute');
 		$id = $this->load->model('media', 'add_media');
 		$filename = $id . ".png";
 		$filepath = "app/assets/media/";
 		$target = $filepath . $filename;
-		move_uploaded_file( $_FILES['img']['tmp_name'], $target);
+		move_uploaded_file($_FILES['img']['tmp_name'], $target);
 	}
-
 }

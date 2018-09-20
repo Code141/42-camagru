@@ -6,17 +6,14 @@ class user extends Controller
 	{
 		if (!is_loggued())
 			redirect('/login/restricted');
-		$this->data['css']['0'] = 'user';
+		$this->files['css'][] = 'user';
 		parent::__construct();
 	}
 
 	public function main($params = NULL)
 	{
 		$this->data['title'] = 'User';
-
-
-		$this->load->view('user', $this->data);
-
+		$this->files['views'][] = 'user';
 	}
 
 	public function change($params = NULL)

@@ -1,5 +1,5 @@
-<script>
-
+function	active_webcam()
+{
 var video = document.querySelector("#videoElement");
 var button = document.getElementById("obturator_button");
 var canvas = document.getElementById("rendering_canvas");
@@ -50,6 +50,7 @@ button.onclick = function() {
 
 	xhr_upload(b);
 };
+}
 
 
-</script>
+var button = document.body.onload.addEventListener("load", active_webcam);
