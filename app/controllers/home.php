@@ -1,12 +1,12 @@
 <?php
 
-class home extends Controller
+class home extends controller
 {
 	public function	__construct()
 	{
+		parent::__construct();
 		$this->data['title'] = "Home";
 		$this->files['css'][] = 'home';
-		parent::__construct();
 	}
 
 	public function main($params = NULL)

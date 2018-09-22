@@ -6,7 +6,8 @@ class Model
 	{
 		try
 		{
-			$this->pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . '', DB_USER, DB_PASS);
+			require(CONFIG_PATH . 'database.php');
+			$this->pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			if (DEV_MODE)
 				$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		}
@@ -16,8 +17,8 @@ class Model
 				die ('Erreur : ' . $exception->getMessage());
 			else
 			{
-				// send mail to admin
-				header('location:' . SITE_ROOT . '/error/');
+				// send mail to admin/
+				redirect ('location:' . SITE_ROOT . 'error/');
 				die ();
 			}
 		}
@@ -27,7 +28,17 @@ class Model
 	{
 		// TRY / CATCH
 		$pdo_stm->execute();
+		// fetch all here
+		// return data
+		// $pdo_stm->closeCursor();
+		// close pdo_stm
+		// 		$pdo_stm = NULL;
 		return ($pdo_stm);
+	}
+
+	public function	__destruct()
+	{
+		$this->pdo = NULL;
 	}
 }
 

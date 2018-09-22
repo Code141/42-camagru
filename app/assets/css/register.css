@@ -23,6 +23,9 @@ section#register label
 section#register input,
 section#register button
 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	width : 238px;
 	margin-bottom: 10px;
 }

@@ -5,6 +5,25 @@
 		</h1>
 		<form action="<?php echo SITE_ROOT; ?>/user/change/" method="POST">
 
+			<input type="radio" name="field" id="radio_username">
+			<label for="radio_username">
+				<p class="field_name">
+					username :
+				</p>
+				<p class="field_value">
+					<?php echo $_SESSION['user']['username']; ?>
+				</p>
+				<p class="modify">
+					Modify
+				</p>
+				<div class="hidden">
+					<input type="text" name="username" value="<?php echo $_SESSION['user']['username']; ?>">
+					<button type="submit">
+						Modify
+					</button>
+				</div>
+			</label>
+
 			<input type="radio" name="field" id="radio_email">
 			<label for="radio_email">
 				<p class="field_name">
@@ -37,67 +56,14 @@
 					Modify
 				</p>
 				<div class="hidden">
-					<input type="password" name="password" value="">
-					<input type="password" name="password_bis" value="">
+					<input type="password" name="password" value="" placeholder="New Password">
+					<input type="password" name="password_bis" value="" placeholder="Re-Type New Password">
 					<button type="submit">
 						Modify
 					</button>
 				</div>
 			</label>
 
-			<input type="radio" name="field" id="radio_username">
-			<label for="radio_username">
-				<p class="field_name">
-					username :
-				</p>
-				<p class="field_value">
-					<?php echo $_SESSION['user']['username']; ?>
-				</p>
-				<p class="modify">
-					Modify
-				</p>
-				<div class="hidden">
-					<input type="text" name="username" value="<?php echo $_SESSION['user']['username']; ?>">
-					<button type="submit">
-						Modify
-					</button>
-				</div>
-			</label>
-
-			<input type="radio" name="field" id="radio_birthdate">
-			<label for="radio_birthdate">
-				<p class="field_name">
-					Birthdate :
-				</p>
-				<p class="field_value">
-					<?php echo $_SESSION['user']['birthdate']; ?>
-				</p>
-				<p class="modify">
-					Modify
-				</p>
-				<div class="hidden">
-					<input type="text" name="birthdate" value="<?php echo $_SESSION['user']['birthdate']; ?>">
-					<button type="submit">
-						Modify
-					</button>
-				</div>
-			</label>
-
-			<input type="radio" name="field" id="radio_gender">
-			<label for="radio_gender">
-				<p class="field_name">
-					Gender :
-				</p>
-				<p class="field_value">
-					<?php echo $_SESSION['user']['gender']; ?>
-				</p>
-				<p class="modify">
-					Modify
-				</p>
-				<div class="hidden">
-					OPTION
-				</div>
-			</label>
 		</form>
 	</div>
 </section>

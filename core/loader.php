@@ -15,6 +15,5 @@ class Loader
 		require(APP_PATH.'script/'.$type.'/'.$file.'.'.$type);
 		return ($data);
 	}
-
 }
 

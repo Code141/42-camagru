@@ -25,9 +25,6 @@ class Db_register extends Model
 				:email,
 				:password,
 				:username,
-				:birthdate,
-				:gender,
-				now(),
 				0
 			)
 		"; 
@@ -35,8 +32,6 @@ class Db_register extends Model
 		$pdo_stm->bindParam("email", $data['register']['email'], PDO::PARAM_STR);
 		$pdo_stm->bindParam("password", $data['register']['password'], PDO::PARAM_STR);
 		$pdo_stm->bindParam("username", $data['register']['username'], PDO::PARAM_STR);
-		$pdo_stm->bindParam("birthdate", $data['register']['birthdate'], PDO::PARAM_STR);
-		$pdo_stm->bindParam("gender", $data['register']['gender'], PDO::PARAM_STR);
 		$pdo_stm = $this->execute_pdo($pdo_stm);
 		return ($pdo_stm);
 	}

@@ -5,30 +5,10 @@
 		</h1>
 		<div class="cadre">
 			<form action="<?php echo SITE_ROOT; ?>/register/checksingup/" method="POST">
-				<label for="email">
-					Email address
-				</label>
-				<input type="email" name="email" value="" required>
-				<label for="password">
-					Password
-				</label>
-				<input type="password" name="password" value="" required>
-				<label for="passwordbis">
-					Re-type password
-				</label>
-				<input type="password" name="passwordbis" value="" required>
-				<label for="username">
-					Username
-				</label>
-				<input type="text" name="username" value="" required>
-				<label for="birthdate">
-					Birthdate
-				</label>
-				<input type="text" name="birthdate" value="" required>
-				<label for="gender">
-					Gender
-				</label>
-				<input type="text" name="gender" value="" required>
+				<input type="email" name="email" value="" placeholder="Email" required>
+				<input type="password" name="password" value="" placeholder="Password" required>
+				<input type="password" name="passwordbis" value="" placeholder="Re-type password" required>
+				<input type="text" name="username" value="" placeholder="Username" required>
 				<button type="submit">
 					Submit
 				</button>

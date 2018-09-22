@@ -1,9 +1,4 @@
 <?php
-function	error($reason)
-{
-	header('location:' . SITE_ROOT . '/register/error/' . $reason);
-	die ();
-}
 
 function	check_info()
 {
@@ -12,17 +7,15 @@ function	check_info()
 		"password",
 		"passwordbis",
 		"username",
-		"birthdate",
-		"gender"
 		);
 	foreach ($register_fields as $field)
 		if (empty($_POST[$field]))
-			error($field . '_is_unset');
+			redirect('register/error/' . $field . '_is_unset');
 		else
 			$cleaned_data[$field] = htmlspecialchars($_POST[$field]);
 
 	if ($cleaned_data['password'] != $cleaned_data['passwordbis'])
-		error('Password_and_retyped_password_doesnt_match');
+			redirect('register/error/Password_and_retyped_password_doesnt_match');
 
 	return ($cleaned_data);
 }

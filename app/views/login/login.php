@@ -2,27 +2,28 @@
 	<h1>
 		LOG IN CAMAGRU
 	</h1>
+
+<?php
+	if (isset($this->data['error']))
+		echo '<h2>Error : ' . $this->data['error'] . '</h2>';
+?>
+
 	<div class="cadre">
 		<form action="<?php echo SITE_ROOT; ?>/login/checklogin/" method="POST">
-			<label for="email">
-				Email addres
-			</label>
-			<input type="email" name="email" value="lambinet.141@gmail.com">
-			<label for="password">
-				Password
-			</label>
-			<input type="password" name="password" value="password">
+		<input type="text" name="username" value="" placeholder="Username" required>
+			<input type="password" name="password" minlength="1"
+               placeholder="Password" value="" autocomplete="current-password" required>
 			<button type="submit">
-				Connection
+				Connect
 			</button>
 			<p>
 				<a href="<?php echo SITE_ROOT; ?>/login/forgotten_password">
-					mot de passe oublié
+					Forgot password
 				</a>
 			</p>
 			<p>
 				<a href="<?php echo SITE_ROOT; ?>/register/">
-					s'inscrire
+					Register
 				</a>
 			</p>
 		</form>

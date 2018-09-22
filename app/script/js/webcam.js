@@ -1,3 +1,6 @@
+
+var video = document.querySelector("#videoElement");
+
 function	active_webcam()
 {
 var video = document.querySelector("#videoElement");
@@ -52,5 +55,4 @@ button.onclick = function() {
 };
 }
 
-
-var button = document.body.onload.addEventListener("load", active_webcam);
+window.onload = active_webcam;

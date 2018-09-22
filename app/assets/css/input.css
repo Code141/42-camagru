@@ -1,0 +1,68 @@
+input.bad_input,
+input:invalid
+{
+	background-color: #270f0f;
+	color: #FF3333;
+	text-shadow:
+		2px 2px 1px rgba(0, 0, 0, 1),
+		0px 0px 5px rgba(255, 0, 0, 1),
+		0px 0px 10px rgba(255, 0, 0, 1);
+	transition: background 1s 3s, color 1s 3s, text-shadow 1s 3s;
+}
+
+input,
+input:placeholder-shown
+{
+	height:30px;
+	width: 170px;
+	margin-bottom: 20px;
+
+	text-align: center;
+	font-size: 1em;
+
+	padding-top: 2px;
+	border-radius: 8px;
+	margin-bottom: 20px;
+
+	background-color: #1b1b1b;
+	color: #bbbbbb;
+	box-shadow:
+		inset 5px 5px 10px rgba(0, 0, 0, 0.4),
+		inset -1px -1px 0px rgba(255, 255, 255, 0.2);
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+
+	transition: background 0.5s 0s, color 0.5s 0s, text-shadow 0.5s 0s;
+}
+
+input:focus
+{
+	outline: none;
+}
+
+input::placeholder
+{
+	opacity: 0.4;
+}
+
+input:focus::placeholder
+{
+	opacity: 0;
+}
+
+button
+{
+	background: none;
+	border: none;
+	font-size : 16px;
+	color: #555;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+	padding-bottom: 20px;
+}
+
+button:hover
+{
+	color: #e6e6e6;
+	text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.8);
+}
+
+

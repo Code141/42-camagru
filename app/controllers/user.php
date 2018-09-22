@@ -1,13 +1,11 @@
 <?php
 
-class user extends Controller
+class user extends controller_restricted
 {
 	public function	__construct()
 	{
-		if (!is_loggued())
-			redirect('/login/restricted');
-		$this->files['css'][] = 'user';
 		parent::__construct();
+		$this->files['css'][] = 'user';
 	}
 
 	public function main($params = NULL)

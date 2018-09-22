@@ -1,12 +1,12 @@
 <?php
 
-class gallery extends Controller
+class gallery extends controller
 {
 	public function	__construct()
 	{
+		parent::__construct();
 		$this->data['title'] = "Gallery";
 		$this->files['css'][] = 'gallery';
-		parent::__construct();
 	}
 
 	public function main($params = NULL)

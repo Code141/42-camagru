@@ -1,19 +1,5 @@
 <?php
 
-// LAST PATH
-if ($controller !== "login"
-	&& $controller !== "logout"
-	&& $controller !== "register" )
-{
-	// IF IS NUL --- DEFAUT CONTROLLER !!!!!!!!!!!!
-	// else a direct access to login wistout session
-	// will send you on www.camagru.fr//
-	$_SESSION['last_url']['controller'] = $controller;
-	$_SESSION['last_url']['action'] = $action;
-	$_SESSION['last_url']['params'] = $params;
-}
-
-
 function	is_ajax_query()
 {
 	if (isset($_GET['is_ajax']))
@@ -24,7 +10,7 @@ function	is_ajax_query()
 
 function	is_loggued()
 {
-	if (empty($_SESSION['user']))
+	if (!isset($_SESSION['user']))
 		return (FALSE);
 	else
 		return (TRUE);
@@ -45,4 +31,14 @@ function	redirect($path)
 	header ('location:'.SITE_ROOT. $path);
 	die();
 }
+
+
+function	link_css($files)
+{
+	if (isset($files))
+		foreach($files as $filename)
+			echo '
+	<link rel="stylesheet" href="' . CSS_PATH . $filename . '.css">';
+}
+?>
 

@@ -1,19 +1,16 @@
 <?php
 
-class editor extends Controller_restricted
+class editor extends controller_restricted
 {
 	public function	__construct()
 	{
-//		if (!is_loggued())
-//			redirect('/login/restricted');
+		parent::__construct();
 		$this->data['title'] = 'Editor';
 		$this->files['css'][] = 'editor';
-		parent::__construct();
 	}
 
 	public function main($params = NULL)
 	{
-
 		$this->data['user_id'] = $_SESSION['user']['id'];
 		$this->data['db']['user_media'] =
 			$this->load->model('media', 'get_media_by_user_id', $this->data);

@@ -1,15 +1,15 @@
 <header>
 
 <nav>
-	<a href="/camagru/home">
+	<a href="<?php echo SITE_ROOT; ?>home">
 		<h1 id="title">
 			CAMAGRU
 		</h1>
 	</a>
-	<a href="/camagru/gallery">
+	<a href="<?php echo SITE_ROOT; ?>gallery">
 		<button id="glyph_gallery" class="header_button glyph"></button>
 	</a>
-	<a href="/camagru/editor">
+	<a href="<?php echo SITE_ROOT; ?>editor">
 		<button id="glyph_editor" class="header_button glyph"></button>
 	</a>
 </nav>
