@@ -31,5 +31,8 @@ class editor extends controller_restricted
 		$filepath = "app/assets/media/";
 		$target = $filepath . $filename;
 		move_uploaded_file($_FILES['img']['tmp_name'], $target);
+
+		//Requête traitée avec succès et création d’un document. 
+		http_response_code(201);
 	}
 }

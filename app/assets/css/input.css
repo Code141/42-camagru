@@ -24,10 +24,10 @@ input:placeholder-shown
 	border-radius: 8px;
 	margin-bottom: 20px;
 
-	background-color: #1b1b1b;
+	background-color: #1f1f1f;
 	color: #bbbbbb;
 	box-shadow:
-		inset 5px 5px 10px rgba(0, 0, 0, 0.4),
+		inset 5px 5px 10px rgba(0, 0, 0, 0.5),
 		inset -1px -1px 0px rgba(255, 255, 255, 0.2);
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
 
