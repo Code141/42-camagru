@@ -33,12 +33,6 @@ function	redirect($path)
 }
 
 
-function	link_css($files)
-{
-	if (isset($files))
-		foreach($files as $filename)
-			echo '
-	<link rel="stylesheet" href="' . CSS_PATH . $filename . '.css">';
-}
+
 ?>
 

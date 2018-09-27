@@ -9,7 +9,7 @@
 		if ($i == $this->data['paging'])
 		{
 ?>
-	<a class="paging_center" href="<?php echo SITE_ROOT; ?>/gallery/main/<?php echo $i; ?>">
+	<a class="paging_center" href="<?php echo SITE_ROOT; ?>gallery/main/<?php echo $i; ?>">
 		<?php echo $i; ?>
 	</a>
 
@@ -18,7 +18,7 @@
 		else
 		{
 ?>
-	<a href="<?php echo SITE_ROOT; ?>/gallery/main/<?php echo $i; ?>">
+	<a href="<?php echo SITE_ROOT; ?>gallery/main/<?php echo $i; ?>">
 		<?php echo $i; ?>
 	</a>
 <?php

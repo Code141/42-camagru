@@ -4,7 +4,6 @@
 			General Account Settings
 		</h1>
 		<form action="<?php echo SITE_ROOT; ?>/user/change/" method="POST">
-
 			<input type="radio" name="field" id="radio_username">
 			<label for="radio_username">
 				<p class="field_name">
@@ -23,7 +22,6 @@
 					</button>
 				</div>
 			</label>
-
 			<input type="radio" name="field" id="radio_email">
 			<label for="radio_email">
 				<p class="field_name">
@@ -43,7 +41,6 @@
 					</button>
 				</div>
 			</label>
-
 			<input type="radio" name="field" id="radio_password">
 			<label for="radio_password">
 				<p class="field_name">
@@ -63,7 +60,6 @@
 					</button>
 				</div>
 			</label>
-
 		</form>
 	</div>
 </section>

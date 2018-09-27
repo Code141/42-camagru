@@ -1,23 +1,18 @@
 function b64toBlob(b64Data, contentType, sliceSize) {
 	contentType = contentType || '';
 	sliceSize = sliceSize || 512;
-
 	var byteCharacters = atob(b64Data);
 	var byteArrays = [];
-
 	for (var offset = 0; offset < byteCharacters.length; offset += sliceSize)
 	{
 		var slice = byteCharacters.slice(offset, offset + sliceSize);
 		var byteNumbers = new Array(slice.length);
-		for (var i = 0; i < slice.length; i++) {
+		for (var i = 0; i < slice.length; i++)
 			byteNumbers[i] = slice.charCodeAt(i);
-		}
 		var byteArray = new Uint8Array(byteNumbers);
 		byteArrays.push(byteArray);
 	}
-
-	var blob = new Blob(byteArrays, {type: contentType});
-	return blob;
+	return (new Blob(byteArrays, {type: contentType}));
 }
 
 
@@ -42,11 +37,12 @@ function xhr_upload(blobOrFile) {
 
 	xhr.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
-			if (this.status === 200) {
+			if (this.status === 200)
 				console.log("Réponse reçue: %s", this.responseText);
-			} else {
-				console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
-			}
+			else if (this.status === 201)
+				console.log("Réponse reçue: %s", this.responseText);
+			else
+				console.log("XHR Error : %d (%s)", this.status, this.statusText);
 		}
 	};
 

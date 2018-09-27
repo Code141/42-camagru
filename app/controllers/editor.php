@@ -20,19 +20,21 @@ class editor extends controller_restricted
 		$this->files['js'][] = 'send_picture';
 		$this->files['js'][] = 'webcam';
 		$this->files['views'][] = 'editor/editor';
-		$this->files['views'][] = 'editor/right_side';
 	}
 
 	public function new_pic($params = NULL)
 	{
+		/*CHECKER SI UNE PHOTO ARRIVE*/
+		/*CHECKER SI UNE PHOTO ARRIVE*/
 		print_r('picture recieved: starting compute');
+
 		$id = $this->load->model('media', 'add_media');
 		$filename = $id . ".png";
 		$filepath = "app/assets/media/";
 		$target = $filepath . $filename;
+
+
 		move_uploaded_file($_FILES['img']['tmp_name'], $target);
 
-		//Requête traitée avec succès et création d’un document. 
-		http_response_code(201);
 	}
 }

@@ -12,13 +12,19 @@ require_once(CORE_PATH . 'TOOL.php');
 if (is_readable(APP_PATH.'controllers/' . $controller . '.php'))
 	require_once(APP_PATH.'controllers/' . $controller . '.php');
 else
+{
 	$controller = "controller";
+	$action = "error_404"; 
+}
 
 $classes =  get_class_methods($controller);
 $classes = preg_grep("/^(?!__).+/", $classes);
 
 if (array_search($action, $classes) === FALSE)
+{
+	$controller = "controller";
 	$action = "error_404"; 
+}
 
 $targetController = new $controller();
 $targetController->$action($params);

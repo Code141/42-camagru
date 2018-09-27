@@ -72,3 +72,22 @@ button.glyph#glyph_visibility_none:hover
 	background-image: url("../img/glyphicons_white/glyphicons-53-eye-close.png");
 }
 
+button.glyph#glyph_log_in
+{
+	background-image: url("../img/glyphicons_black/glyphicons-387-log-in.png");
+}
+
+button.glyph#glyph_log_in:hover
+{
+	background-image: url("../img/glyphicons_white/glyphicons-387-log-in.png");
+}
+
+button.glyph#glyph_register
+{
+	background-image: url("../img/glyphicons_black/glyphicons-30-notes-2.png");
+}
+
+button.glyph#glyph_register:hover
+{
+	background-image: url("../img/glyphicons_white/glyphicons-30-notes-2.png");
+}

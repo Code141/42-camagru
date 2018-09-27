@@ -7,26 +7,21 @@ class controller
 		"views" => array(),
 		"css" => array(),
 		"js" => array()
-				);
+	);
 
 	public function __construct()
 	{
-		/*
-		$this->files['views'] = array();
-		$this->files['css'] = array();
-		$this->files['js'] = array();
-		 */
-		$this->files['css'][] = 'reset';
-		$this->files['css'][] = 'style';
-		$this->files['css'][] = 'input';
-		$this->files['css'][] = 'glyphicons';
 		$this->load = new Loader();
 	}
 
 	protected function reset_controller()
 	{
 		$this->data = array();
-		$this->files = array();
+		$this->files = array(
+			"views" => array(),
+			"css" => array(),
+			"js" => array()
+		);
 	}
 
 	protected function load_view($file)
@@ -47,6 +42,11 @@ class controller
 		array_unshift($this->files['views'], 'html_start');
 		$this->files['views'][] = 'footer';
 		$this->files['views'][] = 'html_stop';
+
+		$this->files['css'][] = 'reset';
+		$this->files['css'][] = 'style';
+		$this->files['css'][] = 'input';
+		$this->files['css'][] = 'glyphicons';
 	}
 
 	public function error_404()
@@ -56,16 +56,6 @@ class controller
 		$this->data['error_404'] = "Page not found";
 		$this->files['views'][] = '404';
 		http_response_code(404);
-		die ();
-	}
-
-	public function fatal_error()
-	{
-		$this->reset_controller();
-		$this->data['title'] = "Fatal Error";
-		$this->data['error_404'] = "Fatal Error";
-		$this->files['views'][] = '404';
-		$this->render();
 		die ();
 	}
 

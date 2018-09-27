@@ -1,58 +1,54 @@
-
 var video = document.querySelector("#videoElement");
+var button = document.getElementById("obturator_button");
 
 function	active_webcam()
 {
-var video = document.querySelector("#videoElement");
-var button = document.getElementById("obturator_button");
-var canvas = document.getElementById("rendering_canvas");
-var div_user_picturs = document.getElementById("user_picturs");
-
-if (navigator.mediaDevices.getUserMedia)
-{
-	navigator.mediaDevices.getUserMedia({video: true}
-	).then( function(stream) {
+	if (navigator.mediaDevices.getUserMedia)
+	{
+		navigator.mediaDevices.getUserMedia({video: true}
+		).then( function(stream) {
 			video.srcObject = stream;
 			video.src = stream;
 			button.disabled = false;
+			button.addEventListener("click", take_picture);
 		}
-	).catch( function(error) {
+		).catch( function(error) {
 			console.log("Something went wrong!");
-			console.log(error);
+			console.log(error.message);
 		}
-	);
+		);
+	}
+	else
+	{
+		console.log("navigator.mediaDevices.getUserMedia IS NULL");
+	}
+
 }
-else
+
+function	take_picture()
 {
-	console.log("navigator.mediaDevices.getUserMedia IS NULL");
-}
+		var contentType = 'image/png';
+		var canvas = document.getElementById("rendering_canvas");
+		var height = video.videoHeight;
+		var width = video.videoWidth;
 
-button.onclick = function() {
+		canvas.height = height;
+		canvas.width = width;
+		canvas.getContext("2d").drawImage(video, 0, 0, width, height);
 
-	video_height = video.videoHeight;
-	video_width = video.videoWidth;
-
-	canvas.height = video_height;
-	canvas.width = video_width;
-
-	canvas.getContext("2d").drawImage(video, 0, 0, video_width, video_height);
-
-	var contentType = 'image/png';
-	var b64_img = canvas.toDataURL(contentType);
-
-	var new_img = document.createElement("img");
-	new_img.src = b64_img;
-	new_img.className = "sending";
+		var b64_img = canvas.toDataURL(contentType);
 
 
-	div_user_picturs.prepend(new_img);
+		var html_img = document.createElement("img");
+		html_img.src = b64_img;
+		html_img.className = "sending";
+		var html_gal = document.getElementById("user_picturs");
+		html_gal.prepend(html_img);
 
-	b64_img_data = b64_img.substring(b64_img.indexOf(",") + 1);
 
-	var b = b64toBlob(b64_img_data, contentType);
-
-	xhr_upload(b);
-};
+		b64_img_data = b64_img.substring(b64_img.indexOf(",") + 1);
+		var blob = b64toBlob(b64_img_data, contentType);
+		xhr_upload(blob);
 }
 
 window.onload = active_webcam;

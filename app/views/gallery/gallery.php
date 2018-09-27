@@ -19,10 +19,12 @@
 			<img src="<?php echo MEDIA_PATH . $media['id'];?>.png" width="300" height="200">
 			<div id="info">
 				<p id="username">
-					user_id :<?php echo $media['username'];?>
+					user_id : <?php echo $media['username'];?>
+
 				</p>
 				<p id="date">
 					<?php echo $media['date'];?>
+
 				</p>
 			</div>
 		</div>
