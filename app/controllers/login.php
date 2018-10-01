@@ -7,11 +7,12 @@ class login extends controller_public_only
 		parent::__construct();
 		$this->data['title'] = "login";
 		$this->files['css'][] = 'login';
+		$this->files['views']['center'] = 'login/login';
+		$this->files['views']['footer'] = 'login/footer';
 	}
 
 	public function main($params = null)
 	{
-		$this->files['views'][] = 'login/login';
 	}
 
 	public function checklogin($params = null)
@@ -49,6 +50,9 @@ class login extends controller_public_only
 		$_SESSION['user']['email'] = $this->data['dblogin']['email'];
 		$_SESSION['user']['password_length'] = $this->data['password_length'];
 		$_SESSION['user']['username'] = $this->data['dblogin']['username'];
+		$_SESSION['user']['notif_like'] = $this->data['dblogin']['notif_like'];
+		$_SESSION['user']['notif_comment'] = $this->data['dblogin']['notif_comment'];
+		$_SESSION['user']['notif_message'] = $this->data['dblogin']['notif_message'];
 
 		redirect ($_SESSION['last_url']['controller'] . '/' . $_SESSION['last_url']['action']);
 	}
@@ -62,12 +66,10 @@ class login extends controller_public_only
 	public function restricted($params = null)
 	{
 		$this->data['error'] = "Restricted area";
-		$this->files['views'][] = 'login/login';
 	}
 
 	public function error($params = null)
 	{
 		$this->data['error'] = ($params[0] != null) ? $params[0] : "Unknow error";
-		$this->files['views'][] = 'login/login';
 	}
 }

@@ -15,9 +15,14 @@ function b64toBlob(b64Data, contentType, sliceSize) {
 	return (new Blob(byteArrays, {type: contentType}));
 }
 
-
-function xhr_upload(blobOrFile) {
-	var progressBar = document.querySelector('progress');
+function xhr_upload(blobOrFile, html_img)
+{
+	var html_parent = html_img.parentElement;
+	var html_progress = document.createElement("progress");
+	html_progress.className = "sending_progress";
+	html_progress.min = 0;
+	html_progress.max = 100;
+	html_parent.insertBefore(html_progress, html_img.nextSibling);
 
 	var formData = new FormData();
 	formData.append("keytest", "valuetest");
@@ -30,17 +35,19 @@ function xhr_upload(blobOrFile) {
 
 	xhr.upload.onprogress = function(e) {
 		if (e.lengthComputable) {
-			progressBar.value = (e.loaded / e.total) * 100;
-			progressBar.textContent = progressBar.value; // Fallback for unsupported browsers.
+			html_progress.value = (e.loaded / e.total) * 100;
+			html_progress.textContent = html_progress.value; // Fallback for unsupported browsers.
 		}
 	};
 
 	xhr.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
 			if (this.status === 200)
+			{
+				html_img.className = "";
+				html_parent.removeChild(html_progress);
 				console.log("Réponse reçue: %s", this.responseText);
-			else if (this.status === 201)
-				console.log("Réponse reçue: %s", this.responseText);
+			}
 			else
 				console.log("XHR Error : %d (%s)", this.status, this.statusText);
 		}

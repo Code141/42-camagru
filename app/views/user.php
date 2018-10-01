@@ -1,9 +1,8 @@
 <section id="user">
-	<div class="center">
 		<h1>
 			General Account Settings
 		</h1>
-		<form action="<?php echo SITE_ROOT; ?>/user/change/" method="POST">
+		<form action="<?php echo SITE_ROOT; ?>user/change/" method="POST">
 			<input type="radio" name="field" id="radio_username">
 			<label for="radio_username">
 				<p class="field_name">
@@ -60,6 +59,45 @@
 					</button>
 				</div>
 			</label>
+			<input type="radio" name="field" id="radio_notifications" value="notifications">
+			<label for="radio_notifications">
+				<p class="field_name">
+					Notifications :
+				</p>
+				<p class="field_value">
+<?php	
+					if (!empty($_SESSION['user']['notif_like']))
+						echo "<span>Like</span>";
+					if (!empty($_SESSION['user']['notif_comment']))
+						echo "<span>Comment</span>";
+					if (!empty($_SESSION['user']['notif_message']))
+						echo "<span>Message</span>";
+					if (empty($_SESSION['user']['notif_like'])
+						&& empty($_SESSION['user']['notif_comment'])
+						&& empty($_SESSION['user']['notif_message']))
+						echo "<span>Never</span>";
+?>
+				</p>
+				<p class="modify">
+					Modify
+				</p>
+				<div class="hidden">
+					<input type="checkbox" id="notifications_like" name="notofications_like" value="1" <?php if (!empty($_SESSION['user']['notif_like'])){echo "checked";} ?> >
+					<label for="notifications_like" class="notif_check">
+						Like
+					</label>
+					<input type="checkbox" id="notifications_comment" name="notofications_comment" value="1" <?php if (!empty($_SESSION['user']['notif_comment'])){echo "checked";} ?> >
+					<label for="notifications_comment" class="notif_check">
+						Comment
+					</label>
+					<input type="checkbox" id="notifications_message" name="notofications_message" value="1" <?php if (!empty($_SESSION['user']['notif_message'])){echo "checked";} ?> >
+					<label for="notifications_message" class="notif_check">
+						Message
+					</label>
+					<button type="submit">
+						Modify
+					</button>
+				</div>
+			</label>
 		</form>
-	</div>
 </section>

@@ -12,7 +12,36 @@
 			echo '
 	<link rel="stylesheet" href="' . CSS_PATH . $filename . '.css">';
 ?>
-
-
 </head>
 <body>
+<?php
+	$this->load_view($this->files['views']['header']);
+?>
+
+<section id="wrap">
+<?php
+	if (isset($this->files['views']['left']))
+		$this->load_view($this->files['views']['left']);
+
+	$this->load_view($this->files['views']['center']);
+
+	if (isset($this->files['views']['right']))
+		$this->load_view($this->files['views']['right']);
+?>
+</section>
+<?php
+	$this->load_view($this->files['views']['footer']);
+?>
+
+
+<?php
+	if (isset($this->files['js']))
+		foreach($this->files['js'] as $filename)
+		{
+?>
+	<script src="<?php echo JS_PATH . $filename;?>.js" type="text/javascript"></script>
+<?php
+		}
+?>
+</body>
+</html>

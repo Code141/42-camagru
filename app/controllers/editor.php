@@ -17,20 +17,31 @@ class editor extends controller_restricted
 		$this->data['db']['user_media'] =
 			$this->data['db']['user_media']->fetchAll(PDO::FETCH_ASSOC);
 
+
+		$this->data['db']['masks'] =
+			$this->load->model('media', 'get_all_masks', $this->data);
+
+		$this->data['db']['masks'] =
+			$this->data['db']['masks']->fetchAll(PDO::FETCH_ASSOC);
+
 		$this->files['js'][] = 'send_picture';
 		$this->files['js'][] = 'webcam';
-		$this->files['views'][] = 'editor/editor';
+
+		$this->files['views']['left'] = 'editor/left_side';
+		$this->files['views']['center'] = 'editor/editor';
+		$this->files['views']['right'] = 'editor/right_side';
+		$this->files['views']['footer'] = 'editor/upload_file';
 	}
 
 	public function new_pic($params = NULL)
 	{
 		/*CHECKER SI UNE PHOTO ARRIVE*/
-		/*CHECKER SI UNE PHOTO ARRIVE*/
+
 		print_r('picture recieved: starting compute');
 
 		$id = $this->load->model('media', 'add_media');
 		$filename = $id . ".png";
-		$filepath = "app/assets/media/";
+		$filepath = "app/assets/media/user_media/";
 		$target = $filepath . $filename;
 
 

@@ -16,11 +16,13 @@
 	</nav>
 	<div class="header_element padder">
 	</div>
+
 <?php
 	if (is_loggued())
 		$this->load_view('login/user_loggued');
 	else
 		$this->load_view('login/to_log');
 ?>
+
 </header>
 

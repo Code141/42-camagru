@@ -25,6 +25,9 @@ class Db_register extends Model
 				:email,
 				:password,
 				:username,
+				1,
+				1,
+				1,
 				0
 			)
 		"; 

@@ -1,7 +1,6 @@
 input[type="file"]
 {
-	width:500px;
-	height:50px;
+
 }
 
 input.bad_input,
@@ -16,7 +15,9 @@ input:invalid
 	transition: background 1s 3s, color 1s 3s, text-shadow 1s 3s;
 }
 
-input,
+input[type="text"],
+input[type="email"],
+input[type="password"],
 input:placeholder-shown
 {
 	height:30px;
@@ -70,5 +71,4 @@ button:hover
 	text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.8);
 	cursor: pointer;
 }
-
 

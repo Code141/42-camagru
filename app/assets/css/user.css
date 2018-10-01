@@ -53,6 +53,12 @@ section#user label p.field_value
 	width: 200px;
 	transition: opacity 0.3s;
 }
+
+section#user label p.field_value span+span:before
+{
+	content:" & ";
+}
+
 section#user label p.modify
 {
 	float: right;
@@ -78,7 +84,7 @@ section#user input[type="radio"]:checked + label
 	height: 65px;
 	background-color: #303030;
 	transition: height 0.5s, background-color 0.5s;
-	cursor: pointer;
+	cursor: default;
 }
 
 section#user input[type="radio"]:checked + label p.modify,
@@ -92,5 +98,29 @@ section#user input[type="radio"]:checked + label div.hidden
 {
 	opacity : 1;
 	transition: opacity 1s;
+}
+
+section#user label.notif_check
+{
+	float: left;
+	margin-right: 10px;
+}
+
+section#user input[type="checkbox"] {
+	display: none;
+}
+
+section#user input[type="checkbox"] + label.notif_check
+{
+	box-shadow: none;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+	background-color: rgba(200, 50, 50, 0.3);
+
+	margin-right: 10px;
+}
+
+section#user input[type="checkbox"]:checked + label.notif_check
+{
+	background-color: rgba(50, 200, 50, 0.6);
 }
 

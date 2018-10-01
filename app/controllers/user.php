@@ -11,12 +11,12 @@ class user extends controller_restricted
 	public function main($params = NULL)
 	{
 		$this->data['title'] = 'User';
-		$this->files['views'][] = 'user';
+		$this->files['views']['center'] = 'user';
 	}
 
 	public function change($params = NULL)
 	{
-		echo '<section>';
+		echo '<section style="color:white;">';
 		print_r($_POST);
 		echo '</section>';
 	}

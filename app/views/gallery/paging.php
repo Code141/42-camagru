@@ -1,3 +1,5 @@
+<footer>
+		<div id="paging">
 <?php
 
 	$offset = 5;
@@ -26,3 +28,10 @@
 		$i++;
 	}
 ?>
+		</div>
+
+		<div id="opt_sort">
+			Sort by : Date | Note | Size
+		</div>
+
+</footer>

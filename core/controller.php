@@ -11,6 +11,7 @@ class controller
 
 	public function __construct()
 	{
+		$this->reset_controller();
 		$this->load = new Loader();
 	}
 
@@ -31,22 +32,32 @@ class controller
 
 	protected function	render()
 	{
-		if (isset($this->files['views']) || !empty($this->files['views']))
-			foreach($this->files['views'] as $filename)
-				$this->load_view($filename);
+		if (!is_ajax_query())
+			$this->html_encapsulation();
+		else
+			if (isset($this->files['views']) || !empty($this->files['views']))
+				foreach($this->files['views'] as $filename)
+					$this->load_view($filename);
+
 	}
 
 	private function html_encapsulation()
 	{
-		array_unshift($this->files['views'], 'header');
-		array_unshift($this->files['views'], 'html_start');
-		$this->files['views'][] = 'footer';
-		$this->files['views'][] = 'html_stop';
 
 		$this->files['css'][] = 'reset';
 		$this->files['css'][] = 'style';
 		$this->files['css'][] = 'input';
 		$this->files['css'][] = 'glyphicons';
+
+
+		if (!isset($this->files['views']['header']))
+			$this->files['views']['header'] = 'header';
+		if (!isset($this->files['views']['center']))
+			$this->files['views']['center'] = 'center';
+		if (!isset($this->files['views']['footer']))
+			$this->files['views']['footer'] = 'footer';
+
+		$this->load_view("html_start");
 	}
 
 	public function error_404()
@@ -61,8 +72,6 @@ class controller
 
 	public function __destruct()
 	{
-		if (!is_ajax_query())
-			$this->html_encapsulation();
 		$this->render();
 	}
 }

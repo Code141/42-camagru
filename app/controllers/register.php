@@ -11,7 +11,7 @@ class register extends controller_public_only
 	public function main($params = NULL)
 	{
 		$this->data['title'] = 'Home - Gal';
-		$this->files['views'][] = 'register/register';
+		$this->files['views']['center'] = 'register/register';
 	}
 
 	public function checksingup($params = NULL)
@@ -34,7 +34,7 @@ class register extends controller_public_only
 
 	public function register_success($params = NULL)
 	{
-		$this->files['view'][] = 'register/success';
+		$this->files['view']['center'] = 'register/success';
 	}
 
 	public function error($params = NULL)

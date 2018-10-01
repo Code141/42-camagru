@@ -31,6 +31,7 @@ class gallery extends controller
 		// PROTECT INJECTION BY URL
 		//
 
-		$this->files['views'][] = 'gallery/gallery';
+		$this->files['views']['center'] = 'gallery/gallery';
+		$this->files['views']['footer'] = 'gallery/paging';
 	}
 }

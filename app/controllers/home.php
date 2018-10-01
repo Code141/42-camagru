@@ -11,6 +11,6 @@ class home extends controller
 
 	public function main($params = NULL)
 	{
-		$this->files['views'][] = 'home';
+		$this->files['views']['center'] = 'home';
 	}
 }
