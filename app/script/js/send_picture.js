@@ -45,14 +45,16 @@ function xhr_upload(blobOrFile, html_img)
 			if (this.status === 200)
 			{
 				html_img.className = "";
-				html_parent.removeChild(html_progress);
 				console.log("Réponse reçue: %s", this.responseText);
 			}
 			else
+			{
+				html_img.className = "sending_fail";
 				console.log("XHR Error : %d (%s)", this.status, this.statusText);
+			}
+			html_parent.removeChild(html_progress);
 		}
 	};
-
 	xhr.send(formData);
 }
 

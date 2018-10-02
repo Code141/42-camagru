@@ -98,13 +98,13 @@ aside.left input:checked + label
 {
 	background-color: #202020;
 }
+
 aside.left input:checked + label img
 {
 	opacity: 1;
 	filter: none;
 	transition: 1s filter, 1s opacity;
 }
-
 
 aside.right img
 {
@@ -124,6 +124,13 @@ aside.right img.sending
 	transition: 2s filter, 2s opacity;
 }
 
+aside.right img.sending_fail
+{
+	opacity: 0.5;
+	filter: sepia(100%) hue-rotate(60deg) saturate(500);
+	transition: 2s filter, 2s opacity;
+}
+
 progress.sending_progress
 {
 	box-sizing: border-box;
@@ -132,9 +139,7 @@ progress.sending_progress
 	height: 10px;
 	max-width: 100%;
 	margin: 0px auto 0px auto;
-
 	color:#ff0000!important;
-
 	background-color:rgba(0, 0, 0, 0);
 	border: 1px solid white;
 	padding: 1px;

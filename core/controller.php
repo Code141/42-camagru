@@ -53,7 +53,7 @@ class controller
 		if (!isset($this->files['views']['header']))
 			$this->files['views']['header'] = 'header';
 		if (!isset($this->files['views']['center']))
-			$this->files['views']['center'] = 'center';
+			$this->files['views']['center'] = '404';
 		if (!isset($this->files['views']['footer']))
 			$this->files['views']['footer'] = 'footer';
 

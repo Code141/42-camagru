@@ -69,10 +69,12 @@ section#gallery
 	padding-right: 20px;
 }
 
+/*
 section#gallery:after {
 	content: "";
 	flex: auto;
 }
+*/
 
 div.gallery_element {
 	position:relative;
