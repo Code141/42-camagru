@@ -30,7 +30,6 @@ class editor extends controller_restricted
 		$this->files['views']['left'] = 'editor/left_side';
 		$this->files['views']['center'] = 'editor/editor';
 		$this->files['views']['right'] = 'editor/right_side';
-		$this->files['views']['footer'] = 'editor/upload_file';
 	}
 
 	private function check_file($file, $authorized_type, $max_size)
@@ -106,7 +105,7 @@ class editor extends controller_restricted
 		$dest_x = 0;
 		$dest_y = 0;
 
-		imagecopyresampled(
+		imagecopyresampled (
 			$dest, $src,
 			$dest_x, $dest_y,
 			$src_x, $src_y,
@@ -114,7 +113,17 @@ class editor extends controller_restricted
 			$src_w, $src_h
 		);
 
-		$id = 134; // $this->load->model('media', 'add_media');
+/*		THUMB
+		imagecopyresized (
+			$dst_image, $src_image,
+			$dst_x , $dst_y,
+			$src_x, $src_y,
+			$dst_w, $dst_h,
+			$src_w, $src_h
+		);
+*/
+
+		$id = $this->load->model('media', 'add_media');
 		$filename = $id . ".png";
 		$filepath = "app/assets/media/user_media/";
 		$target = $filepath . $filename;

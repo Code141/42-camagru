@@ -14,6 +14,7 @@
 ?>
 </head>
 <body>
+
 <?php
 	$this->load_view($this->files['views']['header']);
 ?>

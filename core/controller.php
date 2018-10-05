@@ -23,6 +23,7 @@ class controller
 			"css" => array(),
 			"js" => array()
 		);
+		$this->files['js'][] = 'init';
 	}
 
 	protected function load_view($file)
@@ -48,6 +49,7 @@ class controller
 		$this->files['css'][] = 'style';
 		$this->files['css'][] = 'input';
 		$this->files['css'][] = 'glyphicons';
+		$this->files['js'][] = 'lunch';
 
 
 		if (!isset($this->files['views']['header']))

@@ -1,9 +1,11 @@
 <section id="editor">
-		<canvas id="rendering_canvas" style="display:none;">
+	<div id="container">
+		<canvas id="rendering_canvas" style="">
 		</canvas>
 		<video autoplay="true" id="videoElement">
 		</video>
-		<button id="obturator_button">
-			CLICK
-		</button>
+</div>
+	<button id="obturator_button">
+		CLICK
+	</button>
 </section>

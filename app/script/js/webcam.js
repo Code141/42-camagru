@@ -1,5 +1,19 @@
+function isValidForm()
+{
+	console.log("HELLO");
+	return (false);
+}
+
 function	active_webcam()
 {
+
+	/*
+document.getElementById('my-form').onsubmit = function() {
+	return isValidForm();
+};
+
+	 */
+
 	var video = document.querySelector("#videoElement");
 	var button = document.getElementById("obturator_button");
 
@@ -57,4 +71,28 @@ function	add_picture(b64_img, to_add)
 	return (html_img);
 }
 
-window.onload = active_webcam;
+function	masks()
+{
+	masks_radio = document.forms.mask.masks
+	for (var i = 0; i < masks_radio.length; i++)
+	{
+		masks_radio[i].onchange = function(e)
+		{
+			img = e.target.nextElementSibling.firstElementChild.src;
+			var canvas = document.getElementById("rendering_canvas");
+			base_image = new Image();
+			base_image.src = img;
+			var height = base_image.naturalHeight;
+			var width = base_image.naturalWidth;
+			canvas.height = height;
+			canvas.width = width;
+			base_image.onload = function(){
+				context = canvas.getContext('2d');
+				context.drawImage(base_image, 0, 0);
+			}
+		};
+	}
+}
+
+luncher_add(active_webcam);
+luncher_add(masks);
