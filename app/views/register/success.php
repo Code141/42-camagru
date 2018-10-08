@@ -1,7 +1,8 @@
 <section id="register">
-
-REGISTERING SUCCESS
-
-An email has be send to [EMAIL] to validate your account
-
+	<h1>
+		REGISTERING SUCCESS
+	</h1>
+	<p>
+		An validation message has be send to <?php echo $this->data['email']; ?> to validate your account
+	</p>
 </section>

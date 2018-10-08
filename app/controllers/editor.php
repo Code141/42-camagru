@@ -17,7 +17,6 @@ class editor extends controller_restricted
 		$this->data['db']['user_media'] =
 			$this->data['db']['user_media']->fetchAll(PDO::FETCH_ASSOC);
 
-
 		$this->data['db']['masks'] =
 			$this->load->model('media', 'get_all_masks', $this->data);
 

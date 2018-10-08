@@ -83,10 +83,7 @@ class controller_restricted extends controller
 	public function __construct()
 	{
 		if (!is_loggued())
-		{
-			http_response_code(403); // DON'T WORK YET
 			redirect('login/restricted');
-		}
 		else
 			parent::__construct();
 	}

@@ -55,13 +55,14 @@ section h3
 	text-align: center;
 	margin-bottom: 15px;
 	color: #111;
-	text-shadow: 1px 1px 0px #444;
+	text-shadow: 1px 1px 0px #333;
 }
 
 section h2 {
 	color: #f33;
 	text-shadow: 0px 0px 2px #f00, 0px 0px 10px rgba(255, 0, 0, 1);
 	font-family: geo;
+	max-width : 400px;
 }
 
 section {
@@ -76,6 +77,13 @@ section#wrap
 	width: 100%;
 	display: flex;
 }
+
+p
+{
+		color: #bbbbbb;
+
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+}
 /*------------------------------------*/
 
 .cadre
@@ -89,7 +97,11 @@ section#wrap
 	border: 2px solid red;
 	box-shadow: inset 0px 0px 150px rgba(255, 0, 0, 0.3);
 }
-
+.center
+{
+	position: sticky;
+	top: 100px;
+}
 /*-------------- HEADER --------------*/
 
 header {

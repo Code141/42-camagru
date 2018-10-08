@@ -5,12 +5,12 @@ class user extends controller_restricted
 	public function	__construct()
 	{
 		parent::__construct();
+		$this->data['title'] = 'User';
 		$this->files['css'][] = 'user';
 	}
 
 	public function main($params = NULL)
 	{
-		$this->data['title'] = 'User';
 		$this->files['views']['center'] = 'user';
 	}
 

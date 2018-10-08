@@ -2,7 +2,7 @@
 
 class Db_register extends Model
 {
-	function take_user_by_mail($data)
+	function take_user_by_email($data)
 	{
 		$sql = "
 			SELECT *
@@ -11,7 +11,21 @@ class Db_register extends Model
 			email = :email 
 		";
 		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm->bindParam("email", $data['register']['email'], PDO::PARAM_STR);
+		$pdo_stm->bindParam("email", $data['email'], PDO::PARAM_STR);
+		$pdo_stm = $this->execute_pdo($pdo_stm);
+		return ($pdo_stm);
+	}
+
+	function take_user_by_username($data)
+	{
+		$sql = "
+			SELECT *
+			FROM user
+			WHERE
+			username = :username
+		";
+		$pdo_stm = $this->pdo->prepare($sql);
+		$pdo_stm->bindParam("username", $data['username'], PDO::PARAM_STR);
 		$pdo_stm = $this->execute_pdo($pdo_stm);
 		return ($pdo_stm);
 	}

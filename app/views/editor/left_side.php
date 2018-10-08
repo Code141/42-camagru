@@ -6,6 +6,7 @@
 		<!--
 		<input id="img" type="file" name="img" accept="image/*" required>
 		-->
+
 		<input id="img" type="file" name="img" required>
 		<input type="submit" name="upload_btn" value="upload">
 

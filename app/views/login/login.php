@@ -6,7 +6,7 @@
 
 <?php
 if (isset($this->data['error']))
-	echo '<h2>Error : ' . $this->data['error'] . '</h2>';
+	echo '<h2>ERROR : ' . $this->data['error'] . '</h2>';
 ?>
 		<div class="cadre">
 			<form action="<?php echo SITE_ROOT; ?>/login/checklogin/" method="POST">

@@ -24,10 +24,10 @@ class login extends controller_public_only
 
 		foreach ($register_fields as $field)
 			if (empty($_POST[$field]))
-				redirect("login/error/" . $field . '_is_unset');
+				redirect("login/unset_field/" . $field);
 			else
-				$cleaned_data[$field] = htmlspecialchars($_POST[$field]);
-
+				$cleaned_data[$field] = htmlentities($_POST[$field]);
+// CLEANED DATA VARIABLE INUSED !!
 		$this->data['username'] = stripslashes($_POST['username']);
 		$this->data['password_length'] = strlen($_POST['password']);
 		$this->data['encrypted_password'] = hash('sha512', $_POST['password']);
@@ -40,7 +40,7 @@ class login extends controller_public_only
 		if ($this->data['encrypted_password'] != $this->data['dblogin']['password'])
 			redirect ('login/error/bad_password');
 		if ($this->data['dblogin']['validated_account'] != "1")
-			redirect ('login/error/account_not_validate/');
+			redirect ('login/error/account_not_validated/');
 		$this->login();
 	}
 
@@ -68,8 +68,31 @@ class login extends controller_public_only
 		$this->data['error'] = "Restricted area";
 	}
 
+	public function unset_field($params = null)
+	{
+		if (isset($params[0]) && !empty($params[0]))
+			$this->data['error'] = $params[0] . " field must be set";
+		else
+			$this->data['error'] = "All fields must be set";
+		$this->data['title'] = "Login error";
+	}
+
 	public function error($params = null)
 	{
-		$this->data['error'] = ($params[0] != null) ? $params[0] : "Unknow error";
+		switch ($params[0]):
+			case "unknow_user":
+				$this->data['error'] = "Unknow user";
+			break;
+			case "bad_password":
+				$this->data['error'] = "Bad password";
+			break;
+			case "account_not_validated":
+				$this->data['error'] = "Account not validated";
+			break;
+			default:
+				$this->data['error'] = "Unknow error";
+		endswitch;
+		$this->data['title'] = "Login error";
 	}
+
 }

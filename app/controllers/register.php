@@ -5,27 +5,30 @@ class register extends controller_public_only
 	public function	__construct()
 	{
 		parent::__construct();
+		$this->data['title'] = 'Register';
 		$this->files['css'][] = 'register';
+		$this->files['views']['center'] = 'register/register';
 	}
 
 	public function main($params = NULL)
 	{
-		$this->data['title'] = 'Home - Gal';
-		$this->files['views']['center'] = 'register/register';
 	}
 
 	public function checksingup($params = NULL)
 	{
 		$this->load->script('php', 'register');
 		$this->data['register'] = check_info();
-		$this->data['register']['encrypted_password'] =
+		//   password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
+
+		$this->data['register']['password'] =
 			hash('sha512', $this->data['register']['password']);
-		$this->data['dblogin'] =
-			$this->load->model('register', 'take_user_by_mail', $this->data);
-		if (is_registered_mail($this->data))
-			redirect("register/error/Email already registered");
-		else
-			$this->load->model('register', 'register', $this->data);
+
+		if (is_registered_email($this->data['register']['email']))
+			redirect("register/error/email_already_registered");
+		if (is_registered_username($this->data['register']['username']))
+			redirect("register/error/user_already_registered");
+
+		$this->load->model('register', 'register', $this->data);
 
 		$this->load->script('php', 'mail/email_validator', $this->data);
 		email_validator($this->data['register']);
@@ -34,13 +37,46 @@ class register extends controller_public_only
 
 	public function register_success($params = NULL)
 	{
-		$this->files['view']['center'] = 'register/success';
+		if (isset($params[0]) && !empty($params[0]))
+			$this->data['email'] = $params[0];
+		else
+			$this->data['email'] = "your email";
+		$this->files['views']['center'] = 'register/success';
 	}
 
-	public function error($params = NULL)
+	public function unset_field($params = null)
 	{
-		echo "ERROR ";
-		echo $params[0];
+		if (isset($params[0]) && !empty($params[0]))
+			$this->data['error'] = $params[0] . " field must be set";
+		else
+			$this->data['error'] = "All fields must be set";
+	}
+
+	public function error($params = null)
+	{
+		switch ($params[0]):
+			case "password_doesnt_match":
+				$this->data['error'] = "Password and retyped password doesn't match";
+			break;
+			case "password_too_short":
+				$this->data['error'] = "Password too short.";
+			break;
+			case "password_too_long":
+				$this->data['error'] = "Password too long";
+			break;
+			case "password_too_easy":
+				$this->data['error'] = "Password too easy<br>it must contain uppercase, lowercase,
+					number, and special charactere like ( @ ! - _ , . )";
+			break;
+			case "user_already_registered":
+				$this->data['error'] = "Username already taken";
+			break;
+			case "email_already_registered":
+				$this->data['error'] = "Email already registered";
+			break;
+			default:
+				$this->data['error'] = "Unknow error";
+		endswitch;
 	}
 
 }
