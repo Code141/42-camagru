@@ -32,7 +32,5 @@ function	redirect($path)
 	die();
 }
 
-
-
 ?>
 

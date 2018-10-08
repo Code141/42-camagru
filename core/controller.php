@@ -28,7 +28,7 @@ class controller
 
 	protected function load_view($file)
 	{
-		require(APP_PATH.'views/'.$file.'.php');
+		require(APP_PATH.'views/'.$file.'.html');
 	}
 
 	protected function	render()
