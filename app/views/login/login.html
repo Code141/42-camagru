@@ -11,7 +11,7 @@ if (isset($this->data['error']))
 		<div class="cadre">
 			<form action="<?php echo SITE_ROOT; ?>/login/checklogin/" method="POST">
 			<input type="text" name="username" value="" placeholder="Username" required>
-				<input type="password" name="password" minlength="1"
+				<input type="password" name="password" minlength="8" maxlength="50"
 				   placeholder="Password" value="" autocomplete="current-password" required>
 				<button type="submit">
 					Connect

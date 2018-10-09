@@ -5,6 +5,7 @@ class user extends controller_restricted
 	public function	__construct()
 	{
 		parent::__construct();
+
 		$this->data['title'] = 'User';
 		$this->files['css'][] = 'user';
 	}
@@ -16,8 +17,10 @@ class user extends controller_restricted
 
 	public function change($params = NULL)
 	{
-		echo '<section style="color:white;">';
-		print_r($_POST);
-		echo '</section>';
+		ob_start();
+		var_dump($_POST);
+		$result = ob_get_clean();
+		$this->data['msg'] = $result;
+		$this->files['views']['center'] = 'msg';
 	}
 }

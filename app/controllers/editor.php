@@ -5,6 +5,7 @@ class editor extends controller_restricted
 	public function	__construct()
 	{
 		parent::__construct();
+
 		$this->data['title'] = 'Editor';
 		$this->files['css'][] = 'editor';
 	}

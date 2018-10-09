@@ -9,7 +9,7 @@ function	check_info()
 		"username",
 		);
 	foreach ($register_fields as $field)
-		if (empty($_POST[$field]))
+		if (!isset($_POST[$field]) || empty($_POST[$field]))
 			redirect('register/unset_field/' . $field);
 		else
 			$cleaned_data[$field] = htmlspecialchars($_POST[$field]);

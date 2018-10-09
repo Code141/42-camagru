@@ -1,6 +1,6 @@
-input[type="file"]
+input[type="file"]:valid + label
 {
-
+	background-color: green;
 }
 
 input.bad_input,
@@ -12,32 +12,27 @@ input:invalid
 		2px 2px 1px rgba(0, 0, 0, 1),
 		0px 0px 5px rgba(255, 0, 0, 1),
 		0px 0px 10px rgba(255, 0, 0, 1);
-	transition: background 1s 3s, color 1s 3s, text-shadow 1s 3s;
+	transition: background 1s, color 1s, text-shadow 1s;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
+input,
+input:focus,
 input:placeholder-shown
 {
 	height:30px;
 	width: 170px;
 	margin-bottom: 20px;
-
 	text-align: center;
 	font-size: 1em;
-
 	padding-top: 2px;
 	border-radius: 8px;
 	margin-bottom: 20px;
-
 	background-color: #1f1f1f;
 	color: #bbbbbb;
 	box-shadow:
 		inset 5px 5px 10px rgba(0, 0, 0, 0.5),
 		inset -1px -1px 0px rgba(255, 255, 255, 0.2);
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
-
 	transition: background 0.5s 0s, color 0.5s 0s, text-shadow 0.5s 0s;
 }
 

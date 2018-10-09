@@ -58,14 +58,16 @@ section h3
 	text-shadow: 1px 1px 0px #333;
 }
 
-section h2 {
+section h2
+{
 	color: #f33;
 	text-shadow: 0px 0px 2px #f00, 0px 0px 10px rgba(255, 0, 0, 1);
 	font-family: geo;
 	max-width : 400px;
 }
 
-section {
+section
+{
 	margin: auto;
 }
 
@@ -80,10 +82,10 @@ section#wrap
 
 p
 {
-		color: #bbbbbb;
-
+	color: #bbbbbb;
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
 }
+
 /*------------------------------------*/
 
 .cadre
@@ -132,7 +134,7 @@ nav
 
 nav h1#title {
 	font-size : 36px;
-	margin: 8px 15px 0px 15px;
+	margin: 7px 15px 0px 15px;
 	text-shadow: 1px 1px 0px #fff;
 	color: black;
 }

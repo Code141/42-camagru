@@ -5,6 +5,7 @@ class gallery extends controller
 	public function	__construct()
 	{
 		parent::__construct();
+
 		$this->data['title'] = "Gallery";
 		$this->files['css'][] = 'gallery';
 	}

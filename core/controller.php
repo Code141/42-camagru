@@ -13,6 +13,7 @@ class controller
 	{
 		$this->reset_controller();
 		$this->load = new Loader();
+
 	}
 
 	protected function reset_controller()
@@ -44,14 +45,14 @@ class controller
 
 	private function html_encapsulation()
 	{
+		$basic_css[] = 'reset';
+		$basic_css[] = 'style';
+		$basic_css[] = 'input';
+		$basic_css[] = 'glyphicons';
 
-		$this->files['css'][] = 'reset';
-		$this->files['css'][] = 'style';
-		$this->files['css'][] = 'input';
-		$this->files['css'][] = 'glyphicons';
+		$this->files['css'] = array_merge($basic_css, $this->files['css']);
+
 		$this->files['js'][] = 'lunch';
-
-
 		if (!isset($this->files['views']['header']))
 			$this->files['views']['header'] = 'header';
 		if (!isset($this->files['views']['center']))
@@ -59,7 +60,7 @@ class controller
 		if (!isset($this->files['views']['footer']))
 			$this->files['views']['footer'] = 'footer';
 
-		$this->load_view("html_start");
+		$this->load_view("default_layout");
 	}
 
 	public function error_404()

@@ -32,7 +32,6 @@
 				<p class="modify">
 					Modify
 				</p>
-
 				<div class="hidden">
 					<input type="email" name="email" value="<?php echo $_SESSION['user']['email']; ?>">
 					<button type="submit">
@@ -66,16 +65,16 @@
 				</p>
 				<p class="field_value">
 <?php	
-					if (!empty($_SESSION['user']['notif_like']))
-						echo "<span>Like</span>";
-					if (!empty($_SESSION['user']['notif_comment']))
-						echo "<span>Comment</span>";
-					if (!empty($_SESSION['user']['notif_message']))
-						echo "<span>Message</span>";
-					if (empty($_SESSION['user']['notif_like'])
-						&& empty($_SESSION['user']['notif_comment'])
-						&& empty($_SESSION['user']['notif_message']))
-						echo "<span>Never</span>";
+if (!empty($_SESSION['user']['notif_like']))
+	echo "<span>Like</span>";
+if (!empty($_SESSION['user']['notif_comment']))
+	echo "<span>Comment</span>";
+if (!empty($_SESSION['user']['notif_message']))
+	echo "<span>Message</span>";
+if (empty($_SESSION['user']['notif_like'])
+	&& empty($_SESSION['user']['notif_comment'])
+	&& empty($_SESSION['user']['notif_message']))
+	echo "<span>Never</span>";
 ?>
 				</p>
 				<p class="modify">

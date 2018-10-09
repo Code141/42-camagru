@@ -5,6 +5,7 @@ class register extends controller_public_only
 	public function	__construct()
 	{
 		parent::__construct();
+
 		$this->data['title'] = 'Register';
 		$this->files['css'][] = 'register';
 		$this->files['views']['center'] = 'register/register';
@@ -12,13 +13,19 @@ class register extends controller_public_only
 
 	public function main($params = NULL)
 	{
+
 	}
 
 	public function checksingup($params = NULL)
 	{
 		$this->load->script('php', 'register');
 		$this->data['register'] = check_info();
-		//   password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
+
+		if (!filter_var($this->data['email'], FILTER_VALIDATE_EMAIL))
+			redirect("/register/error/invalid_email");
+	
+		// password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
+		// bool password_verify ( string $password , string $hash )
 
 		$this->data['register']['password'] =
 			hash('sha512', $this->data['register']['password']);
@@ -65,8 +72,7 @@ class register extends controller_public_only
 				$this->data['error'] = "Password too long";
 			break;
 			case "password_too_easy":
-				$this->data['error'] = "Password too easy<br>it must contain uppercase, lowercase,
-					number, and special charactere like ( @ ! - _ , . )";
+				$this->data['error'] = "Password too easy<br>it must contain uppercase, lowercase, number, and special charactere like ( @ ! - _ , . )";
 			break;
 			case "user_already_registered":
 				$this->data['error'] = "Username already taken";
@@ -74,10 +80,12 @@ class register extends controller_public_only
 			case "email_already_registered":
 				$this->data['error'] = "Email already registered";
 			break;
+			case "invalid_email":
+				$this->data['error'] = "Email invalid";
+			break;
 			default:
 				$this->data['error'] = "Unknow error";
 		endswitch;
 	}
-
 }
 

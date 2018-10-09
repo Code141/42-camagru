@@ -5,6 +5,7 @@ class login extends controller_public_only
 	public function	__construct()
 	{
 		parent::__construct();
+
 		$this->data['title'] = "login";
 		$this->files['css'][] = 'login';
 		$this->files['views']['center'] = 'login/login';
@@ -23,14 +24,16 @@ class login extends controller_public_only
 		);
 
 		foreach ($register_fields as $field)
-			if (empty($_POST[$field]))
+			if (!isset($_POST[$field]) || empty($_POST[$field]))
 				redirect("login/unset_field/" . $field);
 			else
 				$cleaned_data[$field] = htmlentities($_POST[$field]);
+
 // CLEANED DATA VARIABLE INUSED !!
 		$this->data['username'] = stripslashes($_POST['username']);
 		$this->data['password_length'] = strlen($_POST['password']);
 		$this->data['encrypted_password'] = hash('sha512', $_POST['password']);
+
 		$this->data['dblogin'] = $this->load->model('login', 'login', $this->data);
 		$this->data['dblogin'] = $this->data['dblogin']->fetchAll();
 		$count = count($this->data['dblogin']);
