@@ -16,7 +16,6 @@ input:invalid
 }
 
 input,
-input:focus,
 input:placeholder-shown
 {
 	height:30px;

@@ -8,16 +8,19 @@ class login extends controller_public_only
 
 		$this->data['title'] = "login";
 		$this->files['css'][] = 'login';
-		$this->files['views']['center'] = 'login/login';
-		$this->files['views']['footer'] = 'login/footer';
 	}
 
 	public function main($params = null)
 	{
+		$this->files['views']['center'] = 'login/login';
+		$this->files['views']['footer'] = 'login/footer';
 	}
 
 	public function checklogin($params = null)
 	{
+		$this->data['msg'] = "Checking login...";
+//		$this->files['views']['center'] = 'msg';
+
 		$register_fields = array(
 			"username",
 			"password"
@@ -45,6 +48,8 @@ class login extends controller_public_only
 		if ($this->data['dblogin']['validated_account'] != "1")
 			redirect ('login/error/account_not_validated/');
 		$this->login();
+
+		redirect ($_SESSION['last_url']['controller'] . '/' . $_SESSION['last_url']['action']);
 	}
 
 	private	function	login()
@@ -56,8 +61,6 @@ class login extends controller_public_only
 		$_SESSION['user']['notif_like'] = $this->data['dblogin']['notif_like'];
 		$_SESSION['user']['notif_comment'] = $this->data['dblogin']['notif_comment'];
 		$_SESSION['user']['notif_message'] = $this->data['dblogin']['notif_message'];
-
-		redirect ($_SESSION['last_url']['controller'] . '/' . $_SESSION['last_url']['action']);
 	}
 
 	public function forgotten_password($params = null)
@@ -69,15 +72,8 @@ class login extends controller_public_only
 	public function restricted($params = null)
 	{
 		$this->data['error'] = "Restricted area";
-	}
-
-	public function unset_field($params = null)
-	{
-		if (isset($params[0]) && !empty($params[0]))
-			$this->data['error'] = $params[0] . " field must be set";
-		else
-			$this->data['error'] = "All fields must be set";
-		$this->data['title'] = "Login error";
+		$this->files['views']['center'] = 'login/login';
+		$this->files['views']['footer'] = 'login/footer';
 	}
 
 	public function error($params = null)
@@ -92,10 +88,18 @@ class login extends controller_public_only
 			case "account_not_validated":
 				$this->data['error'] = "Account not validated";
 			break;
+			case "unset_field":
+				if (!empty($params[1]))
+					$this->data['error'] = "Field " . $params[1] . " is required";
+				else
+					$this->data['error'] = "All fields must be set";
+			break;
 			default:
 				$this->data['error'] = "Unknow error";
 		endswitch;
 		$this->data['title'] = "Login error";
+		$this->files['views']['center'] = 'login/login';
+		$this->files['views']['footer'] = 'login/footer';
 	}
 
 }

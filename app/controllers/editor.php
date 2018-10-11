@@ -39,8 +39,7 @@ class editor extends controller_restricted
 			if (!isset($file['error']) || is_array($file['error']))
 				throw new RuntimeException('Invalid parameters.');
 
-			switch ($file['error'])
-			{
+			switch ($file['error']):
 			case UPLOAD_ERR_OK:
 				break;
 			case UPLOAD_ERR_NO_FILE:
@@ -50,8 +49,7 @@ class editor extends controller_restricted
 				throw new RuntimeException('Exceeded filesize limit.');
 			default:
 				throw new RuntimeException('Unknown errors.');
-			}
-
+			endswitch;
 			if ($file['size'] > $max_size)
 				throw new RuntimeException('Exceeded filesize limit.');
 

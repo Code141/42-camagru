@@ -1,7 +1,8 @@
-# 
+# Parse .html files and eval <?php ?>
 AddHandler application/x-httpd-php .html .htm 
 
+# 
 RewriteEngine On
-RewriteCond $1 !(\.html|\.css|\.php|\.js|\.jpg|\.png|\.ttf)
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteCond $1 !\.(css|php|js|jpg|png|ttf)
+RewriteRule ^(.*)$ index.php/$1
 

@@ -6,32 +6,34 @@ function	check_info()
 		"email",
 		"password",
 		"passwordbis",
-		"username",
+		"username"
 		);
 	foreach ($register_fields as $field)
 		if (!isset($_POST[$field]) || empty($_POST[$field]))
-			redirect('register/unset_field/' . $field);
+			redirect('register/error/unset_field/' . $field);
 		else
 			$cleaned_data[$field] = htmlspecialchars($_POST[$field]);
-
-	if ($cleaned_data['password'] != $cleaned_data['passwordbis'])
-			redirect('register/error/password_doesnt_match');
-	check_password($cleaned_data['password']);
+	
+	if (($err = check_password($cleaned_data['password'], $cleaned_data['passwordbis'])) !== TRUE)
+		redirect ('register/error/' . $err);
 
 	return ($cleaned_data);
 }
 
-function	check_password($password)
+function	check_password($password, $passwordbis)
 {
 	if (strlen($password) < 8)
-		redirect('register/error/password_too_short');
+		return ('password_too_short');
 	if (strlen($password) > 50)
-		redirect('register/error/password_too_long');
+		return ('password_too_long');
 	if (!preg_match('/[A-Z]/', $password)
 		|| !preg_match('/[a-z]/', $password)
 		|| !preg_match('/[0-9]/', $password)
 		|| !preg_match('/@|!|\.|,|-|_/', $password))
-		redirect('register/error/password_too_easy');
+		return ('password_too_easy');
+	if ($password != $passwordbis)
+		return ('password_doesnt_match');
+	return (TRUE);
 }
 
 function	is_registered_email($email)

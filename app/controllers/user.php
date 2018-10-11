@@ -15,12 +15,67 @@ class user extends controller_restricted
 		$this->files['views']['center'] = 'user';
 	}
 
-	public function change($params = NULL)
+	public function	update_email($params = NULL)
 	{
-		ob_start();
-		var_dump($_POST);
-		$result = ob_get_clean();
-		$this->data['msg'] = $result;
+		$this->load->script('php', 'login');
+
+
+		if (is_registered_email($this->data['register']['email']))
+			redirect("user/error/email_already_registered");
+
+		$this->data['msg'] = "";
 		$this->files['views']['center'] = 'msg';
+		redirect("user");
 	}
+
+	public function	update_username($params = NULL)
+	{
+		$this->files['views']['center'] = 'msg';
+		$this->load->script('php', 'login');
+
+		$this->data['new_username'] = $_POST['username'];
+		if (is_registered_username($this->data['new_username']))
+		{
+			$this->data['msg'] = "FAIL : username already taken";
+			return;
+		}
+		
+		$this->load->model('user', 'update_username', $this->data);
+		$_SESSION['user']['username'] = $this->data['new_username'];
+
+		$this->data['msg'] = "Updated username";
+
+		redirect("user");
+	}
+
+	public function	update_password($params = NULL)
+	{
+		$this->load->script('php', 'login');
+
+		echo $password;
+		echo $passwordbis;
+
+		$this->files['views']['center'] = 'msg';
+		if (($err = check_password($password, $passwordbis)) !== TRUE)
+		{
+			$this->data['msg'] = $err;
+			redirect("user");
+		}
+
+
+	}
+
+	public function	update_notifications($params = NULL)
+	{
+		$this->load->script('php', 'login');
+
+		echo $n_like;
+		echo $n_comm;
+		echo $n_msg;
+
+		$this->data['msg'] = "";
+		$this->files['views']['center'] = 'msg';
+		redirect("user");
+	}
+	
 }

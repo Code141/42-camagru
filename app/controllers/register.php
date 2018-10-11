@@ -18,7 +18,7 @@ class register extends controller_public_only
 
 	public function checksingup($params = NULL)
 	{
-		$this->load->script('php', 'register');
+		$this->load->script('php', 'login');
 		$this->data['register'] = check_info();
 
 		if (!filter_var($this->data['email'], FILTER_VALIDATE_EMAIL))
@@ -39,6 +39,8 @@ class register extends controller_public_only
 
 		$this->load->script('php', 'mail/email_validator', $this->data);
 		email_validator($this->data['register']);
+
+
 		redirect('register/register_success/');
 	}
 
@@ -49,14 +51,6 @@ class register extends controller_public_only
 		else
 			$this->data['email'] = "your email";
 		$this->files['views']['center'] = 'register/success';
-	}
-
-	public function unset_field($params = null)
-	{
-		if (isset($params[0]) && !empty($params[0]))
-			$this->data['error'] = $params[0] . " field must be set";
-		else
-			$this->data['error'] = "All fields must be set";
 	}
 
 	public function error($params = null)
@@ -82,6 +76,12 @@ class register extends controller_public_only
 			break;
 			case "invalid_email":
 				$this->data['error'] = "Email invalid";
+			break;
+			case "unset_field":
+				if (!empty($params[1]))
+					$this->data['error'] = "Field " . $params[1] . " is required";
+				else
+					$this->data['error'] = "All fields must be set";
 			break;
 			default:
 				$this->data['error'] = "Unknow error";

@@ -28,7 +28,8 @@ function	loggued_id()
 
 function	redirect($path)
 {
-	header ('location:'.SITE_ROOT. $path);
+//	header ('location:'.SITE_ROOT. $path);
+	header( "refresh:1;url=" .SITE_ROOT. $path);
 	die();
 }
 
