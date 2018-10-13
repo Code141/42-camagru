@@ -4,20 +4,19 @@ class logout extends controller
 {
 	public function __construct($params = NULL)
 	{
-		// prevent all possible called methodes
-		$_SESSION['user'] = NULL;
-		$_SESSION = array();
-		session_destroy();
-		redirect('');
+		parent::__construct();
+
+		$this->data['title'] = "logout";
 	}
 
 	public function main($params = NULL)
 	{
-		// prevent systematique 404
-	}
+		$_SESSION['user'] = NULL;
+		$_SESSION = array();
+		session_destroy();
 
-	public function __destruct()
-	{
-		// prevent rendering
+		$this->data['msg'] = "Login out";
+		$this->files['views']['center'] = 'msg';
+		redirect('');
 	}
 }

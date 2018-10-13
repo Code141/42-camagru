@@ -15,36 +15,55 @@ class user extends controller_restricted
 		$this->files['views']['center'] = 'user';
 	}
 
-	public function	update_email($params = NULL)
+	public function	update_username($params = NULL)
 	{
 		$this->load->script('php', 'login');
 
-
-		if (is_registered_email($this->data['register']['email']))
-			redirect("user/error/email_already_registered");
-
-		$this->data['msg'] = "";
-		$this->files['views']['center'] = 'msg';
+		if (isset($_POST["username"]))
+		{
+			$this->data['new_username'] = $_POST['username'];
+			if (($err = check_username($this->data['new_username'])) === TRUE)
+			{
+				$this->load->model('user', 'update_username', $this->data);
+				$_SESSION['user']['username'] = $this->data['new_username'];
+				$this->data['msg'] = "Username updated";
+			}
+			else
+			{
+				$this->data['msg'] = "Updating username failed : " . $err;
+			}
+		}
+		else
+		{
+			$this->data['msg'] = "FAIL : Username is unset";
+		}
 		redirect("user");
 	}
 
-	public function	update_username($params = NULL)
+	public function	update_email($params = NULL)
 	{
-		$this->files['views']['center'] = 'msg';
 		$this->load->script('php', 'login');
-
-		$this->data['new_username'] = $_POST['username'];
-		if (is_registered_username($this->data['new_username']))
+		if (isset($_POST["email"]))
 		{
-			$this->data['msg'] = "FAIL : username already taken";
-			return;
+			$email = $_POST['email'];
+			if (($err = check_email($email)) === TRUE)
+			{
+				$this->data['new_email'] = $email;
+				$this->load->model('user', 'update_email', $this->data);
+				// CONFIRMATION MAIL REQUIRED
+
+				$this->data['msg'] = "Email updated";
+				$_SESSION['user']['email'] = $email;
+			}
+			else
+			{
+				$this->data['msg'] = $err;
+			}
 		}
-		
-		$this->load->model('user', 'update_username', $this->data);
-		$_SESSION['user']['username'] = $this->data['new_username'];
-
-		$this->data['msg'] = "Updated username";
-
+		else
+		{
+			$this->data['msg'] = "FAIL : Email is unset";
+		}
 		redirect("user");
 	}
 
@@ -52,30 +71,52 @@ class user extends controller_restricted
 	{
 		$this->load->script('php', 'login');
 
-		echo $password;
-		echo $passwordbis;
-
-		$this->files['views']['center'] = 'msg';
-		if (($err = check_password($password, $passwordbis)) !== TRUE)
+		if (isset($_POST["password"]))
 		{
-			$this->data['msg'] = $err;
-			redirect("user");
+			if (isset($_POST["passwordbis"]))
+			{
+				$password = $_POST['password'];
+				$passwordbis = $_POST['passwordbis'];
+				$this->files['views']['center'] = 'msg';
+				if (($err = check_password($password, $passwordbis)) === TRUE)
+				{
+					$this->data['new_password'] = hash_password($password);
+					$this->load->model('user', 'update_password', $this->data);
+					$_SESSION['user']['password_length'] = strlen($password);
+					$this->data['msg'] = "OKAY";
+				}
+				else
+				{
+					$this->data['msg'] = $err;
+				}
+			}
+			$this->data['msg'] = "FAIL : Re-typed password is unset";
 		}
-
-
+		$this->data['msg'] = "FAIL : Password is unset";
+		redirect("user");
 	}
 
 	public function	update_notifications($params = NULL)
 	{
 		$this->load->script('php', 'login');
 
-		echo $n_like;
-		echo $n_comm;
-		echo $n_msg;
+		$this->data["n_like"] = 0;
+		$this->data["n_comm"] = 0;
+		$this->data["n_msg"] = 0;
 
-		$this->data['msg'] = "";
-		$this->files['views']['center'] = 'msg';
+		if (isset($_POST["n_like"]) && $_POST["n_like"] == "1")
+			$this->data["n_like"] = 1;
+		if (isset($_POST["n_comm"]) && $_POST["n_comm"] == "1")
+			$this->data["n_comm"] = 1;
+		if (isset($_POST["n_msg"]) && $_POST["n_msg"] == "1")
+			$this->data["n_msg"] = 1;
+
+		$this->load->model('user', 'update_notif', $this->data);
+		$_SESSION['user']['n_like'] = $this->data["n_like"];
+		$_SESSION['user']['n_comm'] = $this->data["n_comm"];
+		$_SESSION['user']['n_msg'] = $this->data["n_msg"];
+		$this->data['msg'] = "OKAY";
 		redirect("user");
 	}
-	
+
 }

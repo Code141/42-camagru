@@ -8,18 +8,19 @@ class login extends controller_public_only
 
 		$this->data['title'] = "login";
 		$this->files['css'][] = 'login';
+		$this->files['views']['center'] = 'login/login';
+		$this->files['views']['footer'] = 'login/footer';
 	}
 
 	public function main($params = null)
 	{
-		$this->files['views']['center'] = 'login/login';
-		$this->files['views']['footer'] = 'login/footer';
 	}
 
 	public function checklogin($params = null)
 	{
 		$this->data['msg'] = "Checking login...";
-//		$this->files['views']['center'] = 'msg';
+		$this->files['views']['center'] = 'msg';
+		$this->load->script('php', 'login');
 
 		$register_fields = array(
 			"username",
@@ -29,13 +30,13 @@ class login extends controller_public_only
 		foreach ($register_fields as $field)
 			if (!isset($_POST[$field]) || empty($_POST[$field]))
 				redirect("login/unset_field/" . $field);
-			else
-				$cleaned_data[$field] = htmlentities($_POST[$field]);
 
-// CLEANED DATA VARIABLE INUSED !!
+//				htmlentities($_POST[$field]);
+
 		$this->data['username'] = stripslashes($_POST['username']);
+
 		$this->data['password_length'] = strlen($_POST['password']);
-		$this->data['encrypted_password'] = hash('sha512', $_POST['password']);
+		$this->data['encrypted_password'] = hash_password($_POST['password']);
 
 		$this->data['dblogin'] = $this->load->model('login', 'login', $this->data);
 		$this->data['dblogin'] = $this->data['dblogin']->fetchAll();
@@ -49,6 +50,7 @@ class login extends controller_public_only
 			redirect ('login/error/account_not_validated/');
 		$this->login();
 
+
 		redirect ($_SESSION['last_url']['controller'] . '/' . $_SESSION['last_url']['action']);
 	}
 
@@ -58,9 +60,9 @@ class login extends controller_public_only
 		$_SESSION['user']['email'] = $this->data['dblogin']['email'];
 		$_SESSION['user']['password_length'] = $this->data['password_length'];
 		$_SESSION['user']['username'] = $this->data['dblogin']['username'];
-		$_SESSION['user']['notif_like'] = $this->data['dblogin']['notif_like'];
-		$_SESSION['user']['notif_comment'] = $this->data['dblogin']['notif_comment'];
-		$_SESSION['user']['notif_message'] = $this->data['dblogin']['notif_message'];
+		$_SESSION['user']['n_like'] = $this->data['dblogin']['notif_like'];
+		$_SESSION['user']['n_comment'] = $this->data['dblogin']['notif_comment'];
+		$_SESSION['user']['n_message'] = $this->data['dblogin']['notif_message'];
 	}
 
 	public function forgotten_password($params = null)
@@ -72,12 +74,11 @@ class login extends controller_public_only
 	public function restricted($params = null)
 	{
 		$this->data['error'] = "Restricted area";
-		$this->files['views']['center'] = 'login/login';
-		$this->files['views']['footer'] = 'login/footer';
 	}
 
 	public function error($params = null)
 	{
+		$this->data['title'] = "Login error";
 		switch ($params[0]):
 			case "unknow_user":
 				$this->data['error'] = "Unknow user";
@@ -97,9 +98,6 @@ class login extends controller_public_only
 			default:
 				$this->data['error'] = "Unknow error";
 		endswitch;
-		$this->data['title'] = "Login error";
-		$this->files['views']['center'] = 'login/login';
-		$this->files['views']['footer'] = 'login/footer';
 	}
 
 }

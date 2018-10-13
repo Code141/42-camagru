@@ -21,25 +21,21 @@ class register extends controller_public_only
 		$this->load->script('php', 'login');
 		$this->data['register'] = check_info();
 
-		if (!filter_var($this->data['email'], FILTER_VALIDATE_EMAIL))
-			redirect("/register/error/invalid_email");
 	
 		// password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
 		// bool password_verify ( string $password , string $hash )
 
-		$this->data['register']['password'] =
-			hash('sha512', $this->data['register']['password']);
+		$this->data['register']['password'] = hash_password($this->data['register']['password']);
 
-		if (is_registered_email($this->data['register']['email']))
-			redirect("register/error/email_already_registered");
-		if (is_registered_username($this->data['register']['username']))
-			redirect("register/error/user_already_registered");
+		if (($err = check_email($this->data['register']['email'])) !== TRUE)
+			redirect("register/error/" . $err);
+		if (($err = check_username($this->data['register']['username'])) !== TRUE)
+			redirect("register/error/" . $err);
 
 		$this->load->model('register', 'register', $this->data);
 
 		$this->load->script('php', 'mail/email_validator', $this->data);
 		email_validator($this->data['register']);
-
 
 		redirect('register/register_success/');
 	}
@@ -68,8 +64,17 @@ class register extends controller_public_only
 			case "password_too_easy":
 				$this->data['error'] = "Password too easy<br>it must contain uppercase, lowercase, number, and special charactere like ( @ ! - _ , . )";
 			break;
-			case "user_already_registered":
+			case "username_taken":
 				$this->data['error'] = "Username already taken";
+			break;
+			case "username_too_short":
+				$this->data['error'] = "Username too short";
+			break;
+			case "username_too_long":
+				$this->data['error'] = "Username too long";
+			break;
+			case "username_bad_char":
+				$this->data['error'] = "Username characters can be min, maj, number, underscore, dash, or dot, noting else.";
 			break;
 			case "email_already_registered":
 				$this->data['error'] = "Email already registered";

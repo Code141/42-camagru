@@ -53,10 +53,12 @@ class controller
 		$this->files['css'] = array_merge($basic_css, $this->files['css']);
 
 		$this->files['js'][] = 'lunch';
+		if (empty($this->data['msg']))
+			$this->data['msg'] = "No msg";
 		if (!isset($this->files['views']['header']))
 			$this->files['views']['header'] = 'header';
 		if (!isset($this->files['views']['center']))
-			$this->files['views']['center'] = '404';
+			$this->files['views']['center'] = 'msg';
 		if (!isset($this->files['views']['footer']))
 			$this->files['views']['footer'] = 'footer';
 
@@ -70,7 +72,6 @@ class controller
 		$this->data['error_404'] = "Page not found";
 		$this->files['views'][] = '404';
 		http_response_code(404);
-		die ();
 	}
 
 	public function __destruct()
