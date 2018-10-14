@@ -43,7 +43,7 @@ class user extends controller_restricted
 	public function	update_email($params = NULL)
 	{
 		$this->load->script('php', 'login');
-		if (isset($_POST["email"]))
+		if (isset($_POST['email']))
 		{
 			$email = $_POST['email'];
 			if (($err = check_email($email)) === TRUE)

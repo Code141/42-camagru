@@ -74,6 +74,54 @@ class controller
 		http_response_code(404);
 	}
 
+	public function error($params = null)
+	{
+		$err = $params[0];
+		switch ($err):
+			case "password_doesnt_match":
+				$this->data['msg'] = "Password and retyped password doesn't match";
+			break;
+			case "password_too_short":
+				$this->data['msg'] = "Password too short.";
+			break;
+			case "password_too_long":
+				$this->data['msg'] = "Password too long";
+			break;
+			case "password_too_easy":
+				$this->data['msg'] = "Password too easy<br>it must contain uppercase, lowercase, number, and special charactere like ( @ ! - _ , . )";
+			break;
+			case "username_taken":
+				$this->data['msg'] = "Username already taken";
+			break;
+			case "username_too_short":
+				$this->data['msg'] = "Username too short";
+			break;
+			case "username_too_long":
+				$this->data['msg'] = "Username too long";
+			break;
+			case "username_bad_char":
+				$this->data['msg'] = "Username characters can be min, maj, number, underscore, dash, or dot, noting else.";
+			break;
+			case "empty_email":
+				$this->data['msg'] = "Email empty";
+			break;
+			case "invalid_email":
+				$this->data['msg'] = "Email invalid";
+			break;
+			case "email_already_registered":
+				$this->data['msg'] = "Email already registered";
+			break;
+			case "unset_field":
+				if (!empty($params[1]))
+					$this->data['msg'] = "Field " . $params[1] . " is required";
+				else
+					$this->data['msg'] = "All fields must be set";
+			break;
+			default:
+				$this->data['msg'] = "Unknow error";
+		endswitch;
+	}
+
 	public function __destruct()
 	{
 		$this->render();

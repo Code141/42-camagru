@@ -4,8 +4,8 @@
 			SING IN CAMAGRU
 		</h1>
 <?php
-if (isset($this->data['error']))
-	echo '<h2>ERROR <br><br>' . $this->data['error'] . '</h2>';
+if (isset($this->data['msg']))
+	echo '<h2>ERROR <br><br>' . $this->data['msg'] . '</h2>';
 ?>
 		<div class="cadre">
 			<form action="<?php echo SITE_ROOT; ?>/register/checksingup/" method="POST">

@@ -46,6 +46,8 @@ function	hash_password($password)
 
 function	check_email($email)
 {
+	if (empty($email))
+		return ("empty_email");
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 		return ("invalid_email");
 	$load = new Loader();

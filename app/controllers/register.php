@@ -52,44 +52,11 @@ class register extends controller_public_only
 	public function error($params = null)
 	{
 		switch ($params[0]):
-			case "password_doesnt_match":
-				$this->data['error'] = "Password and retyped password doesn't match";
-			break;
-			case "password_too_short":
-				$this->data['error'] = "Password too short.";
-			break;
-			case "password_too_long":
-				$this->data['error'] = "Password too long";
-			break;
-			case "password_too_easy":
-				$this->data['error'] = "Password too easy<br>it must contain uppercase, lowercase, number, and special charactere like ( @ ! - _ , . )";
-			break;
-			case "username_taken":
-				$this->data['error'] = "Username already taken";
-			break;
-			case "username_too_short":
-				$this->data['error'] = "Username too short";
-			break;
-			case "username_too_long":
-				$this->data['error'] = "Username too long";
-			break;
-			case "username_bad_char":
-				$this->data['error'] = "Username characters can be min, maj, number, underscore, dash, or dot, noting else.";
-			break;
-			case "email_already_registered":
-				$this->data['error'] = "Email already registered";
-			break;
-			case "invalid_email":
-				$this->data['error'] = "Email invalid";
-			break;
-			case "unset_field":
-				if (!empty($params[1]))
-					$this->data['error'] = "Field " . $params[1] . " is required";
-				else
-					$this->data['error'] = "All fields must be set";
+			case "register_spe_error":
+				$this->data['msg'] = "register_spe_error";
 			break;
 			default:
-				$this->data['error'] = "Unknow error";
+				parent::error($params);
 		endswitch;
 	}
 }

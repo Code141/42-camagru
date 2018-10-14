@@ -16,6 +16,12 @@ class login extends controller_public_only
 	{
 	}
 
+	public function last_url($params = null)
+	{
+		$_SESSION['last_url']['controller'] = $controller;
+		$_SESSION['last_url']['action'] = $action;
+		$_SESSION['last_url']['params'] = $params;
+	}
 	public function checklogin($params = null)
 	{
 		$this->data['msg'] = "Checking login...";
@@ -31,7 +37,7 @@ class login extends controller_public_only
 			if (!isset($_POST[$field]) || empty($_POST[$field]))
 				redirect("login/unset_field/" . $field);
 
-//				htmlentities($_POST[$field]);
+		//				htmlentities($_POST[$field]);
 
 		$this->data['username'] = stripslashes($_POST['username']);
 
@@ -68,7 +74,9 @@ class login extends controller_public_only
 	public function forgotten_password($params = null)
 	{
 		$this->data['title'] = 'forgotten_password';
+		$this->data['msg'] = "forgotten password";
 		echo "forgotten password";
+		$this->files['views']['center'] = 'msg';
 	}
 
 	public function restricted($params = null)
@@ -80,24 +88,24 @@ class login extends controller_public_only
 	{
 		$this->data['title'] = "Login error";
 		switch ($params[0]):
-			case "unknow_user":
-				$this->data['error'] = "Unknow user";
+		case "unknow_user":
+			$this->data['error'] = "Unknow user";
 			break;
-			case "bad_password":
-				$this->data['error'] = "Bad password";
+		case "bad_password":
+			$this->data['error'] = "Bad password";
 			break;
-			case "account_not_validated":
-				$this->data['error'] = "Account not validated";
+		case "account_not_validated":
+			$this->data['error'] = "Account not validated";
 			break;
-			case "unset_field":
-				if (!empty($params[1]))
-					$this->data['error'] = "Field " . $params[1] . " is required";
-				else
-					$this->data['error'] = "All fields must be set";
+		case "unset_field":
+			if (!empty($params[1]))
+				$this->data['error'] = "Field " . $params[1] . " is required";
+			else
+				$this->data['error'] = "All fields must be set";
 			break;
-			default:
-				$this->data['error'] = "Unknow error";
-		endswitch;
+		default:
+			$this->data['error'] = "Unknow error";
+endswitch;
 	}
 
 }
