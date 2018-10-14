@@ -56,7 +56,6 @@ class login extends controller_public_only
 			redirect ('login/error/account_not_validated/');
 		$this->login();
 
-
 		redirect ($_SESSION['last_url']['controller'] . '/' . $_SESSION['last_url']['action']);
 	}
 
@@ -76,7 +75,16 @@ class login extends controller_public_only
 		$this->data['title'] = 'forgotten_password';
 		$this->data['msg'] = "forgotten password";
 		echo "forgotten password";
-		$this->files['views']['center'] = 'msg';
+		$this->files['views']['center'] = 'login/forgotten_password';
+	}
+
+	public function reset_password($params = null)
+	{
+		$this->load->script('php', 'email');
+
+		$this->data['title'] = 'Reset password';
+		$this->data['msg'] = "Reset passwordIL";
+		$this->files['views']['center'] = 'login/reset_password';
 	}
 
 	public function restricted($params = null)

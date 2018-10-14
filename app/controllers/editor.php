@@ -126,5 +126,6 @@ class editor extends controller_restricted
 		$filepath = "app/assets/media/user_media/";
 		$target = $filepath . $filename;
 		imagepng($dest, $target);
+		redirect ("editor/");
 	}
 }

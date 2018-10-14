@@ -15,17 +15,23 @@ input:invalid
 	transition: background 1s, color 1s, text-shadow 1s;
 }
 
+input + input
+{
+	margin-top: 20px;
+}
+input.row + input.row
+{
+	margin-top: 0px;
+}
 input,
 input:placeholder-shown
 {
 	height:30px;
 	width: 170px;
-	margin-bottom: 20px;
 	text-align: center;
 	font-size: 1em;
 	padding-top: 2px;
 	border-radius: 8px;
-	margin-bottom: 20px;
 	background-color: #1f1f1f;
 	color: #bbbbbb;
 	box-shadow:
@@ -70,3 +76,12 @@ button:hover
 	cursor: pointer;
 }
 
+input + button
+{
+	margin-top : 20px;
+}
+
+input.row + button
+{
+	margin-top : 0px;
+}

@@ -132,6 +132,7 @@ class controller_restricted extends controller
 {
 	public function __construct()
 	{
+		$this->data['msg'] = "Restricted area";
 		if (!is_loggued())
 			redirect('login/restricted');
 		else

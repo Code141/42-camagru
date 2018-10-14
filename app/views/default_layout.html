@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>
-		<?php echo $this->data['title']?> - CAMAGRU
+		<?php if (!empty($this->data['title'])) { echo $this->data['title'] . " - ";}?>
+		CAMAGRU
 	</title>
 	<link rel="icon" type="image/png" href="<?php echo IMG_PATH;?>favicon.png">
 	<?php foreach($this->files['css'] as $filename) { ?>
@@ -25,7 +26,6 @@ $this->load_view($this->files['views']['center']);
 if (isset($this->files['views']['right']))
 	$this->load_view($this->files['views']['right']);
 ?>
-
 </section>
 <?php $this->load_view($this->files['views']['footer']); ?>
 
@@ -34,3 +34,4 @@ if (isset($this->files['views']['right']))
 <?php } ?>
 </body>
 </html>
+

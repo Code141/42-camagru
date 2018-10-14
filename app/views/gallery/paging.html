@@ -1,37 +1,87 @@
 <footer>
 		<div id="paging">
 <?php
+$offset = 2;
+$i = $this->data['paging'] - $offset;
+$i = ($i > 1) ? $i : 1;
+?>
 
-	$offset = 5;
-	$i = $this->data['paging'] - $offset;
-	$i = ($i > 1) ? $i : 1;
+<?php
+if ($this->data['paging'] > $offset + 1)
+{
+?>
+	<a class="paging_min" href="<?php echo SITE_ROOT; ?>gallery/main/1">
+		<?php echo "1"; ?>
+	</a>
+<?php
+}
+?>
 
-	while ($i <= $this->data['paging'] + $offset && $i <= $this->data['paging_max'])
+<?php
+while ($i <= $this->data['paging'] + $offset && $i <= $this->data['paging_max'])
+{
+	if ($i == $this->data['paging'])
 	{
-		if ($i == $this->data['paging'])
-		{
 ?>
 	<a class="paging_center" href="<?php echo SITE_ROOT; ?>gallery/main/<?php echo $i; ?>">
 		<?php echo $i; ?>
 	</a>
-
 <?php
-		}
-		else
-		{
+	}
+	else
+	{
 ?>
 	<a href="<?php echo SITE_ROOT; ?>gallery/main/<?php echo $i; ?>">
 		<?php echo $i; ?>
 	</a>
 <?php
-		}
-		$i++;
 	}
+	$i++;
+}
 ?>
+
+<?php
+if ($this->data['paging'] < $this->data['paging_max'] - $offset)
+{
+?>
+	<a class="paging_max" href="<?php echo SITE_ROOT; ?>gallery/main/<?php echo $this->data['paging_max']; ?>">
+		<?php echo $this->data['paging_max']; ?>
+	</a>
+<?php
+}
+?>
+
 		</div>
 
 		<div id="opt_sort">
-			Sort by : Date | Note | Size
+			<div class="sort">
+				Date
+				<a href="">
+					▲
+				</a>
+				<a href="">
+					▼
+				</a>
+			</div>
+
+			<div class="sort">
+				Rank
+				<a href="">
+					▲
+				</a>
+				<a href="">
+					▼
+				</a>
+			</div>
+			<div class="sort">
+				Size
+				<a href="">
+					▲
+				</a>
+				<a href="">
+					▼
+				</a>
+			</div>
 		</div>
 
 </footer>

@@ -34,7 +34,7 @@ class register extends controller_public_only
 
 		$this->load->model('register', 'register', $this->data);
 
-		$this->load->script('php', 'mail/email_validator', $this->data);
+		$this->load->script('php', 'mail', $this->data);
 		email_validator($this->data['register']);
 
 		redirect('register/register_success/');
