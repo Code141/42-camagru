@@ -48,7 +48,6 @@ div#container
 
 	margin: 2vw;
 	position:relative;
-	background-color: rgba(255, 0, 0, 0.1);
 }
 
 video#videoElement
@@ -87,8 +86,16 @@ button#obturator_button
 
 aside.left input[type="radio"]
 {
-	display: none;
+
+display: none;
+
 }
+
+aside.left input[type="radio"]:invalid + label
+{
+	background-color: rgba(255, 0, 0, 0.1);
+}
+
 
 aside.left label
 {

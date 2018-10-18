@@ -12,11 +12,11 @@ class gallery extends controller
 
 	public function main($params = NULL)
 	{
+		$this->data['offset'] = 20;
 		$this->data['title'] = 'Home - Gal';
 		// checker si CHAR => 1e1 : 10 | 0xa : 16
 		$params['0'] = intval($params['0']);
 		$this->data['paging'] = ($params['0'] < 1) ? 1 : $params['0'];
-		$this->data['offset'] = 20;
 		$this->data['db']['media_count'] =
 			$this->load->model('media', 'media_count', $this->data);
 		$this->data['paging_max'] = ceil($this->data['db']['media_count'] / $this->data['offset']);

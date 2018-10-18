@@ -80,7 +80,7 @@ class login extends controller_public_only
 
 	public function reset_password($params = null)
 	{
-		$this->load->script('php', 'email');
+		$this->load->script('php', 'mail');
 
 		$this->data['title'] = 'Reset password';
 		$this->data['msg'] = "Reset passwordIL";

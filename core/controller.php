@@ -53,8 +53,8 @@ class controller
 		$this->files['css'] = array_merge($basic_css, $this->files['css']);
 
 		$this->files['js'][] = 'lunch';
-		if (empty($this->data['msg']))
-			$this->data['msg'] = "No msg";
+//		if (empty($this->data['msg']))
+//			$this->data['msg'] = "No msg";
 		if (!isset($this->files['views']['header']))
 			$this->files['views']['header'] = 'header';
 		if (!isset($this->files['views']['center']))

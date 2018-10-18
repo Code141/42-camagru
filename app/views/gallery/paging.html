@@ -11,7 +11,7 @@ if ($this->data['paging'] > $offset + 1)
 {
 ?>
 	<a class="paging_min" href="<?php echo SITE_ROOT; ?>gallery/main/1">
-		<?php echo "1"; ?>
+		<?php echo "1"; ?>&nbsp;&lt;&lt;
 	</a>
 <?php
 }
@@ -45,7 +45,7 @@ if ($this->data['paging'] < $this->data['paging_max'] - $offset)
 {
 ?>
 	<a class="paging_max" href="<?php echo SITE_ROOT; ?>gallery/main/<?php echo $this->data['paging_max']; ?>">
-		<?php echo $this->data['paging_max']; ?>
+		&gt;&gt;&nbsp;<?php echo $this->data['paging_max']; ?>
 	</a>
 <?php
 }

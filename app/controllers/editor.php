@@ -34,43 +34,36 @@ class editor extends controller_restricted
 
 	private function check_file($file, $authorized_type, $max_size)
 	{
-		try
-		{
 			if (!isset($file['error']) || is_array($file['error']))
-				throw new RuntimeException('Invalid parameters.');
+				return ('Invalid parameters.');
 
 			switch ($file['error']):
-			case UPLOAD_ERR_OK:
-				break;
-			case UPLOAD_ERR_NO_FILE:
-				throw new RuntimeException('No file sent.');
-			case UPLOAD_ERR_INI_SIZE:
-			case UPLOAD_ERR_FORM_SIZE:
-				throw new RuntimeException('Exceeded filesize limit.');
-			default:
-				throw new RuntimeException('Unknown errors.');
-			endswitch;
+				case UPLOAD_ERR_OK:
+					break;
+				case UPLOAD_ERR_NO_FILE:
+					return ('No file sent.');
+				case UPLOAD_ERR_INI_SIZE:
+				case UPLOAD_ERR_FORM_SIZE:
+					return ('Exceeded filesize limit.');
+				default:
+					return ('Unknown errors.');
+				endswitch;
 			if ($file['size'] > $max_size)
-				throw new RuntimeException('Exceeded filesize limit.');
+				return ('Exceeded filesize limit.');
 
 			$finfo = new finfo(FILEINFO_MIME_TYPE);
 			$ext = array_search($finfo->file($file['tmp_name']), $authorized_type, true);
-			if (false === $ext)
-				throw new RuntimeException('Invalid file format.');
 
-		}
-		catch (RuntimeException $e)
-		{
-
-			echo $e->getMessage();
-			return (FALSE);
-
-		}
+			if ($ext === FALSE)
+				return ('Invalid file format.');
 		return (TRUE);
 	}
 
 	public function new_pic($params = NULL)
 	{
+
+		$this->data['msg'] = "hello";
+
 		$max_size = 10000000; // 10 MO
 		$authorized_type = array(
 			'jpg' => 'image/jpeg',
@@ -78,16 +71,27 @@ class editor extends controller_restricted
 			'gif' => 'image/gif'
 		);
 
-		$file = $_FILES['img'];
-		if (!$this->check_file($file, $authorized_type, $max_size))
+		if (!isset($_FILES['img']) || empty($_FILES['img']))
+		{
+			$this->data['msg'] = "No file sent";
 			die();
+		}
+		$file = $_FILES['img'];
+
+		$err = $this->check_file($file, $authorized_type, $max_size);
+		if ($err !== TRUE)
+		{
+			$this->data['msg'] = $err;
+			die();
+		}
+
+
 
 		$image = $file['tmp_name'];
 		$mask = "app/assets/media/masks/4.png";
 
 		$dest = imagecreatefromstring(file_get_contents($image));
 		$src = imagecreatefromstring(file_get_contents($mask));
-
 
 		$dest_size = getimagesize($image);
 		$src_size = getimagesize($mask);
@@ -111,7 +115,8 @@ class editor extends controller_restricted
 			$src_w, $src_h
 		);
 
-/*		THUMB
+/*
+		THUMB
 		imagecopyresized (
 			$dst_image, $src_image,
 			$dst_x , $dst_y,
@@ -126,6 +131,8 @@ class editor extends controller_restricted
 		$filepath = "app/assets/media/user_media/";
 		$target = $filepath . $filename;
 		imagepng($dest, $target);
+
+		$this->data['msg'] = "Image correctly treated";
 		redirect ("editor/");
 	}
 }
