@@ -4,6 +4,7 @@ class Db_media extends Model
 {
 	function add_media(array $data = NULL)
 	{
+		$loggued_id = loggued_id();
 		$sql = "
 			INSERT INTO media
 			VALUES (
@@ -12,12 +13,11 @@ class Db_media extends Model
 				now()
 				)
 		";
-		$pdo_stm = $this->pdo->prepare($sql);
-		$loggued_id = loggued_id();
-
-		$pdo_stm->bindParam("id_user", $loggued_id, PDO::PARAM_INT);
-		$pdo_stm = $this->execute_pdo($pdo_stm);
-		return ($this->pdo->lastInsertId());
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindParam("id_user", $loggued_id, PDO::PARAM_INT);
+		$this->execute_pdo();
+		$last_id = $this->pdo->lastInsertId();
+		return ($last_id);
 	}
 
 	function get_all_media(array $data = NULL)
@@ -30,11 +30,12 @@ class Db_media extends Model
 			ORDER BY id DESC
 			LIMIT :start, :offset
 		";
-		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm->bindParam("start", $data['start'], PDO::PARAM_INT);
-		$pdo_stm->bindParam("offset", $data['offset'], PDO::PARAM_INT);
-		$pdo_stm = $this->execute_pdo($pdo_stm);
-		return ($pdo_stm);
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindParam("start", $data['start'], PDO::PARAM_INT);
+		$this->pdo_stm->bindParam("offset", $data['offset'], PDO::PARAM_INT);
+		$this->execute_pdo();
+		$all_media = $this->pdo_stm->fetchAll(PDO::FETCH_ASSOC);
+		return ($all_media);
 	}
 
 	function get_all_masks(array $data = NULL)
@@ -43,11 +44,11 @@ class Db_media extends Model
 			SELECT *
 			FROM masks
 		";
-		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm = $this->execute_pdo($pdo_stm);
-		return ($pdo_stm);
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->execute_pdo();
+		$all_masks = $this->pdo_stm->fetchAll(PDO::FETCH_ASSOC);
+		return ($all_masks);
 	}
-
 
 	function get_media_by_user_id(array $data = NULL)
 	{
@@ -59,21 +60,22 @@ class Db_media extends Model
 			WHERE m.id_user = :id_user
 			ORDER BY date DESC
 		";
-		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm->bindParam("id_user", $data['user_id'], PDO::PARAM_INT);
-		$pdo_stm = $this->execute_pdo($pdo_stm);
-		return ($pdo_stm);
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindParam("id_user", $data['user_id'], PDO::PARAM_INT);
+		$this->execute_pdo();
+		$user_media = $this->pdo_stm->fetchAll(PDO::FETCH_ASSOC);
+		return ($user_media);
 	}
 
-	function media_count(array $data = NULL)
+	function count_media(array $data = NULL)
 	{
 		$sql = "
 			SELECT COUNT(id) as count
 			FROM media
 		";
-		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm = $this->execute_pdo($pdo_stm);
-		$count = $pdo_stm->fetch()["count"];
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->execute_pdo();
+		$count = $this->pdo_stm->fetch()["count"];
 		return ($count);
 	}
 

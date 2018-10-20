@@ -24,20 +24,17 @@ class Model
 		}
 	}
 
-	public function	execute_pdo($pdo_stm)
+	public function	execute_pdo()
 	{
 		// TRY / CATCH
-		$pdo_stm->execute();
-		// fetch all here
-		// return data
-		// $pdo_stm->closeCursor();
-		// close pdo_stm
-		// 		$pdo_stm = NULL;
-		return ($pdo_stm);
+		$this->pdo_stm->execute();
+		return ($this->pdo_stm);
 	}
 
 	public function	__destruct()
 	{
+		$this->pdo_stm->closeCursor();
+		$this->pdo_stm = NULL;
 		$this->pdo = NULL;
 	}
 }

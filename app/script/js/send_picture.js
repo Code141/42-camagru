@@ -25,7 +25,10 @@ function xhr_upload(blobOrFile, html_img)
 	html_parent.insertBefore(html_progress, html_img.nextSibling);
 
 	var formData = new FormData();
-	formData.append("keytest", "valuetest");
+
+	masks_id = document.forms.mask.masks.value;
+	console.log("GET" + masks_id);
+	formData.append("masks", masks_id);
 	formData.append("img", blobOrFile);
 
 	var xhr = new XMLHttpRequest();

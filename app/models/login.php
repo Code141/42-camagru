@@ -2,7 +2,7 @@
 
 class Db_login extends Model
 {
-	function login($data)
+	function get_user_by_username($data)
 	{
 		$sql = "
 			SELECT *
@@ -10,10 +10,13 @@ class Db_login extends Model
 			WHERE
 			username = :username
 		";
-		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm->bindParam("username", $data['username'], PDO::PARAM_STR);
-		$pdo_stm = $this->execute_pdo($pdo_stm);
-		return ($pdo_stm);
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindParam("username", $data['username'], PDO::PARAM_STR);
+		$this->execute_pdo();
+		$user = $this->pdo_stm->fetchAll(PDO::FETCH_ASSOC);
+		if (count($user) != 1)
+			return (NULL);
+		return ($user[0]);
 	}
 }
 

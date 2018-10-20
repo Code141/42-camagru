@@ -2,7 +2,7 @@
 
 class Db_register extends Model
 {
-	function take_user_by_email($data)
+	function count_user_by_email($data)
 	{
 		$sql = "
 			SELECT *
@@ -10,13 +10,14 @@ class Db_register extends Model
 			WHERE
 			email = :email 
 		";
-		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm->bindParam("email", $data['email'], PDO::PARAM_STR);
-		$pdo_stm = $this->execute_pdo($pdo_stm);
-		return ($pdo_stm);
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindParam("email", $data['email'], PDO::PARAM_STR);
+		$this->execute_pdo();
+		$nb = count($this->pdo_stm->fetchAll(PDO::FETCH_ASSOC));
+		return ($nb);
 	}
 
-	function take_user_by_username($data)
+	function count_user_by_username($data)
 	{
 		$sql = "
 			SELECT *
@@ -24,33 +25,24 @@ class Db_register extends Model
 			WHERE
 			username = :username
 		";
-		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm->bindParam("username", $data['username'], PDO::PARAM_STR);
-		$pdo_stm = $this->execute_pdo($pdo_stm);
-		return ($pdo_stm);
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindParam("username", $data['username'], PDO::PARAM_STR);
+		$this->execute_pdo();
+		$nb = count($this->pdo_stm->fetchAll(PDO::FETCH_ASSOC));
+		return ($nb);
 	}
 
 	function register($data)
 	{
 		$sql = "
 			INSERT INTO user
-			VALUES (
-				'',
-				:email,
-				:password,
-				:username,
-				1,
-				1,
-				1,
-				0
-			)
+			VALUES ( '', :email, :password, :username, 1, 1, 1, 0)
 		"; 
-		$pdo_stm = $this->pdo->prepare($sql);
-		$pdo_stm->bindParam("email", $data['register']['email'], PDO::PARAM_STR);
-		$pdo_stm->bindParam("password", $data['register']['password'], PDO::PARAM_STR);
-		$pdo_stm->bindParam("username", $data['register']['username'], PDO::PARAM_STR);
-		$pdo_stm = $this->execute_pdo($pdo_stm);
-		return ($pdo_stm);
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindParam("email", $data['email'], PDO::PARAM_STR);
+		$this->pdo_stm->bindParam("password", $data['password'], PDO::PARAM_STR);
+		$this->pdo_stm->bindParam("username", $data['username'], PDO::PARAM_STR);
+		$this->execute_pdo();
 	}
 }
 

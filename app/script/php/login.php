@@ -52,9 +52,9 @@ function	check_email($email)
 		return ("invalid_email");
 	$load = new Loader();
 	$data['email'] = $email;
-	$db = $load->model('register', 'take_user_by_email', $data);
-	if (count($db->fetchAll()) != 0)
-		return ("email_already_registered");
+	$nb = $load->model('register', 'count_user_by_email', $data);
+	if ($nb !== 0)
+		return ('username_taken');
 	return (TRUE);
 }
 
@@ -69,8 +69,8 @@ function	check_username($username)
 
 	$load = new Loader();
 	$data['username'] = $username;
-	$db = $load->model('register', 'take_user_by_username', $data);
-	if (count($db->fetchAll()) !== 0)
+	$nb = $load->model('register', 'count_user_by_username', $data);
+	if ($nb !== 0)
 		return ('username_taken');
 	return (TRUE);
 }

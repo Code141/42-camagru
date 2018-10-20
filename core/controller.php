@@ -32,8 +32,21 @@ class controller
 		require(APP_PATH.'views/'.$file.'.html');
 	}
 
+	private function protect_html_injection(array $data)
+	{
+		foreach ($data as $key => $value)
+			if (is_string($value))
+				$data[$key] = htmlspecialchars($value);
+			else if (is_array($value))
+				$data[$key] = protect_html_injection($value);
+			else
+				$data[$key] = $value;
+			return ($data);
+	}
+
 	protected function	render()
 	{
+
 		if (!is_ajax_query())
 			$this->html_encapsulation();
 		else
@@ -70,7 +83,7 @@ class controller
 		$this->reset_controller();
 		$this->data['title'] = "Error 404";
 		$this->data['error_404'] = "Page not found";
-		$this->files['views'][] = '404';
+		$this->files['views']['center'] = '404';
 		http_response_code(404);
 	}
 
@@ -144,6 +157,7 @@ class controller_public_only extends controller
 {
 	public function __construct()
 	{
+		$this->data['msg'] = "You are already loggued";
 		if (is_loggued())
 			redirect('user');
 		else

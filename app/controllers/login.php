@@ -44,11 +44,8 @@ class login extends controller_public_only
 		$this->data['password_length'] = strlen($_POST['password']);
 		$this->data['encrypted_password'] = hash_password($_POST['password']);
 
-		$this->data['dblogin'] = $this->load->model('login', 'login', $this->data);
-		$this->data['dblogin'] = $this->data['dblogin']->fetchAll();
-		$count = count($this->data['dblogin']);
-		$this->data['dblogin'] = $this->data['dblogin']['0'];
-		if ($count != 1)
+		$this->data['dblogin'] = $this->load->model('login', 'get_user_by_username', $this->data);
+		if ($this->data['dblogin'] == NULL)
 			redirect ('login/error/unknow_user');
 		if ($this->data['encrypted_password'] != $this->data['dblogin']['password'])
 			redirect ('login/error/bad_password');
@@ -113,7 +110,7 @@ class login extends controller_public_only
 			break;
 		default:
 			$this->data['error'] = "Unknow error";
-endswitch;
+		endswitch;
 	}
 
 }

@@ -1,20 +1,21 @@
 <aside class="left">
-	<form id="mask" action="<?php echo SITE_ROOT; ?>editor/new_pic" method="POST" enctype="multipart/form-data">
 		<button id="obturator_button">
 			TAKE PICTURE
 		</button>
-
-		<input id="img" type="file" name="img"  class="input-file" accept="image/*" required>
+	<form id="mask" action="<?php echo SITE_ROOT; ?>editor/new_pic" method="POST" enctype="multipart/form-data">
+	<input id="img" type="file" name="img"  class="input-file" accept="image/*" required>
 		<label for="img" class="label-file">
-			UPLOAD A FILE
+			UPLOAD<br>FILE
 		</label>
-		<input type="submit" name="upload_btn" value="upload">
-<hr>
+		<input type="submit" name="upload_btn" value="SEND FILE">
+		<hr>
 <?php
+$first = TRUE;
 foreach ($this->data['db']['masks'] as $mask)
 {
 ?>
-		<input type="radio" name="masks" id="mask_<?php echo $mask['id'];?>" value="<?php echo $mask['id'];?>" required>
+
+		<input type="radio" name="masks" id="mask_<?php echo $mask['id'];?>" value="<?php echo $mask['id'];?>" required<?php if ($first) { echo " checked"; $first = FALSE;}?>>
 		<label for="mask_<?php echo $mask['id'];?>">
 			<img src="<?php echo MEDIA_PATH . "masks/" . $mask['id'];?>.png">
 		</label>

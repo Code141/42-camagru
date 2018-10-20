@@ -32,7 +32,7 @@ class register extends controller_public_only
 		if (($err = check_username($this->data['register']['username'])) !== TRUE)
 			redirect("register/error/" . $err);
 
-		$this->load->model('register', 'register', $this->data);
+		$this->load->model('register', 'register', $this->data['register']);
 
 		$this->load->script('php', 'mail', $this->data);
 		email_validator($this->data['register']);

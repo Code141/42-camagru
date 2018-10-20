@@ -32,7 +32,6 @@ aside.right
 	box-sizing:border-box;
 }
 
-
 div#container
 {
 	display: block;
@@ -86,9 +85,7 @@ button#obturator_button
 
 aside.left input[type="radio"]
 {
-
-display: none;
-
+	display: none;
 }
 
 aside.left input[type="radio"]:invalid + label
@@ -105,7 +102,7 @@ aside.left label
 	justify-content: center;
 	height: 90px;
 	width: 90px;
-	margin-bottom: 5px;
+	margin-bottom: 15px;
 	border-radius:20%;
 	transition: 0.5s background;
 	border-right: 1px solid #444;
@@ -142,31 +139,6 @@ aside.left input:checked + label img
 	filter: none;
 	transition: 1s filter, 1s opacity;
 }
-
-
-
-
-
-.label-file {
-    cursor: pointer;
-    color: #00b1ca;
-    font-weight: bold;
-}
-.label-file:hover {
-    color: #25a5c4;
-}
-
-.input-file {
-		width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-
-}
-
-
 
 aside.right img
 {
@@ -209,5 +181,69 @@ progress.sending_progress
 }
 
 ::-moz-progress-bar {
-  background-color: white;
+	background-color: white;
 }
+
+aside.left label.label-file
+{
+	padding-top: 9px;
+	height: 40px;
+	cursor: pointer;
+	color: #bbbbbb;
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+	text-align: center;
+	border-radius: 10px;
+	border: none;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+input[type="file"]:valid + label
+{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+input[type="file"] + label + input
+{
+	cursor: pointer;
+	background: #050;
+	border: none;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	border-left: 1px solid rgba(255, 255, 255, 0.2);
+	width : 100%;
+}
+
+input[type="file"]:invalid + label + input
+{
+
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+
+}
+
+input[type="file"]:invalid + label + input:hover
+{
+	background: #080;
+}
+
+label.label-file:hover {
+}
+
+.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+

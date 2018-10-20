@@ -28,5 +28,3 @@ if (array_search($action, $classes) === FALSE)
 
 $targetController = new $controller();
 $targetController->$action($params);
-
-?>
