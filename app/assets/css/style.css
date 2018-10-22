@@ -69,7 +69,6 @@ section h2
 section
 {
 	margin: auto;
-padding-bottom: 42px;
 }
 
 hr
@@ -218,6 +217,7 @@ nav#headlog a p
 /*------------------*/
 
 footer {
+	color: white;
 	position: fixed;
 	bottom : 0px;
 	width : 100%;

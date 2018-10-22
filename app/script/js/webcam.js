@@ -20,23 +20,23 @@ document.getElementById('my-form').onsubmit = function() {
 	if (navigator.mediaDevices.getUserMedia)
 	{
 		navigator.mediaDevices.getUserMedia({video: true}
-		).then( function(stream) {
-			video.srcObject = stream;
-			video.src = stream;
-			button.addEventListener("click", function()
-				{
-					var html_gal = document.getElementById("user_picturs");
+		).then( function(stream)
+			{
+				video.srcObject = stream;
+				video.src = stream;
+				button.style.display = "block";
+				button.addEventListener("click", function()
+					{
+						var html_gal = document.getElementById("user_picturs");
+						b64_img = take_picture(video);
+						html_img = add_picture(b64_img, html_gal);
+						b64_img_data = b64_img.substring(b64_img.indexOf(",") + 1);
+						var contentType = 'image/png';
+						var blob = b64toBlob(b64_img_data, contentType);
 
-					b64_img = take_picture(video);
-					html_img = add_picture(b64_img, html_gal);
-
-					b64_img_data = b64_img.substring(b64_img.indexOf(",") + 1);
-					var contentType = 'image/png';
-					var blob = b64toBlob(b64_img_data, contentType);
-
-					xhr_upload(blob, html_img);
-				});
-		}
+						xhr_upload(blob, html_img);
+					});
+			}
 		).catch( function(error) {
 			console.log("Something went wrong!");
 			console.log(error.message);

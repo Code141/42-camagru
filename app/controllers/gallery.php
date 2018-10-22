@@ -28,4 +28,18 @@ class gallery extends controller
 		$this->files['views']['center'] = 'gallery/gallery';
 		$this->files['views']['footer'] = 'gallery/paging';
 	}
+
+	public function focus($params = NULL)
+	{
+		if (!isset($params[0]))
+		{
+			$this->data["msg"] = "No media selected";
+			die();
+		}
+
+		$this->data["media_id"] = intval($params[0]);
+
+		$this->files['css'][] = 'focus';
+		$this->files['views']['center'] = 'gallery/focus';
+	}
 }

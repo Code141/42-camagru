@@ -79,5 +79,23 @@ class Db_media extends Model
 		return ($count);
 	}
 
+	function get_media_by_id(array $data = NULL)
+	{
+	/*
+		$sql = "
+			SELECT m.id, m.date, u.username
+			FROM media m
+			LEFT JOIN user u
+			ON m.id_user = u.id
+			WHERE m.id_user = :id_user
+			ORDER BY date DESC
+		";
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindParam("id_user", $data['user_id'], PDO::PARAM_INT);
+		$this->execute_pdo();
+		$user_media = $this->pdo_stm->fetchAll(PDO::FETCH_ASSOC);
+		return ($user_media);
+	*/
+	}
 }
 

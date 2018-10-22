@@ -3,6 +3,7 @@
 	foreach ($this->data['db']['all_media'] as $media)
 	{
 ?>
+<a href="<?php echo SITE_ROOT . "/gallery/focus/" . $media['id'];?>">
 		<div class="gallery_element">
 			<img src="<?php echo MEDIA_PATH . "user_media/" . $media['id'];?>.png">
 			<div id="info">
@@ -14,6 +15,7 @@
 				</p>
 			</div>
 		</div>
+</a>
 <?php
 	}
 ?>

@@ -184,6 +184,12 @@ progress.sending_progress
 	background-color: white;
 }
 
+aside div#aside_up
+{
+	position: absolute;
+	left: 125px;
+}
+
 aside.left label.label-file
 {
 	padding-top: 9px;
