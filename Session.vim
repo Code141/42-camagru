@@ -118,9 +118,9 @@ exe '3resize ' . ((&lines * 36 + 42) / 84)
 exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
 exe '4resize ' . ((&lines * 6 + 42) / 84)
 exe 'vert 4resize ' . ((&columns * 84 + 182) / 364)
-exe '5resize ' . ((&lines * 10 + 42) / 84)
+exe '5resize ' . ((&lines * 11 + 42) / 84)
 exe 'vert 5resize ' . ((&columns * 140 + 182) / 364)
-exe '6resize ' . ((&lines * 33 + 42) / 84)
+exe '6resize ' . ((&lines * 32 + 42) / 84)
 exe 'vert 6resize ' . ((&columns * 140 + 182) / 364)
 exe '7resize ' . ((&lines * 35 + 42) / 84)
 exe 'vert 7resize ' . ((&columns * 140 + 182) / 364)
@@ -212,12 +212,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 5) / 10)
+let s:l = 5 - ((4 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 022|
+5
+normal! 0
 wincmd w
 argglobal
 if bufexists('core/route.php') | buffer core/route.php | else | edit core/route.php | endif
@@ -230,7 +230,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 16) / 33)
+let s:l = 9 - ((8 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -318,9 +318,9 @@ exe '3resize ' . ((&lines * 36 + 42) / 84)
 exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
 exe '4resize ' . ((&lines * 6 + 42) / 84)
 exe 'vert 4resize ' . ((&columns * 84 + 182) / 364)
-exe '5resize ' . ((&lines * 10 + 42) / 84)
+exe '5resize ' . ((&lines * 11 + 42) / 84)
 exe 'vert 5resize ' . ((&columns * 140 + 182) / 364)
-exe '6resize ' . ((&lines * 33 + 42) / 84)
+exe '6resize ' . ((&lines * 32 + 42) / 84)
 exe 'vert 6resize ' . ((&columns * 140 + 182) / 364)
 exe '7resize ' . ((&lines * 35 + 42) / 84)
 exe 'vert 7resize ' . ((&columns * 140 + 182) / 364)
