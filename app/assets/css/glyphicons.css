@@ -1,4 +1,4 @@
-button.glyph{
+.glyph{
 	background: none;
 	border: none;
 	width:100%;
@@ -7,87 +7,58 @@ button.glyph{
 	background-position: center;
 }
 
-button.glyph:hover
+.glyph:hover
 {
 	background-color: none;
 }
 
-button.glyph#glyph_gallery
+.glyph_gallery
 {
 	background-image: url("../img/glyphicons_black/glyphicons-139-picture.png");
 }
 
-button.glyph#glyph_gallery:hover
-{
-	background-image: url("../img/glyphicons_white/glyphicons-139-picture.png");
-}
-
-button.glyph#glyph_editor
+.glyph_editor
 {
 	background-image: url("../img/glyphicons_black/glyphicons-12-camera.png");
 }
 
-button.glyph#glyph_editor:hover
-{
-	background-image: url("../img/glyphicons_white/glyphicons-12-camera.png");
-}
-
-button.glyph#glyph_user
+.glyph_user
 {
 	background-image: url("../img/glyphicons_black/glyphicons-353-nameplate.png");
 }
 
-button.glyph#glyph_user:hover
-{
-	background-image: url("../img/glyphicons_white/glyphicons-353-nameplate.png");
-}
-
-button.glyph#glyph_logout
+.glyph_logout
 {
 	background-image: url("../img/glyphicons_black/glyphicons-388-log-out.png");
 }
 
-button.glyph#glyph_logout:hover
-{
-	background-image: url("../img/glyphicons_white/glyphicons-388-log-out.png");
-}
-
-button.glyph#glyph_visibility
+.glyph_visibility
 {
 	background-image: url("../img/glyphicons_black/glyphicons-52-eye-open.png");
 }
 
-button.glyph#glyph_visibility:hover
-{
-	background-image: url("../img/glyphicons_white/glyphicons-52-eye-open.png");
-}
-
-button.glyph#glyph_visibility_none
+.glyph_visibility_none
 {
 	background-image: url("../img/glyphicons_black/glyphicons-53-eye-close.png");
 }
 
-button.glyph#glyph_visibility_none:hover
-{
-	background-image: url("../img/glyphicons_white/glyphicons-53-eye-close.png");
-}
-
-button.glyph#glyph_log_in
+.glyph_log_in
 {
 	background-image: url("../img/glyphicons_black/glyphicons-387-log-in.png");
 }
 
-button.glyph#glyph_log_in:hover
-{
-	background-image: url("../img/glyphicons_white/glyphicons-387-log-in.png");
-}
-
-button.glyph#glyph_register
+.glyph_register
 {
 	background-image: url("../img/glyphicons_black/glyphicons-30-notes-2.png");
 }
 
-button.glyph#glyph_register:hover
+.glyph_register
 {
-	background-image: url("../img/glyphicons_white/glyphicons-30-notes-2.png");
+	background-image: url("../img/glyphicons_black/glyphicons-30-notes-2.png");
 }
+
+.glyph_register
+{
+	background-image: url("../img/glyphicons_black/glyphicons-30-notes-2.png");
+}
+

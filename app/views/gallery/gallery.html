@@ -3,19 +3,23 @@
 	foreach ($this->data['db']['all_media'] as $media)
 	{
 ?>
-<a href="<?php echo SITE_ROOT . "/gallery/focus/" . $media['id'];?>">
 		<div class="gallery_element">
+	<?php
+		
+		like_bar($media["grade"], SITE_ROOT . "media/like/" . $media["id"] . "/");
+	?>
+<a href="<?php echo SITE_ROOT . "gallery/focus/" . $media['id'];?>">
 			<img src="<?php echo MEDIA_PATH . "user_media/" . $media['id'];?>.png">
+</a>
 			<div id="info">
 				<p id="username">
-					user_id : <?php echo $media['username'];?>
+					By : <?php echo $media['username'];?>
 				</p>
 				<p id="date">
 					<?php echo $media['date'];?>
 				</p>
 			</div>
 		</div>
-</a>
 <?php
 	}
 ?>

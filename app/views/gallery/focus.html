@@ -1,58 +1,78 @@
 <section id="focus">
-	<img src="<?php echo MEDIA_PATH . "user_media/" . $this->data['media_id'];?>.png">
+		<img src="<?php echo MEDIA_PATH . "user_media/" . $this->data['id_media'];?>.png">
 </section>
 
 <aside id="focus_aside">
 
 	<div id="focus_aside_top">
-		top
-		<br>
-		LIKE
-		<br>
-		top
+		<p class="username">
+			By :
+			<span>
+				<?php echo $this->data["media"]["username"]; ?>
+			</span>
+		</p>
+		<p class="date">
+			<?php echo $this->data["media"]["date"]; ?>
+		</p>
+
+		<?php 
+			like_bar($this->data["global_grade"], SITE_ROOT . "media/like/" . $this->data["id_media"] . "/");
+		?>
+
+	
 	</div>
+
 	<div id="comments">
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
-	Hekllaepqrzsegisfopiuoivjznroieqrousigemfwdkvho
-	<hr>
+<?php
+for ($i = 0; $i < 20; $i++)
+{
+?>
+
+	<div id="comment">
+		<span class="username">
+			Toto
+		</span>
+		<span class="date">
+			13 jul 1992
+		</span>
+		<span class="msg">
+		Le Lorem Ipsum est ices de texqzedg zdf sdqf qif qsFI qsfiqsF  es passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
+		</span>
+	</div>
+
+	<div id="comment">
+		<span class="username">
+			Toto
+		</span>
+		<span class="date">
+			13 jul 1992
+		</span>
+		<span class="msg">
+			Le Lorem I faux teus récde mise en page de texte, comme Aldus PageMaker.
+		</span>
+	</div>
+
+	<div id="comment">
+		<span class="username">
+			Toto
+		</span>
+		<span class="date">
+			13 jul 1992
+		</span>
+		<span class="msg">
+			J'adore ! continue comme ca.
+		</span>
+	</div>
+
+<?php
+}
+?>
 	</div>
 	<div id="focus_aside_bottom">
 		<form>
-			<input type="text" placeholder="Your comment...">
-			<input type="submit" name="upload_btn" value="Comment">
+			<textarea name="comment" cols="40" rows="5" placeholder="Your comment..."></textarea>
+
+			<input type="submit" name="upload_btn" value="Send">
 		</form>
 	</div>
 

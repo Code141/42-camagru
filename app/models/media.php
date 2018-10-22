@@ -1,8 +1,8 @@
 <?php
 
-class Db_media extends Model
+class Db_media extends model
 {
-	function add_media(array $data = NULL)
+	function add_media(array $data = null)
 	{
 		$loggued_id = loggued_id();
 		$sql = "
@@ -14,31 +14,37 @@ class Db_media extends Model
 				)
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
-		$this->pdo_stm->bindParam("id_user", $loggued_id, PDO::PARAM_INT);
+		$this->pdo_stm->bindparam("id_user", $loggued_id, PDO::PARAM_INT);
 		$this->execute_pdo();
-		$last_id = $this->pdo->lastInsertId();
+		$last_id = $this->pdo->lastinsertid();
 		return ($last_id);
 	}
 
-	function get_all_media(array $data = NULL)
+	function get_media_and_user_likes_from_to(array $data = null)
 	{
+		$loggued_id = loggued_id();
 		$sql = "
-			SELECT m.id, m.date, u.username
+			SELECT m.id, m.date, u.username, l.grade
 			FROM media m
 			LEFT JOIN user u
-			ON m.id_user = u.id
+			on m.id_user = u.id
+			LEFT JOIN likes l
+			ON m.id = l.id_media
+			WHERE l.id_user = :id_user
+			OR l.id_user IS NULL
 			ORDER BY id DESC
 			LIMIT :start, :offset
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
-		$this->pdo_stm->bindParam("start", $data['start'], PDO::PARAM_INT);
-		$this->pdo_stm->bindParam("offset", $data['offset'], PDO::PARAM_INT);
+		$this->pdo_stm->bindparam("id_user", $loggued_id, PDO::PARAM_INT);
+		$this->pdo_stm->bindparam("start", $data['start'], PDO::PARAM_INT);
+		$this->pdo_stm->bindparam("offset", $data['offset'], PDO::PARAM_INT);
 		$this->execute_pdo();
-		$all_media = $this->pdo_stm->fetchAll(PDO::FETCH_ASSOC);
+		$all_media = $this->pdo_stm->fetchall(PDO::FETCH_ASSOC);
 		return ($all_media);
 	}
 
-	function get_all_masks(array $data = NULL)
+	function get_all_masks(array $data = null)
 	{
 		$sql = "
 			SELECT *
@@ -46,11 +52,11 @@ class Db_media extends Model
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
 		$this->execute_pdo();
-		$all_masks = $this->pdo_stm->fetchAll(PDO::FETCH_ASSOC);
+		$all_masks = $this->pdo_stm->fetchall(PDO::FETCH_ASSOC);
 		return ($all_masks);
 	}
 
-	function get_media_by_user_id(array $data = NULL)
+	function get_media_by_user_id(array $data = null)
 	{
 		$sql = "
 			SELECT m.id, m.date, u.username
@@ -58,19 +64,19 @@ class Db_media extends Model
 			LEFT JOIN user u
 			ON m.id_user = u.id
 			WHERE m.id_user = :id_user
-			ORDER BY date DESC
+			ORDER BY date desc
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
-		$this->pdo_stm->bindParam("id_user", $data['user_id'], PDO::PARAM_INT);
+		$this->pdo_stm->bindparam("id_user", $data['user_id'], PDO::PARAM_INT);
 		$this->execute_pdo();
-		$user_media = $this->pdo_stm->fetchAll(PDO::FETCH_ASSOC);
+		$user_media = $this->pdo_stm->fetchall(PDO::FETCH_ASSOC);
 		return ($user_media);
 	}
 
-	function count_media(array $data = NULL)
+	function count_media(array $data = null)
 	{
 		$sql = "
-			SELECT COUNT(id) as count
+			SELECT count(id) as count
 			FROM media
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
@@ -79,23 +85,25 @@ class Db_media extends Model
 		return ($count);
 	}
 
-	function get_media_by_id(array $data = NULL)
+	function get_media_by_id(array $data = null)
 	{
-	/*
+
 		$sql = "
-			SELECT m.id, m.date, u.username
+			SELECT m.id, m.date, u.username, u.id as id_user
 			FROM media m
 			LEFT JOIN user u
 			ON m.id_user = u.id
-			WHERE m.id_user = :id_user
-			ORDER BY date DESC
+			WHERE m.id = :id_media
+			ORDER BY date desc
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
-		$this->pdo_stm->bindParam("id_user", $data['user_id'], PDO::PARAM_INT);
+
+		$this->pdo_stm->bindparam("id_media", $data['id_media'], PDO::PARAM_INT);
 		$this->execute_pdo();
-		$user_media = $this->pdo_stm->fetchAll(PDO::FETCH_ASSOC);
-		return ($user_media);
-	*/
+		$media = $this->pdo_stm->fetchall(PDO::FETCH_ASSOC);
+		if (isset($media[0]))
+			return ($media[0]);
+		return (null);
 	}
 }
 

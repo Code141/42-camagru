@@ -27,3 +27,8 @@ function	email_forgot_pass($user)
 	$headers = 'From:noreply@camagru.com' . "\r\n";
 	$reponse =  mail($to, $subject, $message, $headers);
 }
+
+function	email_like($id_user_from, $id_user_to, $media, $garde)
+{
+	echo "/*EMAIL SENDED*/";
+}

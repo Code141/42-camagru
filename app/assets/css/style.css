@@ -83,12 +83,11 @@ hr
 section#wrap
 {
 	position: absolute;
-	top: 0px;
-	bottom: 0px;
-	padding-top: 42px;
-	padding-bottom: 42px;
+	top: 42px;
+	bottom: 42px;
 	width: 100%;
 	display: flex;
+	overflow: hidden scroll;
 }
 
 p
@@ -216,7 +215,9 @@ nav#headlog a p
 
 /*------------------*/
 
-footer {
+footer
+{
+	display: flex;
 	color: white;
 	position: fixed;
 	bottom : 0px;
@@ -226,5 +227,60 @@ footer {
 	border-top: 1px solid #444;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4);
 	flex-direction: row;
+	z-index: 1100;
 }
+
+
+
+
+div#like_box 
+{
+	padding: 10px;
+	width: 140px;
+	height: 44px;
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#like_box div.liker a
+{
+    filter:invert(100%);
+	display: block;
+	width: 12px;
+	height: 24px;
+	background-size: 200%;
+	float:left;
+	background-repeat:no-repeat;
+	background-image: url("../img/glyphicons_black/glyphicons-49-star-empty.png");
+	background-position-y: 0px;
+}
+
+div#like_box div.liker a.star_liked
+{
+	background-image: url("../img/glyphicons_black/glyphicons-50-star.png");
+}
+
+div#like_box div.liker a.glyph_star_left
+{
+}
+
+div#like_box div.liker a.glyph_star_right
+{
+	background-position-x: right;
+}
+
+div#like_box div.liker:hover  a
+{
+	background-image: url("../img/glyphicons_black/glyphicons-49-star-empty.png");
+}
+
+div#like_box div.liker:hover > a
+{
+	background-image: url("../img/glyphicons_black/glyphicons-50-star.png");
+}
+
+
+
+
 

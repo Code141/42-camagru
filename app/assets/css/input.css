@@ -14,13 +14,17 @@ input + input
 {
 	margin-top: 20px;
 }
+
 input.row + input.row
 {
 	margin-top: 0px;
 }
+
 input,
-input:placeholder-shown
+input:placeholder-shown,
+textarea
 {
+	border:none;
 	height:30px;
 	width: 170px;
 	text-align: center;
@@ -36,6 +40,16 @@ input:placeholder-shown
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
 	transition: background 0.5s 0s, color 0.5s 0s, text-shadow 0.5s 0s;
 	box-sizing: border-box;
+}
+
+textarea
+{
+	text-align: left;
+	padding-left:10px;
+	padding-right:10px;
+	min-height: 50px;
+	max-height: 300px;
+	resize: vertical;
 }
 
 input:focus

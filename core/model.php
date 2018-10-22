@@ -26,14 +26,14 @@ class Model
 
 	public function	execute_pdo()
 	{
-		// TRY / CATCH
 		$this->pdo_stm->execute();
 		return ($this->pdo_stm);
 	}
 
 	public function	__destruct()
 	{
-		$this->pdo_stm->closeCursor();
+		if (!empty($this->pdo_stm))
+			$this->pdo_stm->closeCursor();
 		$this->pdo_stm = NULL;
 		$this->pdo = NULL;
 	}
