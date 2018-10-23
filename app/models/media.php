@@ -20,6 +20,18 @@ class Db_media extends model
 		return ($last_id);
 	}
 
+	function delete_media(array $data = null)
+	{
+		$loggued_id = loggued_id();
+		$sql = "
+			DELETE FROM media
+			WHERE id = :id_media
+		";
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindparam("id_media", $data['id_media'], PDO::PARAM_INT);
+		$this->execute_pdo();
+	}
+
 	function get_media_from_to(array $data = null)
 	{
 		$loggued_id = loggued_id();
@@ -106,17 +118,14 @@ class Db_media extends model
 
 	function get_media_by_id(array $data = null)
 	{
-
 		$sql = "
 			SELECT m.id, m.date, u.username, u.id as id_user
 			FROM media m
 			LEFT JOIN user u
 			ON m.id_user = u.id
 			WHERE m.id = :id_media
-			ORDER BY date desc
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
-
 		$this->pdo_stm->bindparam("id_media", $data['id_media'], PDO::PARAM_INT);
 		$this->execute_pdo();
 		$media = $this->pdo_stm->fetchall(PDO::FETCH_ASSOC);

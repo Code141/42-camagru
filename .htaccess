@@ -2,6 +2,7 @@
 AddHandler application/x-httpd-php .html .htm 
 
 # CAREFULL ABOUT PHP SCRIPTS ACCESSIBLES
+# REGLER LE NOT FOUND SUR DES CSS JS JPG ........
 
 RewriteEngine On
 RewriteCond $1 !\.(css|php|js|jpg|png|ttf)

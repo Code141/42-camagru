@@ -5,6 +5,7 @@ foreach ($this->data['db']['user_media'] as $user_media)
 {
 ?>
 		<img src="<?php echo MEDIA_PATH . "user_media/" . $user_media['id'];?>.png">
+		<a href="<?php echo SITE_ROOT . "media/delete/" . $user_media['id'];?>">DELETE</a>
 <?php
 }
 ?>
