@@ -45,6 +45,7 @@ function xhr_upload(blobOrFile, html_img)
 
 	xhr.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
+			alert ("IS CONNECTED ? CHECK REPONSE MSG FORM SERV");
 			if (this.status === 200)
 			{
 				html_img.className = "";

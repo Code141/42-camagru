@@ -18,12 +18,16 @@ function	is_loggued()
 
 function	loggued_username()
 {
-	return ($_SESSION['user']['username']);
+	if (is_loggued())
+		return ($_SESSION['user']['username']);
+	return (NULL);
 }
 
 function	loggued_id()
 {
-	return ($_SESSION['user']['id']);
+	if (is_loggued())
+		return ($_SESSION['user']['id']);
+	return (NULL);
 }
 
 function	redirect($path)

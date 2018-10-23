@@ -20,7 +20,26 @@ class Db_media extends model
 		return ($last_id);
 	}
 
-	function get_media_and_user_likes_from_to(array $data = null)
+	function get_media_from_to(array $data = null)
+	{
+		$loggued_id = loggued_id();
+		$sql = "
+			SELECT m.id, m.date, u.username
+			FROM media m
+			LEFT JOIN user u
+			on m.id_user = u.id
+			ORDER BY m.id DESC
+			LIMIT :start, :offset
+		";
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindparam("start", $data['start'], PDO::PARAM_INT);
+		$this->pdo_stm->bindparam("offset", $data['offset'], PDO::PARAM_INT);
+		$this->execute_pdo();
+		$all_media = $this->pdo_stm->fetchall(PDO::FETCH_ASSOC);
+ 		return ($all_media);
+	}
+
+	function get_media_and_likes_by_user_from_to(array $data = null)
 	{
 		$loggued_id = loggued_id();
 		$sql = "
@@ -32,7 +51,7 @@ class Db_media extends model
 			ON m.id = l.id_media
 			WHERE l.id_user = :id_user
 			OR l.id_user IS NULL
-			ORDER BY id DESC
+			ORDER BY m.id DESC
 			LIMIT :start, :offset
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
@@ -41,7 +60,7 @@ class Db_media extends model
 		$this->pdo_stm->bindparam("offset", $data['offset'], PDO::PARAM_INT);
 		$this->execute_pdo();
 		$all_media = $this->pdo_stm->fetchall(PDO::FETCH_ASSOC);
-		return ($all_media);
+ 		return ($all_media);
 	}
 
 	function get_all_masks(array $data = null)
