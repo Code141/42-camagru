@@ -29,12 +29,7 @@ class gallery extends controller
 			$this->data['paging'] = $this->data['paging_max'];
 
 		$this->data['start'] = ($this->data['paging'] - 1) * $this->data['offset'];
-		/**/
-		if (is_loggued())
-			$this->data['db']['all_media'] = $this->load->model('media', 'get_media_and_likes_by_user_from_to', $this->data);
-		else
-			$this->data['db']['all_media'] = $this->load->model('media', 'get_media_from_to', $this->data);
-		/**/
+		$this->data['db']['all_media'] = $this->load->model('media', 'get_media_from_to', $this->data);
 
 		$this->files['views']['center'] = 'gallery/gallery';
 		$this->files['views']['footer'] = 'gallery/paging';
@@ -60,7 +55,8 @@ class gallery extends controller
 		$this->data['media_like'] = $this->load->model('likes',  'get_like_by_media_id', $this->data);
 		$this->data['media_comments'] = $this->load->model('comments', 'get_comments_by_media_id', $this->data);
 
-		$this->data["global_grade"] = $this->data["id_media"] % 10;
+$this->data["media"]["nb_grades"] = 0;
+$this->data["media"]["avg_grades"] = 0;
 
 		$this->files['css'][] = 'focus';
 		$this->files['views']['center'] = 'gallery/focus';

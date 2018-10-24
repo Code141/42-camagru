@@ -15,10 +15,11 @@
 			<?php echo $this->data["media"]["date"]; ?>
 		</p>
 
-		<?php 
-			like_bar($this->data["global_grade"], SITE_ROOT . "media/like/" . $this->data["id_media"] . "/");
-		?>
 
+	<?php
+			$url = SITE_ROOT . "media/like/" . $this->data["media"]["id"] . "/";
+			like_bar($this->data["media"]["avg_grades"], $this->data["media"]["nb_grades"], $url);
+	?>
 	
 	</div>
 

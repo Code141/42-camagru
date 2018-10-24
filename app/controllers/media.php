@@ -79,6 +79,8 @@ class media extends controller_restricted
 
 		$this->data['msg'] = "You liked it !";
 		$this->load->model('likes', 'add_like_on_media_by_id', $this->data);
+
+		// SEND EMAILLLLLLLL
 		email_like(loggued_id(), $media["id_user"], $media["id"], $this->data['grade']);
 	}
 

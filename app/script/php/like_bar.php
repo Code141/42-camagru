@@ -1,9 +1,9 @@
 <?php
-function	like_bar($global, $link)
+function	like_bar($grade, $nb_grades, $link)
 {
-	
 	echo '<div id="like_box">';
-	liker_recur(5, $global, $link);
+	liker_recur(5, $grade, $link);
+	echo '[' .  $nb_grades . " votes]";
 	echo '</div>';
 }
 ?>

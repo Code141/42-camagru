@@ -5,8 +5,8 @@
 ?>
 		<div class="gallery_element">
 	<?php
-		if (isset($media['grade']))
-			like_bar($media["grade"], SITE_ROOT . "media/like/" . $media["id"] . "/");
+			$url = SITE_ROOT . "media/like/" . $media["id"] . "/";
+			like_bar($media["avg_grades"], $media["nb_grades"], $url);
 	?>
 <a href="<?php echo SITE_ROOT . "gallery/focus/" . $media['id'];?>">
 			<img src="<?php echo MEDIA_PATH . "user_media/" . $media['id'];?>.png">
