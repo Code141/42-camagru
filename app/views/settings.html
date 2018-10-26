@@ -14,7 +14,7 @@
 			Modify
 		</p>
 		<div class="hidden">
-			<form action="<?php echo SITE_ROOT; ?>user/update_username/" method="POST">
+			<form action="<?php echo SITE_ROOT; ?>settings/update_username/" method="POST">
 				<input type="text" name="username"  placeholder="New username" class="row">
 				<button type="submit">
 					Modify
@@ -34,7 +34,7 @@
 			Modify
 		</p>
 		<div class="hidden">
-			<form action="<?php echo SITE_ROOT; ?>user/update_email/" method="POST">
+			<form action="<?php echo SITE_ROOT; ?>settings/update_email/" method="POST">
 				<input type="email" name="email" placeholder="New email" class="row">
 				<button type="submit">
 					Modify
@@ -54,7 +54,7 @@
 			Modify
 		</p>
 		<div class="hidden">
-			<form action="<?php echo SITE_ROOT; ?>user/update_password/" method="POST">
+			<form action="<?php echo SITE_ROOT; ?>settings/update_password/" method="POST">
 				<input type="password" name="password" placeholder="New Password" autocomplete="new-password" class="row">
 				<input type="password" name="passwordbis" placeholder="Re-Type New Password" autocomplete="new-password" class="row">
 				<button type="submit">
@@ -86,7 +86,7 @@ if (empty($_SESSION['user']['n_like'])
 			Modify
 		</p>
 		<div class="hidden">
-			<form action="<?php echo SITE_ROOT; ?>user/update_notifications/" method="POST">
+			<form action="<?php echo SITE_ROOT; ?>settings/update_notifications/" method="POST">
 				<input type="checkbox" id="n_like" name="n_like" value="1" <?php if (!empty($_SESSION['user']['n_like'])){echo "checked";} ?> >
 				<label for="n_like" class="notif_check">
 					Like

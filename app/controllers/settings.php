@@ -1,18 +1,18 @@
 <?php
 
-class user extends controller_restricted
+class settings extends controller_restricted
 {
 	public function	__construct()
 	{
 		parent::__construct();
 
-		$this->data['title'] = 'User';
-		$this->files['css'][] = 'user';
+		$this->data['title'] = 'Settings';
+		$this->files['css'][] = 'settings';
 	}
 
 	public function main($params = NULL)
 	{
-		$this->files['views']['center'] = 'user';
+		$this->files['views']['center'] = 'settings';
 	}
 
 	public function	update_username($params = NULL)
@@ -24,7 +24,7 @@ class user extends controller_restricted
 			$this->data['new_username'] = $_POST['username'];
 			if (($err = check_username($this->data['new_username'])) === TRUE)
 			{
-				$this->load->model('user', 'update_username', $this->data);
+				$this->load->model('settings', 'update_username', $this->data);
 				$_SESSION['user']['username'] = $this->data['new_username'];
 				$this->data['msg'] = "Username updated";
 			}
@@ -37,7 +37,7 @@ class user extends controller_restricted
 		{
 			$this->data['msg'] = "FAIL : Username is unset";
 		}
-		redirect("user");
+		redirect("settings");
 	}
 
 	public function	update_email($params = NULL)
@@ -49,7 +49,7 @@ class user extends controller_restricted
 			if (($err = check_email($email)) === TRUE)
 			{
 				$this->data['new_email'] = $email;
-				$this->load->model('user', 'update_email', $this->data);
+				$this->load->model('settings', 'update_email', $this->data);
 				// CONFIRMATION MAIL REQUIRED
 
 				$this->data['msg'] = "Email updated";
@@ -64,7 +64,7 @@ class user extends controller_restricted
 		{
 			$this->data['msg'] = "FAIL : Email is unset";
 		}
-		redirect("user");
+		redirect("settings");
 	}
 
 	public function	update_password($params = NULL)
@@ -81,7 +81,7 @@ class user extends controller_restricted
 				if (($err = check_password($password, $passwordbis)) === TRUE)
 				{
 					$this->data['new_password'] = hash_password($password);
-					$this->load->model('user', 'update_password', $this->data);
+					$this->load->model('settings', 'update_password', $this->data);
 					$_SESSION['user']['password_length'] = strlen($password);
 					$this->data['msg'] = "OKAY";
 				}
@@ -93,7 +93,7 @@ class user extends controller_restricted
 			$this->data['msg'] = "FAIL : Re-typed password is unset";
 		}
 		$this->data['msg'] = "FAIL : Password is unset";
-		redirect("user");
+		redirect("settings");
 	}
 
 	public function	update_notifications($params = NULL)
@@ -111,12 +111,12 @@ class user extends controller_restricted
 		if (isset($_POST["n_msg"]) && $_POST["n_msg"] == "1")
 			$this->data["n_msg"] = 1;
 
-		$this->load->model('user', 'update_notif', $this->data);
+		$this->load->model('settings', 'update_notif', $this->data);
 		$_SESSION['user']['n_like'] = $this->data["n_like"];
 		$_SESSION['user']['n_comm'] = $this->data["n_comm"];
 		$_SESSION['user']['n_msg'] = $this->data["n_msg"];
 		$this->data['msg'] = "OKAY";
-		redirect("user");
+		redirect("settings");
 	}
 
 }

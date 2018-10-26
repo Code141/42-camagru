@@ -1,80 +1,49 @@
 <section id="focus">
-		<img src="<?php echo MEDIA_PATH . "user_media/" . $this->data['id_media'];?>.png">
+	<img src="<?php echo MEDIA_PATH . "user_media/" . $this->data['id_media'];?>.png">
 </section>
 
 <aside id="focus_aside">
 
 	<div id="focus_aside_top">
-		<p class="username">
-			By :
-			<span>
-				<?php echo $this->data["media"]["username"]; ?>
+		<p>
+			<span class="username">
+				<?php echo $this->data['media']['username'];?>
+			</span>
+			<span class="date">
+				<?php human_date($this->data['media']['date']);?>
 			</span>
 		</p>
-		<p class="date">
-			<?php echo $this->data["media"]["date"]; ?>
-		</p>
-
-
-	<?php
-			$url = SITE_ROOT . "media/like/" . $this->data["media"]["id"] . "/";
-			like_bar($this->data["media"]["avg_grades"], $this->data["media"]["nb_grades"], $url);
-	?>
-	
+<?php
+	$this->load->script('php', 'like_bar');
+	$url = SITE_ROOT . "media/like/" . $this->data["media"]["id"] . "/";
+	like_bar($this->data["media"]["avg_grades"], $this->data["media"]["nb_grades"], $url);
+?>
 	</div>
 
 	<div id="comments">
 <?php
-for ($i = 0; $i < 20; $i++)
-{
+	foreach ($this->data['db']['comments'] as $comment)
+	{
 ?>
-
-	<div id="comment">
-		<span class="username">
-			Toto
-		</span>
-		<span class="date">
-			13 jul 1992
-		</span>
-		<span class="msg">
-		Le Lorem Ipsum est ices de texqzedg zdf sdqf qif qsFI qsfiqsF  es passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-		</span>
-	</div>
-
-	<div id="comment">
-		<span class="username">
-			Toto
-		</span>
-		<span class="date">
-			13 jul 1992
-		</span>
-		<span class="msg">
-			Le Lorem I faux teus récde mise en page de texte, comme Aldus PageMaker.
-		</span>
-	</div>
-
-	<div id="comment">
-		<span class="username">
-			Toto
-		</span>
-		<span class="date">
-			13 jul 1992
-		</span>
-		<span class="msg">
-			J'adore ! continue comme ca.
-		</span>
-	</div>
-
+		<div class="comment">
+			<span class="username">
+				<?php echo $comment['username']; ?>
+			</span>
+			<span class="date">
+				<?php human_date($comment['date']); ?>
+			</span>
+			<span class="msg">
+				<?php echo $comment['comment']; ?>
+			</span>
+		</div>
 <?php
 }
 ?>
 	</div>
 	<div id="focus_aside_bottom">
-		<form>
+		<form action="<?php echo SITE_ROOT; ?>media/comment_media/<?php echo $this->data['media']['id']; ?>" method="POST" enctype="multipart/form-data">
 			<textarea name="comment" cols="40" rows="5" placeholder="Your comment..."></textarea>
-
 			<input type="submit" name="upload_btn" value="Send">
 		</form>
 	</div>
-
 </aside>

@@ -1,0 +1,35 @@
+<section class="user_plate">
+	<?php echo $this->data['db']['user']['username']; ?>
+	<hr>
+</section>
+
+<section id="user">
+
+<?php
+	$this->load->script('php', 'like_bar');
+	foreach ($this->data['db']['user_media'] as $media)
+	{
+?>
+		<div class="gallery_element">
+			<div id="info">
+
+<?php
+	$url = SITE_ROOT . "media/like/" . $media["id"] . "/";
+	like_bar($media["avg_grades"], $media["nb_grades"], $url);
+?>
+				<p id="date">
+					<?php  human_date($media['date']);?>
+				</p>
+			</div>
+
+
+
+<a href="<?php echo SITE_ROOT . "gallery/focus/" . $media['id'];?>">
+			<img src="<?php echo MEDIA_PATH . "user_media/thumbs/" . $media['id'];?>.png">
+</a>
+		</div>
+<?php
+	}
+?>
+</section>
+

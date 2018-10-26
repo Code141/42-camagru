@@ -160,8 +160,6 @@ p
 {
 	display: table-cell;
 	vertical-align:middle;
-	padding-left: 12px;
-	padding-right: 12px;
 }
 
 nav a button.header_button
@@ -237,15 +235,29 @@ div#like_box
 {
 	padding: 10px;
 	width: 140px;
-	height: 44px;
 	box-sizing: border-box;
 	margin-left: auto;
 	margin-right: auto;
 }
 
+div#like_box p.avg_grades,
+div#like_box p.nb_grades
+{
+	margin-left: 10px;
+	font-size: 20px;
+	float:left;
+	color: #bbbbbb;
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+	white-space: nowrap;
+}
+
+div#like_box p.nb_grades
+{
+	float:right;
+}
 div#like_box div.liker a
 {
-    filter:invert(100%);
+    filter:invert(70%);
 	display: block;
 	width: 12px;
 	height: 24px;

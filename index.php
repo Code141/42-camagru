@@ -10,12 +10,21 @@ require_once(CORE_PATH . 'controller.php');
 require_once(CORE_PATH . 'TOOL.php');
 
 if (is_readable(APP_PATH.'controllers/' . $controller . '.php'))
+{
 	require_once(APP_PATH.'controllers/' . $controller . '.php');
+	if (!class_exists($controller))
+	{
+		$controller = "controller";
+		$action = "error_404";
+	}
+}
 else
 {
 	$controller = "controller";
 	$action = "error_404"; 
 }
+
+
 
 $classes =  get_class_methods($controller);
 $classes = preg_grep("/^(?!__).+/", $classes);

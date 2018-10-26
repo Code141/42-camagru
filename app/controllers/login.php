@@ -53,7 +53,7 @@ class login extends controller_public_only
 			redirect ('login/error/account_not_validated/');
 		$this->login();
 
-		redirect ($_SESSION['last_url']['controller'] . '/' . $_SESSION['last_url']['action']);
+		redirect_on_last ();
 	}
 
 	private	function	login()
@@ -78,15 +78,14 @@ class login extends controller_public_only
 	public function reset_password($params = null)
 	{
 		$this->load->script('php', 'mail');
-
 		$this->data['title'] = 'Reset password';
-		$this->data['msg'] = "Reset passwordIL";
+		$this->data['msg'] = "Reset password";
 		$this->files['views']['center'] = 'login/reset_password';
 	}
 
 	public function restricted($params = null)
 	{
-		$this->data['error'] = "Restricted area";
+		$this->data['error'] = "You must be logged in";
 	}
 
 	public function error($params = null)

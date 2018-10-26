@@ -21,10 +21,6 @@ class register extends controller_public_only
 		$this->load->script('php', 'login');
 		$this->data['register'] = check_info();
 
-	
-		// password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
-		// bool password_verify ( string $password , string $hash )
-
 		$this->data['register']['password'] = hash_password($this->data['register']['password']);
 
 		if (($err = check_email($this->data['register']['email'])) !== TRUE)

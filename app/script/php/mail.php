@@ -32,3 +32,8 @@ function	email_like($id_user_from, $id_user_to, $media, $garde)
 {
 	echo "/*EMAIL SENDED*/";
 }
+
+function	email_comment($id_user_from, $id_user_to, $media, $comment)
+{
+	echo "/*EMAIL SENDED*/";
+}

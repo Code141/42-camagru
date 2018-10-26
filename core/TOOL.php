@@ -30,10 +30,43 @@ function	loggued_id()
 	return (NULL);
 }
 
-function	redirect($path)
+function	human_date($str)
+{
+	$timestamp = strtotime($str);
+	$date = localtime($timestamp, true);
+	$now = localtime(time(), true);
+
+	if ($date["tm_year"] != $now["tm_year"])
+		echo date("M Y", $timestamp);
+	else if ($date["tm_mon"] != $now["tm_mon"])
+		echo date("j M", $timestamp);
+	else if ($date["tm_mday"] != $now["tm_mday"] && $timestamp < time() - (60 * 60 * 24))
+		echo "Yesterday " . date("D G:i", $timestamp);
+	else if ($date["tm_mday"] != $now["tm_mday"])
+		echo date("D j", $timestamp);
+	else
+		echo date("G:i", $timestamp);
+}
+
+function	redirect($path = "")
 {
 //	header ('location:'.SITE_ROOT. $path);
 	header( "refresh:1;url=" .SITE_ROOT. $path);
 	die();
 }
 
+function	redirect_on_last ()
+{
+
+	if (!isset($_SESSION['last_url']))
+		redirect ();
+	$params = "";
+	if (isset($_SESSION['last_url']['params']))
+		$params = implode('/', $_SESSION['last_url']['params']);
+	redirect ($_SESSION['last_url']['controller']
+			. '/' .
+			$_SESSION['last_url']['action']
+			. '/' .
+			$params
+		);
+}

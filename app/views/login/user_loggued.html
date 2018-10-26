@@ -3,7 +3,10 @@
 		Hello
 		<?php echo $_SESSION['user']['username']; ?>
 	</p>
-	<a class="header_element" href="<?php echo SITE_ROOT; ?>user/">
+	<a class="header_element" href="<?php echo SITE_ROOT; ?>gallery/user/">
+		<button class="header_button glyph glyph_gallery_perso"></button>
+	</a>
+	<a class="header_element" href="<?php echo SITE_ROOT; ?>settings/">
 		<button class="header_button glyph glyph_user"></button>
 	</a>
 	<a class="header_element" href="<?php echo SITE_ROOT; ?>logout" id="logout">

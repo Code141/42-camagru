@@ -8,16 +8,15 @@ class gallery extends controller
 
 		$this->data['title'] = "Gallery";
 		$this->files['css'][] = 'gallery';
+		$this->files['css'][] = 'paging';
 	}
 
 	public function main($params = NULL)
 	{
-		$this->load->script('php', 'like_bar');
 
-		$this->data['offset'] = 20;
+		$this->data['offset'] = 30;
 		$this->data['title'] = 'Home - Gal';
 
-		/**/
 		$page = intval($params['0']);
 		$this->data['paging'] = ($page < 1) ? 1 : $page;
 
@@ -37,28 +36,47 @@ class gallery extends controller
 
 	public function focus($params = NULL)
 	{
-		$this->load->script('php', 'like_bar');
 		if (!isset($params[0]))
 		{
 			$this->data["msg"] = "No media selected";
 			die();
 		}
 		$this->data["id_media"] = intval($params[0]);
-		if ($this->data["id_media"] < 1)
+		$this->data['media'] = $this->load->model('media', 'get_media_by_id', $this->data);
+		if (!$this->data["media"])
 		{
 			$this->data["msg"] = "Media Error";
 			die();
 		}
-
-		$this->data['media'] = $this->load->model('media', 'get_media_by_id', $this->data);
-
-		$this->data['media_like'] = $this->load->model('likes',  'get_like_by_media_id', $this->data);
-		$this->data['media_comments'] = $this->load->model('comments', 'get_comments_by_media_id', $this->data);
-
-$this->data["media"]["nb_grades"] = 0;
-$this->data["media"]["avg_grades"] = 0;
-
+		$this->data['db']['comments'] = $this->load->model('comments', 'get_comments_by_media_id', $this->data);
 		$this->files['css'][] = 'focus';
 		$this->files['views']['center'] = 'gallery/focus';
+	}
+	
+	public function user($params = NULL)
+	{
+		$this->data['title'] = 'User';
+		$this->files['css'][] = 'user';
+
+		if (isset($params[0]))
+			$this->data['username'] = $params[0];
+		else if (is_loggued())
+			$this->data['username'] = loggued_username();
+		else
+		{
+			$this->data["msg"] = "No user selected";
+			redirect("gallery");
+		}
+		$this->data["db"]["user"] = $this->load->model('user', 'get_user_by_username', $this->data);
+		if ($this->data["db"]["user"] == NULL)
+		{
+			$this->data["msg"] = "User doesn't existe";
+			redirect("gallery");
+		}
+		$this->data['id_user'] = $this->data["db"]["user"]['id'];
+		$this->data['db']['user_media'] =
+			$this->load->model('media', 'get_media_by_user_id', $this->data);
+
+		$this->files['views']['center'] = 'gallery/user';
 	}
 }

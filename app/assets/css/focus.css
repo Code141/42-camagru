@@ -34,23 +34,27 @@ div#focus_aside_top
 
 div#focus_aside_top div#like_box
 {
-	margin-top: 30px;
 	margin-left: auto;
 	margin-right: auto;
+	position: absolute;
+	width:100%;
 }
 
-#focus_aside_top p.username,
-#focus_aside_top p.date
+
+#focus_aside_top > p
 {
-	margin-top: 10px;
+	display:block;
+	margin: 10px;
+	height:15px;
+
 }
 
-#focus_aside_top p.username
+#focus_aside_top p span.username
 {
 	float: left;
 }
 
-#focus_aside_top p.date
+#focus_aside_top p span.date
 {
 	float: right;
 }
@@ -104,12 +108,12 @@ div#like_box div.liker:hover > a
 
 #comments
 {
-	background-color: #222;
 	color: white;
 	overflow: hidden scroll;
+	margin-bottom: 75px;
 }
 
-#comment
+.comment
 {
 	padding: 15px 10px 15px 10px;
 	box-sizing:border-box;
@@ -117,18 +121,18 @@ div#like_box div.liker:hover > a
 	border-left: 1px dotted #444;
 }
 
-#comment + #comment
+.comment + .comment
 {
 	border-top: 2px dotted #333;
 }
-#comment:nth-child(odd)
+.comment:nth-child(odd)
 {
 	background-color: rgba(0, 0, 0, 0.17);
 }
 
 
-#comment span.username,:nth-child(odd)
-#comment span.date
+.comment span.username,:nth-child(odd)
+.comment span.date
 {
 	margin-right: 10px;
 	font-weight: bold;
@@ -136,13 +140,13 @@ div#like_box div.liker:hover > a
 	white-space: nowrap;
 }
 
-#comment span.date
+.comment span.date
 {
 	margin-left: 10px;
 	float: right;
 }
 
-#comment span.msg
+.comment span.msg
 {
 	color: #aaa;
 }
@@ -151,7 +155,7 @@ div#like_box div.liker:hover > a
 {
 	box-shadow: -10px 0px 50px rgba(0, 0, 0 , 0.7);
 	background-color: blue;
-	position: relative;
+	position: absolute;
 	bottom: 0px;
 	border-top: 1px solid #444;
 	border-left: 1px solid #444;

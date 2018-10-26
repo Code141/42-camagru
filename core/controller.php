@@ -24,6 +24,7 @@ class controller
 			"css" => array(),
 			"js" => array()
 		);
+		$this->data['msg'] = "";
 		$this->files['js'][] = 'init';
 	}
 
@@ -38,7 +39,7 @@ class controller
 			if (is_string($value))
 				$data[$key] = htmlspecialchars($value);
 			else if (is_array($value))
-				$data[$key] = protect_html_injection($value);
+				$data[$key] = $this->protect_html_injection($value);
 			else
 				$data[$key] = $value;
 			return ($data);
@@ -46,7 +47,7 @@ class controller
 
 	protected function	render()
 	{
-
+		$this->data = $this->protect_html_injection($this->data);
 		if (!is_ajax_query())
 			$this->html_encapsulation();
 		else
@@ -66,8 +67,6 @@ class controller
 		$this->files['css'] = array_merge($basic_css, $this->files['css']);
 
 		$this->files['js'][] = 'lunch';
-//		if (empty($this->data['msg']))
-//			$this->data['msg'] = "No msg";
 		if (!isset($this->files['views']['header']))
 			$this->files['views']['header'] = 'header';
 		if (!isset($this->files['views']['center']))
@@ -101,7 +100,7 @@ class controller
 				$this->data['msg'] = "Password too long";
 			break;
 			case "password_too_easy":
-				$this->data['msg'] = "Password too easy<br>it must contain uppercase, lowercase, number, and special charactere like ( @ ! - _ , . )";
+				$this->data['msg'] = "Password too easy. It must contain uppercase, lowercase, number, and special charactere like ( @ ! - _ , . )";
 			break;
 			case "username_taken":
 				$this->data['msg'] = "Username already taken";
@@ -145,7 +144,7 @@ class controller_restricted extends controller
 {
 	public function __construct()
 	{
-		$this->data['msg'] = "Restricted area";
+		$this->data['msg'] = "You must be logged in !";
 		if (!is_loggued())
 			redirect('login/restricted');
 		else
@@ -159,7 +158,7 @@ class controller_public_only extends controller
 	{
 		$this->data['msg'] = "You are already loggued";
 		if (is_loggued())
-			redirect('user');
+			redirect('settings');
 		else
 			parent::__construct();
 	}

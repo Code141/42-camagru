@@ -23,7 +23,8 @@ $params = (isset($request[2])) ? array_slice($request, 2) : NULL;
 
 if ($controller !== "login"
 	&& $controller !== "logout"
-	&& $controller !== "register" )
+	&& $controller !== "register"
+	&& $controller !== "media" )
 {
 	// IF IS NUL --- DEFAUT CONTROLLER !!!!!!!!!!!!
 	// else a direct access to login wistout session
