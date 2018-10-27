@@ -5,8 +5,7 @@ function	like_bar($grade, $nb_grades, $link)
 	liker_recur(5, $grade, $link);
 
 	if ($grade !== NULL)
-		echo '<p class="avg_grades">[' . round(floatval($grade), 1) . "]</p>";
-
+		echo '<p class="avg_grades">' . round(floatval($grade), 1) . "/10</p>";
 	echo '<p class="nb_grades">';
 	if ($nb_grades > 1)
 		echo '[' .  $nb_grades . ' votes]';

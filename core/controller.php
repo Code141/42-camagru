@@ -54,7 +54,13 @@ class controller
 			if (isset($this->files['views']) || !empty($this->files['views']))
 				foreach($this->files['views'] as $filename)
 					$this->load_view($filename);
+	}
 
+	public function last_url($params = null)
+	{
+		$_SESSION['last_url']['controller'] = $controller;
+		$_SESSION['last_url']['action'] = $action;
+		$_SESSION['last_url']['params'] = $params;
 	}
 
 	private function html_encapsulation()
@@ -73,7 +79,6 @@ class controller
 			$this->files['views']['center'] = 'msg';
 		if (!isset($this->files['views']['footer']))
 			$this->files['views']['footer'] = 'footer';
-
 		$this->load_view("default_layout");
 	}
 
@@ -84,6 +89,26 @@ class controller
 		$this->data['error_404'] = "Page not found";
 		$this->files['views']['center'] = '404';
 		http_response_code(404);
+	}
+
+	protected function fail($msg = "Fail for unknow reason")
+	{
+		$this->reset_controller();
+		$this->data['title'] = "Fail";
+		$this->data['msg'] = $msg;
+		$this->files['views']['center'] = 'msg';
+		redirect_on_last ();
+		die ();
+	}
+
+	protected function success($msg = "Success")
+	{
+		$this->reset_controller();
+		$this->data['title'] = "Success";
+		$this->data['msg'] = $msg;
+		$this->files['views']['center'] = 'msg';
+		redirect_on_last ();
+		die ();
 	}
 
 	public function error($params = null)

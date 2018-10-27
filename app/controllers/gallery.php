@@ -37,17 +37,11 @@ class gallery extends controller
 	public function focus($params = NULL)
 	{
 		if (!isset($params[0]))
-		{
-			$this->data["msg"] = "No media selected";
-			die();
-		}
+			$this->fail ("No media selected");
 		$this->data["id_media"] = intval($params[0]);
 		$this->data['media'] = $this->load->model('media', 'get_media_by_id', $this->data);
 		if (!$this->data["media"])
-		{
-			$this->data["msg"] = "Media Error";
-			die();
-		}
+			$this->fail ("Media Error");
 		$this->data['db']['comments'] = $this->load->model('comments', 'get_comments_by_media_id', $this->data);
 		$this->files['css'][] = 'focus';
 		$this->files['views']['center'] = 'gallery/focus';
@@ -63,16 +57,10 @@ class gallery extends controller
 		else if (is_loggued())
 			$this->data['username'] = loggued_username();
 		else
-		{
-			$this->data["msg"] = "No user selected";
-			redirect("gallery");
-		}
+			$this->fail ("No user selected");
 		$this->data["db"]["user"] = $this->load->model('user', 'get_user_by_username', $this->data);
 		if ($this->data["db"]["user"] == NULL)
-		{
-			$this->data["msg"] = "User doesn't existe";
-			redirect("gallery");
-		}
+			$this->fail ("User doesn't existe");
 		$this->data['id_user'] = $this->data["db"]["user"]['id'];
 		$this->data['db']['user_media'] =
 			$this->load->model('media', 'get_media_by_user_id', $this->data);

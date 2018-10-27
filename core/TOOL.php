@@ -32,20 +32,20 @@ function	loggued_id()
 
 function	human_date($str)
 {
+//	date_default_timezone_set($timezone_identifier );
+
 	$timestamp = strtotime($str);
 	$date = localtime($timestamp, true);
 	$now = localtime(time(), true);
 
 	if ($date["tm_year"] != $now["tm_year"])
-		echo date("M Y", $timestamp);
+		return date("M Y", $timestamp);
 	else if ($date["tm_mon"] != $now["tm_mon"])
-		echo date("j M", $timestamp);
-	else if ($date["tm_mday"] != $now["tm_mday"] && $timestamp < time() - (60 * 60 * 24))
-		echo "Yesterday " . date("D G:i", $timestamp);
+		return date("j M", $timestamp);
 	else if ($date["tm_mday"] != $now["tm_mday"])
-		echo date("D j", $timestamp);
+		return date("D j", $timestamp);
 	else
-		echo date("G:i", $timestamp);
+		return date("G:i", $timestamp);
 }
 
 function	redirect($path = "")

@@ -10,7 +10,6 @@ function check_file($file)
 	);
 	if (!isset($file['error']) || is_array($file['error']))
 		return ('Invalid parameters.');
-
 	switch ($file['error']):
 	case UPLOAD_ERR_OK:
 		break;
@@ -21,16 +20,15 @@ function check_file($file)
 		return ('Exceeded filesize limit.');
 	default:
 		return ('Unknown errors.');
-endswitch;
-if ($file['size'] > $max_size)
-	return ('Exceeded filesize limit.');
+	endswitch;
+	if ($file['size'] > $max_size)
+		return ('Exceeded filesize limit.');
 
-$finfo = new finfo(FILEINFO_MIME_TYPE);
-$ext = array_search($finfo->file($file['tmp_name']), $authorized_type, true);
-
-if ($ext === FALSE)
-	return ('Invalid file format.');
-return (TRUE);
+	$finfo = new finfo(FILEINFO_MIME_TYPE);
+	$ext = array_search($finfo->file($file['tmp_name']), $authorized_type, true);
+	if ($ext === FALSE)
+		return ('Invalid file format.');
+	return (TRUE);
 }
 
 function resize_and_fusion($dest_path, $src_path)
@@ -56,9 +54,9 @@ function resize_and_fusion($dest_path, $src_path)
 		$dest_x, $dest_y,
 		$src_x, $src_y,
 		$dest_w, $dest_h,
-		$src_w, $src_h
-	))
-	return ($dest);
+		$src_w, $src_h)
+	)
+		return ($dest);
 	return (FALSE);
 }
 

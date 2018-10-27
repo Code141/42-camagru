@@ -16,12 +16,6 @@ class login extends controller_public_only
 	{
 	}
 
-	public function last_url($params = null)
-	{
-		$_SESSION['last_url']['controller'] = $controller;
-		$_SESSION['last_url']['action'] = $action;
-		$_SESSION['last_url']['params'] = $params;
-	}
 	public function checklogin($params = null)
 	{
 		$this->data['msg'] = "Checking login...";
@@ -37,8 +31,6 @@ class login extends controller_public_only
 			if (!isset($_POST[$field]) || empty($_POST[$field]))
 				redirect("login/unset_field/" . $field);
 
-		//				htmlentities($_POST[$field]);
-
 		$this->data['username'] = stripslashes($_POST['username']);
 
 		$this->data['password_length'] = strlen($_POST['password']);
@@ -52,8 +44,7 @@ class login extends controller_public_only
 		if ($this->data['dblogin']['validated_account'] != "1")
 			redirect ('login/error/account_not_validated/');
 		$this->login();
-
-		redirect_on_last ();
+		$this->success("Loggued");
 	}
 
 	private	function	login()

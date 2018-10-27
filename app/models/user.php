@@ -35,6 +35,5 @@ class Db_user extends Model
 			return (NULL);
 		return ($user[0]);
 	}
-
 }
 

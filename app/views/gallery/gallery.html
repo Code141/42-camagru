@@ -6,7 +6,7 @@
 ?>
 	<div class="gallery_element">
 <?php
-	$url = SITE_ROOT . "media/like/" . $media["id"] . "/";
+	$url = SITE_ROOT . "like/add/" . $media["id"] . "/";
 	like_bar($media["avg_grades"], $media["nb_grades"], $url);
 ?>
 		<div id="info">
@@ -16,7 +16,7 @@
 			</a>
 			</p>
 			<p id="date">
-				<?php  human_date($media['date']);?>
+				<?php  echo human_date($media['date']);?>
 			</p>
 		</div>
 		<a href="<?php echo SITE_ROOT . "gallery/focus/" . $media['id'];?>">

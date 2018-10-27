@@ -9,6 +9,11 @@
 			<button class="header_button glyph glyph_gallery">
 			</button>
 		</a>
+<?php if (is_loggued()) { ?>
+		<a class="header_element" href="<?php echo SITE_ROOT; ?>gallery/user/">
+			<button class="header_button glyph glyph_gallery_perso"></button>
+		</a>
+<?php } ?>
 		<a class="header_element" href="<?php echo SITE_ROOT; ?>editor">
 			<button class="header_button glyph glyph_editor">
 			</button>

@@ -19,8 +19,6 @@ section#gallery:after {
 }
 
 
-
-
 div.gallery_element
 {
 	position:relative;
@@ -28,11 +26,12 @@ div.gallery_element
 	margin-left: 10px;
 	margin-right: 10px;
 	height: 238px;
+	min-width: 140px;
 }
 
-div.gallery_element img {
+div.gallery_element img
+{
 	display: block;
-	
 	width: auto;
 	height: auto;
 	max-height:200px;

@@ -69,5 +69,16 @@ class Db_likes extends model
 		$likes = $this->pdo_stm->fetchall(PDO::FETCH_ASSOC);
 		return ($likes);
 	}
+
+	function delete_likes_by_media_id(array $data = null)
+	{
+		$sql = "
+			DELETE FROM likes
+			WHERE id_media = :id_media
+		";
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindparam("id_media", $data['id_media'], PDO::PARAM_INT);
+		$this->execute_pdo();
+	}
 }
 

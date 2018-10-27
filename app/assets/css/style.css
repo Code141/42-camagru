@@ -87,7 +87,7 @@ section#wrap
 	bottom: 42px;
 	width: 100%;
 	display: flex;
-	overflow: hidden scroll;
+	overflow: hidden auto;
 }
 
 p
@@ -243,8 +243,9 @@ div#like_box
 div#like_box p.avg_grades,
 div#like_box p.nb_grades
 {
-	margin-left: 10px;
-	font-size: 20px;
+	margin-top:5px;
+	margin-left:5px;
+	font-size: 17px;
 	float:left;
 	color: #bbbbbb;
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
@@ -253,8 +254,10 @@ div#like_box p.nb_grades
 
 div#like_box p.nb_grades
 {
+	margin-left:0px;
 	float:right;
 }
+
 div#like_box div.liker a
 {
     filter:invert(70%);
