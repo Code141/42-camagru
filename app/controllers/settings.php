@@ -13,6 +13,7 @@ class settings extends controller_restricted
 	public function main($params = NULL)
 	{
 		$this->files['views']['center'] = 'settings';
+		$this->render();
 	}
 
 	public function	update_username($params = NULL)

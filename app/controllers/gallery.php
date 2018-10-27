@@ -32,6 +32,7 @@ class gallery extends controller
 
 		$this->files['views']['center'] = 'gallery/gallery';
 		$this->files['views']['footer'] = 'gallery/paging';
+		$this->render();
 	}
 
 	public function focus($params = NULL)
@@ -45,6 +46,7 @@ class gallery extends controller
 		$this->data['db']['comments'] = $this->load->model('comments', 'get_comments_by_media_id', $this->data);
 		$this->files['css'][] = 'focus';
 		$this->files['views']['center'] = 'gallery/focus';
+		$this->render();
 	}
 	
 	public function user($params = NULL)
@@ -66,5 +68,6 @@ class gallery extends controller
 			$this->load->model('media', 'get_media_by_user_id', $this->data);
 
 		$this->files['views']['center'] = 'gallery/user';
+		$this->render();
 	}
 }

@@ -14,6 +14,7 @@ class login extends controller_public_only
 
 	public function main($params = null)
 	{
+		$this->render();
 	}
 
 	public function checklogin($params = null)
@@ -64,6 +65,7 @@ class login extends controller_public_only
 		$this->data['msg'] = "forgotten password";
 		echo "forgotten password";
 		$this->files['views']['center'] = 'login/forgotten_password';
+		$this->render();
 	}
 
 	public function reset_password($params = null)
@@ -72,11 +74,13 @@ class login extends controller_public_only
 		$this->data['title'] = 'Reset password';
 		$this->data['msg'] = "Reset password";
 		$this->files['views']['center'] = 'login/reset_password';
+		$this->render();
 	}
 
 	public function restricted($params = null)
 	{
 		$this->data['error'] = "You must be logged in";
+		$this->render();
 	}
 
 	public function error($params = null)
@@ -101,6 +105,7 @@ class login extends controller_public_only
 		default:
 			$this->data['error'] = "Unknow error";
 		endswitch;
+		$this->render();
 	}
 
 }

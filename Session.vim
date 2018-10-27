@@ -13,7 +13,7 @@ badd +1 core/controller.php
 badd +2 core/loader.php
 badd +1 core/model.php
 badd +1 core/route.php
-badd +1 app/controllers/login.php
+badd +5 app/controllers/login.php
 badd +1 app/controllers/home.php
 badd +276 app/assets/css/style.css
 badd +1 app/controllers/editor.php
@@ -139,9 +139,9 @@ exe '6resize ' . ((&lines * 32 + 42) / 84)
 exe 'vert 6resize ' . ((&columns * 140 + 182) / 364)
 exe '7resize ' . ((&lines * 35 + 42) / 84)
 exe 'vert 7resize ' . ((&columns * 140 + 182) / 364)
-exe '8resize ' . ((&lines * 32 + 42) / 84)
+exe '8resize ' . ((&lines * 23 + 42) / 84)
 exe 'vert 8resize ' . ((&columns * 138 + 182) / 364)
-exe '9resize ' . ((&lines * 12 + 42) / 84)
+exe '9resize ' . ((&lines * 21 + 42) / 84)
 exe 'vert 9resize ' . ((&columns * 138 + 182) / 364)
 exe '10resize ' . ((&lines * 34 + 42) / 84)
 exe 'vert 10resize ' . ((&columns * 138 + 182) / 364)
@@ -173,12 +173,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 20 - ((19 * winheight(0) + 15) / 30)
+let s:l = 26 - ((25 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-20
-normal! 0
+26
+normal! 038|
 wincmd w
 argglobal
 if bufexists('core/TOOL.php') | buffer core/TOOL.php | else | edit core/TOOL.php | endif
@@ -191,12 +191,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 45 - ((20 * winheight(0) + 16) / 33)
+let s:l = 61 - ((21 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-45
-normal! 06|
+61
+normal! 038|
 wincmd w
 argglobal
 if bufexists('config/setup.php') | buffer config/setup.php | else | edit config/setup.php | endif
@@ -245,12 +245,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 29 - ((22 * winheight(0) + 16) / 32)
+let s:l = 16 - ((15 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-29
-normal! 033|
+16
+normal! 0
 wincmd w
 argglobal
 if bufexists('index.php') | buffer index.php | else | edit index.php | endif
@@ -263,12 +263,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 17 - ((16 * winheight(0) + 17) / 35)
+let s:l = 37 - ((24 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-17
-normal! 035|
+37
+normal! 0
 wincmd w
 argglobal
 if bufexists('core/model.php') | buffer core/model.php | else | edit core/model.php | endif
@@ -281,12 +281,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 16 - ((15 * winheight(0) + 16) / 32)
+let s:l = 2 - ((1 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-16
-normal! 025|
+2
+normal! 0
 wincmd w
 argglobal
 if bufexists('core/loader.php') | buffer core/loader.php | else | edit core/loader.php | endif
@@ -299,12 +299,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 10 - ((5 * winheight(0) + 6) / 12)
+let s:l = 1 - ((0 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-10
-normal! 024|
+1
+normal! 05|
 wincmd w
 argglobal
 if bufexists('core/controller.php') | buffer core/controller.php | else | edit core/controller.php | endif
@@ -317,11 +317,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 69 - ((20 * winheight(0) + 17) / 34)
+let s:l = 74 - ((26 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-69
+74
 normal! 0
 wincmd w
 exe '1resize ' . ((&lines * 5 + 42) / 84)
@@ -338,9 +338,9 @@ exe '6resize ' . ((&lines * 32 + 42) / 84)
 exe 'vert 6resize ' . ((&columns * 140 + 182) / 364)
 exe '7resize ' . ((&lines * 35 + 42) / 84)
 exe 'vert 7resize ' . ((&columns * 140 + 182) / 364)
-exe '8resize ' . ((&lines * 32 + 42) / 84)
+exe '8resize ' . ((&lines * 23 + 42) / 84)
 exe 'vert 8resize ' . ((&columns * 138 + 182) / 364)
-exe '9resize ' . ((&lines * 12 + 42) / 84)
+exe '9resize ' . ((&lines * 21 + 42) / 84)
 exe 'vert 9resize ' . ((&columns * 138 + 182) / 364)
 exe '10resize ' . ((&lines * 34 + 42) / 84)
 exe 'vert 10resize ' . ((&columns * 138 + 182) / 364)
@@ -374,13 +374,13 @@ wincmd w
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
 exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 43 + 42) / 84)
+exe '2resize ' . ((&lines * 40 + 42) / 84)
 exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 36 + 42) / 84)
+exe '3resize ' . ((&lines * 39 + 42) / 84)
 exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe '4resize ' . ((&lines * 19 + 42) / 84)
+exe '4resize ' . ((&lines * 21 + 42) / 84)
 exe 'vert 4resize ' . ((&columns * 85 + 182) / 364)
-exe '5resize ' . ((&lines * 19 + 42) / 84)
+exe '5resize ' . ((&lines * 17 + 42) / 84)
 exe 'vert 5resize ' . ((&columns * 85 + 182) / 364)
 exe '6resize ' . ((&lines * 40 + 42) / 84)
 exe 'vert 6resize ' . ((&columns * 85 + 182) / 364)
@@ -398,11 +398,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 40) / 80)
+let s:l = 73 - ((72 * winheight(0) + 40) / 80)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
+73
 normal! 0
 wincmd w
 argglobal
@@ -416,12 +416,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 21) / 43)
+let s:l = 60 - ((21 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+60
+normal! 05|
 wincmd w
 argglobal
 if bufexists('app/controllers/register.php') | buffer app/controllers/register.php | else | edit app/controllers/register.php | endif
@@ -434,12 +434,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 11 - ((10 * winheight(0) + 18) / 36)
+let s:l = 51 - ((9 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-11
-normal! 045|
+51
+normal! 026|
 wincmd w
 argglobal
 if bufexists('app/controllers/logout.php') | buffer app/controllers/logout.php | else | edit app/controllers/logout.php | endif
@@ -452,12 +452,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 9) / 19)
+let s:l = 5 - ((4 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
-normal! 040|
+5
+normal! 033|
 wincmd w
 argglobal
 if bufexists('app/controllers/home.php') | buffer app/controllers/home.php | else | edit app/controllers/home.php | endif
@@ -470,12 +470,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 9) / 19)
+let s:l = 8 - ((7 * winheight(0) + 8) / 17)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
-normal! 027|
+8
+normal! 09|
 wincmd w
 argglobal
 if bufexists('app/controllers/gallery.php') | buffer app/controllers/gallery.php | else | edit app/controllers/gallery.php | endif
@@ -488,12 +488,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 19 - ((18 * winheight(0) + 20) / 40)
+let s:l = 7 - ((6 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-19
-normal! 0
+7
+normal! 019|
 wincmd w
 argglobal
 if bufexists('app/controllers/editor.php') | buffer app/controllers/editor.php | else | edit app/controllers/editor.php | endif
@@ -506,12 +506,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 20 - ((18 * winheight(0) + 17) / 34)
+let s:l = 5 - ((4 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-20
-normal! 0
+5
+normal! 032|
 wincmd w
 argglobal
 if bufexists('app/controllers/settings.php') | buffer app/controllers/settings.php | else | edit app/controllers/settings.php | endif
@@ -524,21 +524,22 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 45)
+let s:l = 5 - ((4 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+5
+normal! 032|
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 43 + 42) / 84)
+exe '2resize ' . ((&lines * 40 + 42) / 84)
 exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 36 + 42) / 84)
+exe '3resize ' . ((&lines * 39 + 42) / 84)
 exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe '4resize ' . ((&lines * 19 + 42) / 84)
+exe '4resize ' . ((&lines * 21 + 42) / 84)
 exe 'vert 4resize ' . ((&columns * 85 + 182) / 364)
-exe '5resize ' . ((&lines * 19 + 42) / 84)
+exe '5resize ' . ((&lines * 17 + 42) / 84)
 exe 'vert 5resize ' . ((&columns * 85 + 182) / 364)
 exe '6resize ' . ((&lines * 40 + 42) / 84)
 exe 'vert 6resize ' . ((&columns * 85 + 182) / 364)
@@ -570,12 +571,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 40) / 80)
+let s:l = 5 - ((4 * winheight(0) + 40) / 80)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+5
+normal! 032|
 lcd ~/cursus/camagru
 wincmd w
 argglobal
@@ -589,12 +590,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 41 - ((40 * winheight(0) + 40) / 80)
+let s:l = 5 - ((4 * winheight(0) + 40) / 80)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-41
-normal! 0
+5
+normal! 032|
 lcd ~/cursus/camagru
 wincmd w
 argglobal
@@ -608,15 +609,14 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 51 - ((50 * winheight(0) + 40) / 80)
+let s:l = 5 - ((4 * winheight(0) + 40) / 80)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-51
-normal! 027|
+5
+normal! 032|
 lcd ~/cursus/camagru
 wincmd w
-3wincmd w
 exe 'vert 1resize ' . ((&columns * 121 + 182) / 364)
 exe 'vert 2resize ' . ((&columns * 120 + 182) / 364)
 exe 'vert 3resize ' . ((&columns * 121 + 182) / 364)
@@ -681,12 +681,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 32 - ((16 * winheight(0) + 19) / 39)
+let s:l = 48 - ((32 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-32
-normal! 021|
+48
+normal! 0
 lcd ~/cursus/camagru
 wincmd w
 argglobal
@@ -1157,11 +1157,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 16 - ((15 * winheight(0) + 26) / 52)
+let s:l = 17 - ((16 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-16
+17
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
@@ -1432,11 +1432,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 17 - ((16 * winheight(0) + 29) / 59)
+let s:l = 18 - ((17 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-17
+18
 normal! 05|
 lcd ~/cursus/camagru
 wincmd w
@@ -1489,12 +1489,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 67 - ((9 * winheight(0) + 13) / 26)
+let s:l = 68 - ((10 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-67
-normal! 055|
+68
+normal! 037|
 lcd ~/cursus/camagru
 wincmd w
 argglobal
@@ -1739,11 +1739,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 62 - ((25 * winheight(0) + 20) / 40)
+let s:l = 58 - ((20 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-62
+58
 normal! 049|
 lcd ~/cursus/camagru
 wincmd w
@@ -1777,12 +1777,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((7 * winheight(0) + 15) / 30)
+let s:l = 7 - ((6 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
-normal! 050|
+7
+normal! 017|
 lcd ~/cursus/camagru
 wincmd w
 argglobal
@@ -1796,12 +1796,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 20 - ((10 * winheight(0) + 12) / 24)
+let s:l = 56 - ((18 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-20
-normal! 064|
+56
+normal! 057|
 lcd ~/cursus/camagru
 wincmd w
 argglobal
@@ -2014,11 +2014,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 28 - ((27 * winheight(0) + 19) / 38)
+let s:l = 29 - ((28 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-28
+29
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
@@ -2309,12 +2309,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 29 - ((28 * winheight(0) + 23) / 46)
+let s:l = 28 - ((27 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-29
-normal! 056|
+28
+normal! 0
 lcd ~/cursus/camagru
 wincmd w
 argglobal
@@ -2465,7 +2465,7 @@ exe '7resize ' . ((&lines * 50 + 42) / 84)
 exe 'vert 7resize ' . ((&columns * 109 + 182) / 364)
 exe '8resize ' . ((&lines * 14 + 42) / 84)
 exe 'vert 8resize ' . ((&columns * 109 + 182) / 364)
-tabnext 3
+tabnext 2
 if exists('s:wipebuf') && s:wipebuf != bufnr('%')
   silent exe 'bwipe ' . s:wipebuf
 endif

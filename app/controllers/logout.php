@@ -2,7 +2,7 @@
 
 class logout extends controller
 {
-	public function __construct($params = NULL)
+	public function __construct()
 	{
 		parent::__construct();
 
