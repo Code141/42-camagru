@@ -10,7 +10,6 @@ require_once(CORE_PATH . 'controller.php');
 require_once(CORE_PATH . 'TOOL.php');
 
 
-
 $load = new Loader();
 
 $loaded_controller = $load->controller($request['controller']);

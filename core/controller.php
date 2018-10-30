@@ -29,9 +29,6 @@ class controller
 		$this->prompter = array(
 			"success" => "",
 			"fail" => "");
-//		$this->prompter['success'] = "Voici un test de success !";
-//		$this->prompter['fail'] = "Voici un test de fail !";
-		$this->data['msg'] = "";
 		$this->files['js'][] = 'init';
 	}
 

@@ -6,14 +6,14 @@ class settings extends controller_restricted
 	{
 		parent::__construct();
 
-		$this->data['title'] = 'Settings';
-		$this->files['css'][] = 'settings';
 	}
 
 	public function main($params = NULL)
 	{
-		$this->files['views']['center'] = 'settings';
 
+		$this->data['title'] = 'Settings';
+		$this->files['css'][] = 'settings';
+		$this->files['views']['center'] = 'settings';
 		$this->render();
 	}
 

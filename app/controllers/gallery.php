@@ -6,9 +6,6 @@ class gallery extends controller
 	{
 		parent::__construct();
 
-		$this->data['title'] = "Gallery";
-		$this->files['css'][] = 'gallery';
-		$this->files['css'][] = 'paging';
 	}
 
 	public function main($params = NULL)
@@ -25,10 +22,11 @@ class gallery extends controller
 		$this->data['start'] = ($this->data['paging'] - 1) * $this->data['offset'];
 		$this->data['db']['all_media'] = $this->load->model('media', 'get_media_from_to', $this->data);
 
-		$this->data['title'] = 'Home - Gal';
+		$this->data['title'] = "Gallery";
+		$this->files['css'][] = 'gallery';
+		$this->files['css'][] = 'paging';
 		$this->files['views']['center'] = 'gallery/gallery';
 		$this->files['views']['footer'] = 'gallery/paging';
-
 		$this->render();
 	}
 
@@ -42,9 +40,11 @@ class gallery extends controller
 			$this->fail ("Media Error");
 		$this->data['db']['comments'] = $this->load->model('comments', 'get_comments_by_media_id', $this->data);
 
+		$this->data['title'] = "Gallery";
+		$this->files['css'][] = 'gallery';
 		$this->files['css'][] = 'focus';
+		$this->files['css'][] = 'paging';
 		$this->files['views']['center'] = 'gallery/focus';
-
 		$this->render();
 	}
 	
@@ -64,9 +64,10 @@ class gallery extends controller
 			$this->load->model('media', 'get_media_by_user_id', $this->data);
 
 		$this->data['title'] = 'User';
+		$this->files['css'][] = 'gallery';
 		$this->files['css'][] = 'user';
+		$this->files['css'][] = 'paging';
 		$this->files['views']['center'] = 'gallery/user';
-
 		$this->render();
 	}
 }
