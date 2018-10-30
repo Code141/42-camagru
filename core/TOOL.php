@@ -63,7 +63,7 @@ function	redirect_on_last ()
 	$params = "";
 	if (isset($_SESSION['last_url']['params']))
 		$params = implode('/', $_SESSION['last_url']['params']);
-	redirect ($_SESSION['last_url']['controller']
+			redirect ($_SESSION['last_url']['controller']
 			. '/' .
 			$_SESSION['last_url']['action']
 			. '/' .

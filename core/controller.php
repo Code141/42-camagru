@@ -8,6 +8,9 @@ class controller
 		"css" => array(),
 		"js" => array()
 	);
+	public $prompter = array(
+		"success" => "",
+		"fail" => "");
 
 	public function __construct()
 	{
@@ -23,13 +26,18 @@ class controller
 			"css" => array(),
 			"js" => array()
 		);
+		$this->prompter = array(
+			"success" => "",
+			"fail" => "");
+//		$this->prompter['success'] = "Voici un test de success !";
+//		$this->prompter['fail'] = "Voici un test de fail !";
 		$this->data['msg'] = "";
 		$this->files['js'][] = 'init';
 	}
 
 	protected function load_view($file)
 	{
-		require(APP_PATH.'views/'.$file.'.html');
+		require(APP_PATH . 'views/' . $file . '.html');
 	}
 
 	private function protect_html_injection(array $data)
@@ -41,7 +49,7 @@ class controller
 				$data[$key] = $this->protect_html_injection($value);
 			else
 				$data[$key] = $value;
-			return ($data);
+		return ($data);
 	}
 
 	protected function	render()
@@ -55,7 +63,7 @@ class controller
 					$this->load_view($filename);
 	}
 
-	protected function last_url()
+	protected function save_url()
 	{
 		$_SESSION['last_url']['controller'] = $controller;
 		$_SESSION['last_url']['action'] = $action;
@@ -85,29 +93,40 @@ class controller
 	{
 		$this->reset_controller();
 		$this->data['title'] = "Error 404";
-		$this->data['error_404'] = "Page not found";
 		$this->files['views']['center'] = '404';
 		http_response_code(404);
 		$this->render();
 	}
 
-	protected function fail($msg = "Fail for unknow reason")
+	protected function fail($msg = NULL, $action = NULL, $controller = NULL, $params = NULL)
 	{
-		$this->reset_controller();
-		$this->data['title'] = "Fail";
-		$this->data['msg'] = $msg;
-		$this->files['views']['center'] = 'msg';
-		redirect_on_last();
+		if ($msg === NULL)
+			$msg = "Fail for unknow reason";
+		if ($action == NULL)
+			$action = $_SESSION['last_url']['action'];
+		if ($controller == NULL)
+			$controller = $_SESSION['last_url']['controller'];
+		if ($params == NULL)
+			$params = $_SESSION['last_url']['params'];
+		$controller = $this->load->controller($controller, $action);
+		$controller->prompter['fail'] = $msg;
+		$controller->$action($params);
 		die ();
 	}
 
-	protected function success($msg = "Success")
+	protected function success($msg = NULL, $action = NULL, $controller = NULL, $params = NULL)
 	{
-		$this->reset_controller();
-		$this->data['title'] = "Success";
-		$this->data['msg'] = $msg;
-		$this->files['views']['center'] = 'msg';
-		redirect_on_last();
+		if ($msg === NULL)
+			$msg = "Success";
+		if ($action == NULL)
+			$action = $_SESSION['last_url']['action'];
+		if ($controller == NULL)
+			$controller = $_SESSION['last_url']['controller'];
+		if ($params == NULL)
+			$params = $_SESSION['last_url']['params'];
+		$controller = $this->load->controller($controller, $action);
+		$controller->prompter['success'] = $msg;
+		$controller->$action($params);
 		die ();
 	}
 
@@ -120,11 +139,9 @@ class controller_restricted extends controller
 {
 	public function __construct()
 	{
-		$this->data['msg'] = "You must be logged in !";
+		parent::__construct();
 		if (!is_loggued())
-			redirect('login/restricted');
-		else
-			parent::__construct();
+			$this->fail("You must be loggued in", "main", "login");
 	}
 }
 
@@ -132,10 +149,8 @@ class controller_public_only extends controller
 {
 	public function __construct()
 	{
-		$this->data['msg'] = "You are already loggued";
+		parent::__construct();
 		if (is_loggued())
-			redirect('settings');
-		else
-			parent::__construct();
+			$this->fail("You are already loggued", "main", "settings");
 	}
 }

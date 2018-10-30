@@ -2,18 +2,31 @@
 
 class Loader
 {
-	public function model($controller, $model, $params = NULL)
+	public function controller($controller)
 	{
-		require_once(APP_PATH . 'models/' . $controller . '.php');
-		$calledmodel = 'Db_' . $controller;
-		$this->pdo = new $calledmodel();
-		return($this->pdo->$model($params));
+		if (is_readable(APP_PATH.'controllers/' . $controller . '.php'))
+			require_once(APP_PATH.'controllers/' . $controller . '.php');
+		else
+			$controller = "controller";
+
+		if (!class_exists($controller))
+			$controller = "controller";
+		return (new $controller());
+	}
+
+	public function model($model_file, $model, $params = NULL)
+	{
+		require_once(APP_PATH . 'models/' . $model_file . '.php');
+		$calledmodel = 'Db_' . $model_file;
+		$pdo = new $calledmodel();
+		return($pdo->$model($params));
 	}
 
 	public function script($type, $file, array $data = NULL)
 	{
-		require(APP_PATH . 'script/' . $type . '/' . $file . '.' . $type);
+		require_once(APP_PATH . 'script/' . $type . '/' . $file . '.' . $type);
 		return ($data);
 	}
+
 }
 

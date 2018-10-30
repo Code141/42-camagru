@@ -33,6 +33,7 @@ class comment extends controller_restricted
 	{
 		if (!isset($params[0]))
 			$this->fail("Comment invalid");
+
 		$this->data['id_comment'] = intval($params[0]);
 		$comment = $this->load->model('comments', 'get_comment_by_id', $this->data);
 		if ($comment == NULL)
@@ -40,6 +41,7 @@ class comment extends controller_restricted
 		if ($comment['id_user'] != loggued_id())
 			$this->fail("This comment is not your property !");
 		$this->load->model('comments', 'delete_comment_by_id', $this->data);
+
 		$this->success("Comment deleted !");
 	}
 

@@ -13,6 +13,7 @@ class settings extends controller_restricted
 	public function main($params = NULL)
 	{
 		$this->files['views']['center'] = 'settings';
+
 		$this->render();
 	}
 
@@ -20,13 +21,15 @@ class settings extends controller_restricted
 	{
 		$this->load->script('php', 'login');
 		if (!isset($_POST["username"]))
-			$this->fail ("Username is unset");
+			$this->fail ("Username is unset", "main");
 		$this->data['new_username'] = $_POST['username'];
 		if (($err = check_username($this->data['new_username'])) !== TRUE)
-			$this->fail ("Updating username failed : " . $err);
+			$this->fail("Updating username failed : " . $err, "main");
+
 		$this->load->model('settings', 'update_username', $this->data);
 		$_SESSION['user']['username'] = $this->data['new_username'];
-		$this->success("Username updated");
+
+		$this->success("Username updated", "main");
 	}
 
 	public function	update_email($params = NULL)
@@ -41,7 +44,8 @@ class settings extends controller_restricted
 		$this->load->model('settings', 'update_email', $this->data);
 		// CONFIRMATION MAIL REQUIRED
 		$_SESSION['user']['email'] = $email;
-		$this->success("Email updated");
+
+		$this->success("Email updated", "main", "settings");
 	}
 
 	public function	update_password($params = NULL)
@@ -54,13 +58,13 @@ class settings extends controller_restricted
 			$this->fail ("Re-typed password is unset");
 		$password = $_POST['password'];
 		$passwordbis = $_POST['passwordbis'];
-		$this->files['views']['center'] = 'msg';
 		if (($err = check_password($password, $passwordbis)) !== TRUE)
 			$this->fail ($err);
 		$this->data['new_password'] = hash_password($password);
 		$this->load->model('settings', 'update_password', $this->data);
 		$_SESSION['user']['password_length'] = strlen($password);
-		$this->success("Password updated");
+
+		$this->success("Password updated", "main", "settings");
 	}
 
 	public function	update_notifications($params = NULL)
@@ -81,7 +85,7 @@ class settings extends controller_restricted
 		$_SESSION['user']['n_like'] = $this->data["n_like"];
 		$_SESSION['user']['n_comm'] = $this->data["n_comm"];
 		$_SESSION['user']['n_msg'] = $this->data["n_msg"];
-		$this->success("Notifications updated");
-	}
 
+		$this->success("Notifications updated", "main", "settings");
+	}
 }

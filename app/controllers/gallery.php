@@ -13,25 +13,22 @@ class gallery extends controller
 
 	public function main($params = NULL)
 	{
-
 		$this->data['offset'] = 30;
-		$this->data['title'] = 'Home - Gal';
-
-		$page = intval($params['0']);
+		$page = 0;
+		if (isset($_GET['page']))
+			$page = intval($_GET['page']);
 		$this->data['paging'] = ($page < 1) ? 1 : $page;
-
 		$nb_media = $this->load->model('media', 'count_media', $this->data);
-
 		$this->data['paging_max'] = ceil($nb_media / $this->data['offset']);
-
 		if ((($this->data['paging']) * $this->data['offset']) > $nb_media)
 			$this->data['paging'] = $this->data['paging_max'];
-
 		$this->data['start'] = ($this->data['paging'] - 1) * $this->data['offset'];
 		$this->data['db']['all_media'] = $this->load->model('media', 'get_media_from_to', $this->data);
 
+		$this->data['title'] = 'Home - Gal';
 		$this->files['views']['center'] = 'gallery/gallery';
 		$this->files['views']['footer'] = 'gallery/paging';
+
 		$this->render();
 	}
 
@@ -44,16 +41,15 @@ class gallery extends controller
 		if (!$this->data["media"])
 			$this->fail ("Media Error");
 		$this->data['db']['comments'] = $this->load->model('comments', 'get_comments_by_media_id', $this->data);
+
 		$this->files['css'][] = 'focus';
 		$this->files['views']['center'] = 'gallery/focus';
+
 		$this->render();
 	}
 	
 	public function user($params = NULL)
 	{
-		$this->data['title'] = 'User';
-		$this->files['css'][] = 'user';
-
 		if (isset($params[0]))
 			$this->data['username'] = $params[0];
 		else if (is_loggued())
@@ -67,7 +63,10 @@ class gallery extends controller
 		$this->data['db']['user_media'] =
 			$this->load->model('media', 'get_media_by_user_id', $this->data);
 
+		$this->data['title'] = 'User';
+		$this->files['css'][] = 'user';
 		$this->files['views']['center'] = 'gallery/user';
+
 		$this->render();
 	}
 }

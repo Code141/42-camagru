@@ -18,10 +18,10 @@ define('CORE_PATH', SERVER_ROOT.'core/');
 define('CONFIG_PATH', SERVER_ROOT.'config/');
 define('APP_PATH', SERVER_ROOT.'app/');
 
-define('CSS_PATH', '/camagru/app/assets/css/');
-define('IMG_PATH', '/camagru/app/assets/img/');
-define('MEDIA_PATH', '/camagru/app/assets/media/');
-define('JS_PATH', '/camagru/app/script/js/');
+define('CSS_PATH', SITE_ROOT . 'app/assets/css/');
+define('IMG_PATH', SITE_ROOT . 'app/assets/img/');
+define('MEDIA_PATH', SITE_ROOT . 'app/assets/media/');
+define('JS_PATH', SITE_ROOT . 'app/script/js/');
 
 //--------------------ROUTE PAR DEFAUT
 

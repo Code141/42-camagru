@@ -5,6 +5,8 @@ AddHandler application/x-httpd-php .html .htm
 # REGLER LE NOT FOUND SUR DES CSS JS JPG ........
 
 RewriteEngine On
-RewriteCond $1 !\.(css|php|js|jpg|png|ttf)
-RewriteRule ^(.*)$ index.php/$1	[L]
+#RewriteCond $1 !\.(css|php|js|jpg|png|ttf)
+#RewriteRule ^(.*)$ index.php/$1	[L]
+
+RewriteRule !(css|js|jpg|png|ttf)$ index.php	[L]
 

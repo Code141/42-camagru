@@ -24,7 +24,8 @@ class media extends controller_restricted
 				$this->fail("Can't create thumb " . $media['id']);
 			imagepng($thumb, $target_thumb);
 		}
-		$this->success("Thumbs regenerated !");
+
+		$this->success("All thumbs regenerated !");
 	}
 
 	public function add($params = NULL)
@@ -56,6 +57,7 @@ class media extends controller_restricted
 		$target_thumb = $filepath . "thumbs/" . $filename;
 		imagepng($new_pic, $target);
 		imagepng($thumb, $target_thumb);
+
 		$this->success("Image correctly treated");
 	}
 
@@ -78,6 +80,7 @@ class media extends controller_restricted
 			unlink($filepath . "thumbs/" . $filename);
 		$this->load->model('likes', 'delete_likes_by_media_id', $this->data);
 		$this->load->model('comments', 'delete_comments_by_media_id', $this->data);
+
 		$this->success("Media deleted");
 	}
 }

@@ -96,6 +96,57 @@ p
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
 }
 
+@keyframes slideInFromLeft {
+	0% {
+		top: 0%;
+	}
+	10% {
+		top: 100px;
+	}
+	50% {
+		top: 100px;
+	}
+	90% {
+		top: 100px;
+	}
+	100% {
+		top: 0%;
+	}
+}
+
+section#prompter div
+{
+	position: absolute;
+	left: 50%;
+	top: 0px;
+	transform: translate(-50%, -50%); 
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+	font-size: 20px;
+	font-weight: bolder;
+	animation: 5s ease-out 0s 1 slideInFromLeft;
+	border-radius: 10px;
+	padding: 10px;
+	box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7),
+	inset 15px 15px 15px rgba(0, 0, 0, 0.5);
+	border-width: 3px;
+	border-style: solid;
+}
+
+section#prompter div.success
+{
+	background-color: rgba(0, 128, 0, 1);
+	border-color: rgba(0, 255, 0, 1);
+	color: rgba(0, 255, 0, 1);
+}
+
+section#prompter div.fail
+{
+	background-color: rgba(128, 0, 0, 1);
+	border-color: rgba(255, 0, 0, 1);
+	color: rgba(255, 0, 0, 1);
+}
+
+
 /*------------------------------------*/
 
 .cadre
@@ -109,6 +160,7 @@ p
 	border: 2px solid red;
 	box-shadow: inset 0px 0px 150px rgba(255, 0, 0, 0.3);
 }
+
 .center
 {
 	position: sticky;
@@ -260,7 +312,7 @@ div#like_box p.nb_grades
 
 div#like_box div.liker a
 {
-    filter:invert(70%);
+	filter:invert(70%);
 	display: block;
 	width: 12px;
 	height: 24px;

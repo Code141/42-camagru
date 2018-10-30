@@ -9,31 +9,17 @@ require_once(CORE_PATH . 'loader.php');
 require_once(CORE_PATH . 'controller.php');
 require_once(CORE_PATH . 'TOOL.php');
 
-if (is_readable(APP_PATH.'controllers/' . $controller . '.php'))
-{
-	require_once(APP_PATH.'controllers/' . $controller . '.php');
-	if (!class_exists($controller))
-	{
-		$controller = "controller";
-		$action = "error_404";
-	}
-}
+
+
+$load = new Loader();
+
+$loaded_controller = $load->controller($request['controller']);
+
+$classes = preg_grep("/^(?!__).+/", get_class_methods($loaded_controller));
+if (array_search($request['action'], $classes) === FALSE)
+	$action = "error_404";
 else
-{
-	$controller = "controller";
-	$action = "error_404"; 
-}
+	$action = $request['action'];
 
+$loaded_controller->$action($request['params']);
 
-
-$classes =  get_class_methods($controller);
-$classes = preg_grep("/^(?!__).+/", $classes);
-
-if (array_search($action, $classes) === FALSE)
-{
-	$controller = "controller";
-	$action = "error_404"; 
-}
-
-$targetController = new $controller();
-$targetController->$action($params);

@@ -6,7 +6,6 @@ class logout extends controller
 	{
 		parent::__construct();
 
-		$this->data['title'] = "logout";
 	}
 
 	public function main($params = NULL)
@@ -14,9 +13,6 @@ class logout extends controller
 		$_SESSION['user'] = NULL;
 		$_SESSION = array();
 		session_destroy();
-
-		$this->data['msg'] = "Login out";
-		$this->files['views']['center'] = 'msg';
-		redirect('');
+		$this->success("You correctly loggued out", "main", "home");
 	}
 }

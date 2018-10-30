@@ -1,38 +1,30 @@
 <?php
 
-function	check_info()
+function	login($user)
 {
-	$register_fields = array(
-		"email",
-		"password",
-		"passwordbis",
-		"username"
-		);
-	foreach ($register_fields as $field)
-		if (!isset($_POST[$field]) || empty($_POST[$field]))
-			redirect('register/error/unset_field/' . $field);
-		else
-			$cleaned_data[$field] = htmlspecialchars($_POST[$field]);
-
-	if (($err = check_password($cleaned_data['password'], $cleaned_data['passwordbis'])) !== TRUE)
-		redirect ('register/error/' . $err);
-
-	return ($cleaned_data);
+	$_SESSION['user']['id'] = $user['id'];
+	$_SESSION['user']['email'] = $user['email'];
+	$_SESSION['user']['password_length'] = $user['password_length'];
+	$_SESSION['user']['username'] = $user['username'];
+	$_SESSION['user']['n_like'] = $user['notif_like'];
+	$_SESSION['user']['n_comment'] = $user['notif_comment'];
+	$_SESSION['user']['n_message'] = $user['notif_message'];
 }
 
 function	check_password($password, $passwordbis)
 {
+	$password_len = strlen($password);
 	if ($password != $passwordbis)
-		return ('password_doesnt_match');
-	if (strlen($password) < 8)
-		return ('password_too_short');
-	if (strlen($password) > 50)
-		return ('password_too_long');
+		return ("Password and retyped password doesn't match");
+	if ($password_len < 8)
+		return ("Password too short");
+	if ($password_len > 50)
+		return ("Password too long");
 	if (!preg_match('/[A-Z]/', $password)
 		|| !preg_match('/[a-z]/', $password)
 		|| !preg_match('/[0-9]/', $password)
 		|| !preg_match('/@|!|\.|,|-|_/', $password))
-		return ('password_too_easy');
+		return ('Password too easy. It must contain uppercase, lowercase, number, and special charactere like ( @ ! - _ , . )');
 	return (TRUE);
 }
 
@@ -47,31 +39,30 @@ function	hash_password($password)
 function	check_email($email)
 {
 	if (empty($email))
-		return ("empty_email");
+		return ("Empty email");
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-		return ("invalid_email");
+		return ("Invalid email");
 	$load = new Loader();
 	$data['email'] = $email;
 	$nb = $load->model('register', 'count_user_by_email', $data);
 	if ($nb !== 0)
-		return ('username_taken');
+		return ('Email taken');
 	return (TRUE);
 }
 
 function	check_username($username)
 {
 	if (strlen($username) < 3)
-		return ('username_too_short');
+		return ('Username too short');
 	if (strlen($username) > 30)
-		return ('username_too_long');
+		return ('Username too long');
 	if (!preg_match("/^[a-zA-Z0-9_\-\.]+$/", $username))
-		return ('username_bad_char');
-
+		return ('Username characters can be min, maj, number, underscore, dash, or dot, noting else');
 	$load = new Loader();
 	$data['username'] = $username;
 	$nb = $load->model('register', 'count_user_by_username', $data);
 	if ($nb !== 0)
-		return ('username_taken');
+		return ('Username taken');
 	return (TRUE);
 }
 

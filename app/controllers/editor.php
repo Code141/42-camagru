@@ -25,6 +25,7 @@ class editor extends controller_restricted
 		$this->files['views']['left'] = 'editor/left_side';
 		$this->files['views']['center'] = 'editor/editor';
 		$this->files['views']['right'] = 'editor/right_side';
+
 		$this->render();
 	}
 }

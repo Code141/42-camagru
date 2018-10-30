@@ -1,0 +1,15 @@
+<?php if (!empty($this->prompter['success']) || !empty($this->prompter['fail'])) { ?>
+<section id="prompter">
+<?php if (!empty($this->prompter['success'])) { ?>
+	<div class="success">
+		<?php echo $this->prompter['success'];?>
+
+	</div>
+<?php } else { ?>
+	<div class="fail">
+		<?php echo $this->prompter['fail'];?>
+
+	</div>
+<?php } ?>
+</section>
+<?php } ?>
