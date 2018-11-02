@@ -57,7 +57,6 @@ class media extends controller_restricted
 		$target_thumb = $filepath . "thumbs/" . $filename;
 		imagepng($new_pic, $target);
 		imagepng($thumb, $target_thumb);
-
 		$this->success("Image correctly treated");
 	}
 

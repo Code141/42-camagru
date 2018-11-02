@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 require_once('config/config.php');
@@ -21,4 +22,6 @@ else
 	$action = $request['action'];
 
 $loaded_controller->$action($request['params']);
+
+
 

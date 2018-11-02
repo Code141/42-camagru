@@ -3,6 +3,6 @@
 		MSG
 	</h1>
 	<p>
-		<?php echo $this->data['msg']; ?>
+		<?php if(!empty($this->data['msg']))echo $this->data['msg']; ?>
 	</p>
 </section>

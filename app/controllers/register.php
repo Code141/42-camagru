@@ -30,6 +30,7 @@ class register extends controller_public_only
 
 	public function checksingup($params = NULL)
 	{
+
 		$this->load->script('php', 'login');
 		$register_fields = array( "email", "password", "passwordbis", "username");
 		foreach ($register_fields as $field)
@@ -46,11 +47,30 @@ class register extends controller_public_only
 			$this->fail($err, "main", "register");
 		if (($err = check_username($this->data['register']['username'])) !== TRUE)
 			$this->fail($err, "main", "register");
+
+		$this->data['register']['token'] = hash('whirlpool', uniqid());
 		$this->load->model('register', 'register', $this->data['register']);
 		$this->load->script('php', 'mail', $this->data);
-		email_validator($this->data['register']);
+		if (($err = email_validator($this->data['register'])) !== TRUE)
+			$this->fail($err, "main", "register");
+		$this->success("You succesfully registered", "register_success", "register");
+	}
 
-		$this->success($err, "register_success", "register");
+	public function validate_email($params = NULL)
+	{
+		if (empty($params[0]) || empty($params[1]))
+			$this->fail("Can't validate mail", "main", "home");
+		$this->data['email'] = $params[0];
+		$this->data['token'] = $params[1];
+		$this->data['user'] = $this->load->model('register', 'get_user_by_mail', $this->data);
+		if ($this->data['user'] === NULL)
+			$this->fail("Unknow mail", "main", "home");
+		if ($this->data['user']['validated_account'] == "TRUE")
+			$this->success("Account already valided", "main", "login");
+		if ($this->data['user']['validated_account'] !== $this->data['token'])
+			$this->fail("Bad token", "main", "home");
+		$this->load->model('register', 'validate_account', $this->data);
+		$this->success("Mail validated, you can log now", "main", "login");
 	}
 }
 

@@ -22,6 +22,7 @@ class login extends controller_public_only
 		$this->files['css'][] = 'login';
 		$this->files['views']['center'] = 'login/forgotten_password';
 		$this->files['views']['footer'] = 'login/footer';
+
 		$this->render();
 	}
 
@@ -53,7 +54,7 @@ class login extends controller_public_only
 			$this->fail("Unknow user", "main", "login");
 		if ($this->data['encrypted_password'] != $this->data['user']['password'])
 			$this->fail("Bad password", "main", "login");
-		if ($this->data['user']['validated_account'] != "1")
+		if ($this->data['user']['validated_account'] != "TRUE")
 			$this->fail("Account not validated", "main", "login");
 		login($this->data['user']);
 		$this->success("Loggued");

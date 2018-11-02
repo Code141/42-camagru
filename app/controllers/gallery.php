@@ -45,6 +45,7 @@ class gallery extends controller
 		$this->files['css'][] = 'focus';
 		$this->files['css'][] = 'paging';
 		$this->files['views']['center'] = 'gallery/focus';
+		$this->files['views']['right'] = 'gallery/focus_right';
 		$this->render();
 	}
 	

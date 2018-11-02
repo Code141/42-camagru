@@ -40,7 +40,7 @@ function	check_email($email)
 {
 	if (empty($email))
 		return ("Empty email");
-	if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+	if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE)
 		return ("Invalid email");
 	$load = new Loader();
 	$data['email'] = $email;

@@ -27,14 +27,12 @@ function xhr_upload(blobOrFile, html_img)
 	var formData = new FormData();
 
 	masks_id = document.forms.mask.masks.value;
-	console.log("GET" + masks_id);
+
 	formData.append("masks", masks_id);
 	formData.append("img", blobOrFile);
 
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', '/camagru/media/add?is_ajax=1', true);
-
-	// xhr.onload = function(e) { ... };
 
 	xhr.upload.onprogress = function(e) {
 		if (e.lengthComputable) {
@@ -45,11 +43,11 @@ function xhr_upload(blobOrFile, html_img)
 
 	xhr.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
-			alert ("IS CONNECTED ? CHECK REPONSE MSG FORM SERV");
 			if (this.status === 200)
 			{
 				html_img.className = "";
-				console.log("Réponse reçue: %s", this.responseText);
+				var response = JSON.parse(this.responseText);
+				prompter_display(response.prompter);
 			}
 			else
 			{

@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-
 	<meta charset="UTF-8">
 	<title>
 		<?php if (!empty($this->data['title'])) { echo $this->data['title'] . " - ";}?>CAMAGRU
@@ -10,7 +9,6 @@
 <?php foreach($this->files['css'] as $filename) { ?>
 	<link rel="stylesheet" href="<?php echo CSS_PATH . $filename; ?>.css">
 <?php } ?>
-
 <script>
 </script>
 
@@ -33,6 +31,7 @@ if (isset($this->files['views']['right']))
 <?php foreach($this->files['js'] as $filename) { ?>
 	<script src="<?php echo JS_PATH . $filename;?>.js" type="text/javascript"></script>
 <?php } ?>
+
 <?php $this->load_view('prompter'); ?>
 
 </body>

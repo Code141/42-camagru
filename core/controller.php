@@ -49,16 +49,6 @@ class controller
 		return ($data);
 	}
 
-	protected function	render()
-	{
-		$this->data = $this->protect_html_injection($this->data);
-		if (!is_ajax_query())
-			$this->html_encapsulation();
-		else
-			if (isset($this->files['views']) || !empty($this->files['views']))
-				foreach($this->files['views'] as $filename)
-					$this->load_view($filename);
-	}
 
 	protected function save_url()
 	{
@@ -67,7 +57,36 @@ class controller
 		$_SESSION['last_url']['params'] = $params;
 	}
 
-	private function html_encapsulation()
+	protected function	render()
+	{
+		$this->data = $this->protect_html_injection($this->data);
+		if (is_ajax_query())
+			$this->ajax_render();
+		else
+			$this->regular_render();
+	}
+
+	private function ajax_render()
+	{
+		foreach($this->files['views'] as $key => $filename)
+		{
+			ob_start();
+			$this->load_view($filename);
+			$html_file =  ob_get_contents();
+			$html_file = str_replace(array("\t", "\r", "\n"), "", $html_file);
+			$html[$key] = $html_file;
+			ob_clean();
+		}
+		$data = array(
+			"prompter" => $this->prompter,
+			"html" => $html
+		);
+		$json_response = json_encode($data);
+		header("Content-Type: application/json");
+		echo ($json_response);
+	}
+
+	private function regular_render()
 	{
 		$basic_css[] = 'reset';
 		$basic_css[] = 'style';
@@ -99,13 +118,15 @@ class controller
 	{
 		if ($msg === NULL)
 			$msg = "Fail for unknow reason";
+
 		if ($action == NULL)
 			$action = $_SESSION['last_url']['action'];
 		if ($controller == NULL)
 			$controller = $_SESSION['last_url']['controller'];
 		if ($params == NULL)
 			$params = $_SESSION['last_url']['params'];
-		$controller = $this->load->controller($controller, $action);
+
+		$controller = $this->load->controller($controller);
 		$controller->prompter['fail'] = $msg;
 		$controller->$action($params);
 		die ();
@@ -121,7 +142,8 @@ class controller
 			$controller = $_SESSION['last_url']['controller'];
 		if ($params == NULL)
 			$params = $_SESSION['last_url']['params'];
-		$controller = $this->load->controller($controller, $action);
+
+		$controller = $this->load->controller($controller);
 		$controller->prompter['success'] = $msg;
 		$controller->$action($params);
 		die ();

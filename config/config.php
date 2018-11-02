@@ -13,6 +13,7 @@ define('APP_NAME', 'camagru');
 
 define('SERVER_ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 define('SITE_ROOT', '/camagru/');
+define('SITE_ABSOLUTE', $_SERVER['HTTP_HOST'] . SITE_ROOT);
 
 define('CORE_PATH', SERVER_ROOT.'core/');
 define('CONFIG_PATH', SERVER_ROOT.'config/');

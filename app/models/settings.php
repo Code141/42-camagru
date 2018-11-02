@@ -37,7 +37,7 @@ class Db_settings extends Model
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
 		$this->pdo_stm->bindParam("new_email", $data['new_email'], PDO::PARAM_STR);
-		$this->pdo_stm->bindParam("user_id", $_SESSION['user']['id'], PDO::PARAM_INT);
+		$this->pdo_stm->bindParam("user_id", loggued_id(), PDO::PARAM_INT);
 		$this->execute_pdo();
 	}
 

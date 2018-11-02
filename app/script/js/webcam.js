@@ -1,17 +1,15 @@
+function	active_webcam()
+{
+
+	/*
 function isValidForm()
 {
 	console.log("HELLO");
 	return (false);
 }
-
-function	active_webcam()
-{
-
-	/*
 document.getElementById('my-form').onsubmit = function() {
 	return isValidForm();
 };
-
 	 */
 
 	var video = document.querySelector("#videoElement");
@@ -23,7 +21,6 @@ document.getElementById('my-form').onsubmit = function() {
 		).then( function(stream)
 			{
 				video.srcObject = stream;
-				video.src = stream;
 				button.style.display = "block";
 				button.addEventListener("click", function()
 					{
