@@ -8,7 +8,7 @@ class Db_media extends model
 		$sql = "
 			INSERT INTO media
 			VALUES (
-				'',
+				NULL,
 				:id_user,
 				now()
 				)

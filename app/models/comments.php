@@ -8,7 +8,7 @@ class db_comments extends model
 		$sql = "
 			INSERT INTO comments
 			VALUES (
-				'',
+				NULL,
 				:id_media,
 				:id_user,
 				:comment,

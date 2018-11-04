@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 require_once('config/config.php');
@@ -9,7 +8,6 @@ require_once(CORE_PATH . 'model.php');
 require_once(CORE_PATH . 'loader.php');
 require_once(CORE_PATH . 'controller.php');
 require_once(CORE_PATH . 'TOOL.php');
-
 
 $load = new Loader();
 
@@ -22,6 +20,4 @@ else
 	$action = $request['action'];
 
 $loaded_controller->$action($request['params']);
-
-
 

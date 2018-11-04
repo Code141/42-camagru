@@ -5,7 +5,7 @@ class Db_user extends Model
 	function get_user_by_id($data)
 	{
 		$sql = "
-			SELECT id, email, username
+			SELECT id, email, username, notif_like, notif_comment
 			FROM user
 			WHERE
 			id = :id_user

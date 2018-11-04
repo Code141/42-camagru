@@ -49,13 +49,14 @@ class login extends controller_public_only
 		$this->data['username'] = stripslashes($_POST['username']);
 		$this->data['encrypted_password'] = hash_password($_POST['password']);
 		$this->data['user'] = $this->load->model('login', 'get_user_by_username', $this->data);
-		$this->data['user']['password_length'] = strlen($_POST['password']);
+		print_r($this->data['user']);
 		if ($this->data['user'] == NULL)
 			$this->fail("Unknow user", "main", "login");
 		if ($this->data['encrypted_password'] != $this->data['user']['password'])
 			$this->fail("Bad password", "main", "login");
 		if ($this->data['user']['validated_account'] != "TRUE")
 			$this->fail("Account not validated", "main", "login");
+		$this->data['user']['password_length'] = strlen($_POST['password']);
 		login($this->data['user']);
 		$this->success("Loggued");
 	}

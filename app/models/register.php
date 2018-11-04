@@ -36,7 +36,7 @@ class Db_register extends Model
 	{
 		$sql = "
 			INSERT INTO user
-			VALUES ( '', :email, :password, :username, 1, 1, 1, :token)
+			VALUES ( NULL, :email, :password, :username, 1, 1, 1, :token)
 		"; 
 		$this->pdo_stm = $this->pdo->prepare($sql);
 		$this->pdo_stm->bindParam("email", $data['email'], PDO::PARAM_STR);

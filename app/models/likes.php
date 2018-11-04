@@ -8,7 +8,7 @@ class Db_likes extends model
 		$sql = "
 			INSERT INTO likes
 			VALUES (
-				'',
+				NULL,
 				:id_media,
 				:id_user,
 				:grade

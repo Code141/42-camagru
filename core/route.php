@@ -16,8 +16,6 @@ function	parse_uri($uri)
 
 $request = parse_uri($_SERVER['REQUEST_URI']);
 
-
-
 $ctrl = $request['controller'];
 if ($ctrl !== "login"
 	&& $ctrl !== "logout"
