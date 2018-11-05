@@ -30,7 +30,6 @@ class register extends controller_public_only
 
 	public function checksingup($params = NULL)
 	{
-
 		$this->load->script('php', 'login');
 		$register_fields = array( "email", "password", "passwordbis", "username");
 		foreach ($register_fields as $field)
@@ -49,10 +48,14 @@ class register extends controller_public_only
 			$this->fail($err, "main", "register");
 
 		$this->data['register']['token'] = hash('whirlpool', uniqid());
-		$this->load->model('register', 'register', $this->data['register']);
-		$this->load->script('php', 'mail', $this->data);
-		if (($err = email_validator($this->data['register'])) !== TRUE)
-			$this->fail($err, "main", "register");
+		$id_user = $this->load->model('register', 'register', $this->data['register']);
+
+		$user_to = new entity_user($id_user);
+		if ($user_to === NULL)
+			$this->fail("Probleme encountered while creating user");
+		$mail = new entity_email($user_to);
+		$mail->sing_up($this->data['register']['token']);
+
 		$this->success("You succesfully registered", "register_success", "register");
 	}
 

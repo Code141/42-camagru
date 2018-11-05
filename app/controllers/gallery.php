@@ -37,7 +37,8 @@ class gallery extends controller
 		$this->data["id_media"] = intval($params[0]);
 		$this->data['media'] = $this->load->model('media', 'get_media_by_id', $this->data);
 		if (!$this->data["media"])
-			$this->fail ("Media Error");
+			$this->fail ("Media Error","main", "gallery");
+
 		$this->data['db']['comments'] = $this->load->model('comments', 'get_comments_by_media_id', $this->data);
 
 		$this->data['title'] = "Gallery";

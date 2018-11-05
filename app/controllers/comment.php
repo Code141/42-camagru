@@ -9,7 +9,6 @@ class comment extends controller_restricted
 
 	public function add($params = NULL)
 	{
-		$this->load->script('php', 'mail');
 		if (!isset($_POST['comment']))
 			$this->fail("Comment empty !");
 		$this->data['comment'] = $_POST['comment'];
@@ -25,7 +24,15 @@ class comment extends controller_restricted
 		if ($media == NULL)
 			$this->fail("Media doesn't exist !");
 		$this->load->model('comments', 'comment_media', $this->data);
-		email_comment(loggued_id(), $media["id_user"], $media["id"], $this->data['comment']);
+		$user_to = new entity_user($media["id_user"]);
+		if ($user_to === NULL)
+			$this->fail("User to mail don't existe.");
+		$user_from = new entity_user(loggued_id());
+		if ($user_from === NULL)
+			$this->fail("User from mail don't existe.");
+		$mail = new entity_email($user_to);
+		$mail->notif_comment($user_from, $media, $this->data['comment']);
+
 		$this->success("Comment added !");
 	}
 

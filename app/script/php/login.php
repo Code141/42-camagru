@@ -30,7 +30,7 @@ function	check_password($password, $passwordbis)
 
 function	hash_password($password)
 {
-	$hash = hash('sha512', $password);
+	$hash = hash('whirlpool', $password);
 // password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
 // bool password_verify ( string $password , string $hash )
 	return ($hash);

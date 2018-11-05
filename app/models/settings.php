@@ -24,7 +24,7 @@ class Db_settings extends Model
 		";
 		$this->pdo_stm = $this->pdo->prepare($sql);
 		$this->pdo_stm->bindParam("new_password", $data['new_password'], PDO::PARAM_STR);
-		$this->pdo_stm->bindParam("user_id", $_SESSION['user']['id'], PDO::PARAM_INT);
+		$this->pdo_stm->bindParam("user_id", $data['id_user'], PDO::PARAM_INT);
 		$this->execute_pdo();
 	}
 
@@ -57,6 +57,19 @@ class Db_settings extends Model
 		$this->pdo_stm->bindParam("user_id", $_SESSION['user']['id'], PDO::PARAM_INT);
 		$this->execute_pdo();
 	}
+
+	function delete_password_reset_hash($data)
+	{
+		$sql = "
+			UPDATE user
+			SET reset_password = ''
+			WHERE id = :user_id
+		";
+		$this->pdo_stm = $this->pdo->prepare($sql);
+		$this->pdo_stm->bindParam("user_id", $data['id_user'], PDO::PARAM_INT);
+		$this->execute_pdo();
+	}
+
 
 }
 

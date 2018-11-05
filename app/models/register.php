@@ -44,6 +44,8 @@ class Db_register extends Model
 		$this->pdo_stm->bindParam("username", $data['username'], PDO::PARAM_STR);
 		$this->pdo_stm->bindParam("token", $data['token'], PDO::PARAM_STR);
 		$this->execute_pdo();
+		$last_id = $this->pdo->lastinsertid();
+		return ($last_id);
 	}
 
 	function get_user_by_mail($data)

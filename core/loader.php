@@ -22,6 +22,11 @@ class Loader
 		return($pdo->$model($params));
 	}
 
+	public function entity($entity)
+	{
+		require_once(APP_PATH . 'entity/' . $entity . '.php');
+	}
+
 	public function script($type, $file, array $data = NULL)
 	{
 		require_once(APP_PATH . 'script/' . $type . '/' . $file . '.' . $type);

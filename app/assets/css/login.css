@@ -14,6 +14,12 @@ section#login .cadre
 {
 	width : 260px;
 }
+
+section#login .cadre p
+{
+	margin-top: 20px;
+}
+
 section#login input
 {
 	display:block;

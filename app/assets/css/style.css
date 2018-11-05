@@ -191,6 +191,16 @@ header .header_element
 	height: 100%;
 }
 
+header .username
+{
+	padding-top:9px;
+	padding-left:8px;
+	font-family: din1451;
+	text-shadow: 1px 1px 0px #fff;
+	color: black;
+	font-size:27px;
+}
+
 nav
 {
 }
@@ -280,8 +290,10 @@ footer
 	z-index: 1100;
 }
 
-
-
+footer p#tagline
+{
+	margin: auto;
+}
 
 div#like_box 
 {

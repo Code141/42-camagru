@@ -24,7 +24,6 @@ class media extends controller_restricted
 				$this->fail("Can't create thumb " . $media['id']);
 			imagepng($thumb, $target_thumb);
 		}
-
 		$this->success("All thumbs regenerated !");
 	}
 

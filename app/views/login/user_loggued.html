@@ -1,9 +1,10 @@
 <nav id="headlog">
-	<p class="header_element">
+	<a class="header_element" href="<?php echo SITE_ROOT; ?>settings/">
+	<p class=" username">
 		Hello
 		<?php echo $_SESSION['user']['username']; ?>
 	</p>
-	<a class="header_element" href="<?php echo SITE_ROOT; ?>settings/">
+	
 		<button class="header_button glyph glyph_user"></button>
 	</a>
 	<a class="header_element" href="<?php echo SITE_ROOT; ?>logout" id="logout">

@@ -16,6 +16,8 @@ class controller
 	{
 		$this->reset_controller();
 		$this->load = new Loader();
+		$this->load->entity('user');
+		$this->load->entity('email');
 	}
 
 	protected function reset_controller()
