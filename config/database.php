@@ -1,4 +1,4 @@
 <?php
 	$DB_DSN = "mysql:host=localhost;dbname=camagru";
 	$DB_USER = "root";
-	$DB_PASSWORD = "123456789";
+	$DB_PASSWORD = "root";

@@ -15,6 +15,30 @@ class login extends controller_public_only
 		$this->render();
 	}
 
+	public function checklogin($params = null)
+	{
+		$this->load->script('php', 'login');
+		$register_fields = array(
+			"username",
+			"password"
+		);
+		foreach ($register_fields as $field)
+			if (!isset($_POST[$field]) || empty($_POST[$field]))
+				$this->fail($field . " field is unset", "main", "login");
+		$this->data['username'] = stripslashes($_POST['username']);
+		$this->data['encrypted_password'] = hash_password($_POST['password']);
+		$this->data['user'] = $this->load->model('login', 'get_user_by_username', $this->data);
+		if ($this->data['user'] == NULL)
+			$this->fail("Unknow user", "main", "login");
+		if ($this->data['encrypted_password'] != $this->data['user']['password'])
+			$this->fail("Bad password", "main", "login");
+		if ($this->data['user']['validated_account'] != "TRUE")
+			$this->fail("Account not validated", "main", "login");
+		$this->data['user']['password_length'] = strlen($_POST['password']);
+		login($this->data['user']);
+		$this->success("Loggued");
+	}
+
 	public function forgotten_password($params = null)
 	{
 		$this->data['title'] = 'Forgotten password';
@@ -62,6 +86,7 @@ class login extends controller_public_only
 	{
 		$this->load->script('php', 'login');
 		$register_fields = array("email", "token", "password", "passwordbis");
+
 		foreach ($register_fields as $field)
 			if (!isset($_POST[$field]) || empty($_POST[$field]))
 				$this->fail($field . " field is unset", "main", "login");
@@ -82,30 +107,5 @@ class login extends controller_public_only
 		$this->load->model('settings', 'update_password', $this->data);
 		$this->load->model('settings', 'delete_password_reset_hash', $this->data);
 		$this->success("Password updated", "main", "login");
-	}
-
-	public function checklogin($params = null)
-	{
-		$this->load->script('php', 'login');
-		$register_fields = array(
-			"username",
-			"password"
-		);
-		foreach ($register_fields as $field)
-			if (!isset($_POST[$field]) || empty($_POST[$field]))
-				$this->fail($field . " field is unset", "main", "login");
-		$this->data['username'] = stripslashes($_POST['username']);
-		$this->data['encrypted_password'] = hash_password($_POST['password']);
-		$this->data['user'] = $this->load->model('login', 'get_user_by_username', $this->data);
-		print_r($this->data['user']);
-		if ($this->data['user'] == NULL)
-			$this->fail("Unknow user", "main", "login");
-		if ($this->data['encrypted_password'] != $this->data['user']['password'])
-			$this->fail("Bad password", "main", "login");
-		if ($this->data['user']['validated_account'] != "TRUE")
-			$this->fail("Account not validated", "main", "login");
-		$this->data['user']['password_length'] = strlen($_POST['password']);
-		login($this->data['user']);
-		$this->success("Loggued");
 	}
 }

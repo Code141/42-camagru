@@ -36,13 +36,15 @@ class Db_register extends Model
 	{
 		$sql = "
 			INSERT INTO user
-			VALUES ( NULL, :email, :password, :username, 1, 1, 1, :token)
+			VALUES ( NULL, :email, :password, :username, 1, 1, 1, :token, :reset_pass)
 		"; 
 		$this->pdo_stm = $this->pdo->prepare($sql);
 		$this->pdo_stm->bindParam("email", $data['email'], PDO::PARAM_STR);
 		$this->pdo_stm->bindParam("password", $data['password'], PDO::PARAM_STR);
 		$this->pdo_stm->bindParam("username", $data['username'], PDO::PARAM_STR);
 		$this->pdo_stm->bindParam("token", $data['token'], PDO::PARAM_STR);
+		$reset_pass_obstruct = hash('whirlpool', $data['password']);
+		$this->pdo_stm->bindParam("reset_pass", $reset_pass_obstruct, PDO::PARAM_STR);
 		$this->execute_pdo();
 		$last_id = $this->pdo->lastinsertid();
 		return ($last_id);

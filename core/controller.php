@@ -20,6 +20,7 @@ class controller
 		$this->load->entity('email');
 	}
 
+
 	protected function reset_controller()
 	{
 		$this->data = array();
@@ -150,6 +151,28 @@ class controller
 		$controller->$action($params);
 		die ();
 	}
+
+	protected function cookie_set($cookie_key, $cookie_value)
+	{
+		$expire = 10000;
+		setcookie($cookie_key, $cookie_value, time() + $expire);
+	}
+
+	protected function cookie_get($cookie_key)
+	{
+		return ($_COOKIE[$cookie_key]);
+	}
+
+	protected function	requiered_fields($keys, $array)
+	{
+		foreach ($keys as $key)
+			if (!isset($array[$key]) || empty($array[$key]))
+				return (NULL);
+			else
+				$new_array[$key] = $array[$key];
+		return ($new_array);
+	}
+
 
 	public function __destruct()
 	{
