@@ -10,12 +10,12 @@
 
 <?php
 $first = TRUE;
-foreach ($this->data['db']['masks'] as $mask)
+foreach ($this->data['masks'] as $mask)
 {
 ?>
-		<input type="radio" name="masks" id="mask_<?php echo $mask['id'];?>" value="<?php echo $mask['id'];?>" required<?php if ($first) { echo " checked"; $first = FALSE;}?>>
-		<label for="mask_<?php echo $mask['id'];?>">
-			<img src="<?php echo MEDIA_PATH . "masks/" . $mask['id'];?>.png">
+		<input type="radio" name="masks" id="mask_<?php echo $mask;?>" value="<?php echo $mask;?>" required<?php if ($first) { echo " checked"; $first = FALSE;}?>>
+		<label for="mask_<?php echo $mask;?>">
+			<img src="<?php echo MEDIA_PATH . "masks/" . $mask;?>.png">
 		</label>
 <?php
 }

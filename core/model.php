@@ -14,13 +14,15 @@ class Model
 		catch(PDOException $exception)
 		{
 			if (DEV_MODE)
-				die ('Erreur : ' . $exception->getMessage());
-			else
 			{
-				// send mail to admin/
-				redirect ('location:' . SITE_ROOT . 'error/');
-				die ();
+				if ($exception->getCode() == 1049)
+					header ('location:' . SITE_ROOT . 'config/setup.php');
+				else
+					echo 'Erreur : ' . $exception->getMessage();
 			}
+			else
+				header ('location:' . SITE_ROOT . '404');
+			die();
 		}
 	}
 

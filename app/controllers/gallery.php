@@ -15,11 +15,18 @@ class gallery extends controller
 		if (isset($_GET['page']))
 			$page = intval($_GET['page']);
 		$this->data['paging'] = ($page < 1) ? 1 : $page;
+
 		$nb_media = $this->load->model('media', 'count_media', $this->data);
+
 		$this->data['paging_max'] = ceil($nb_media / $this->data['offset']);
+
 		if ((($this->data['paging']) * $this->data['offset']) > $nb_media)
 			$this->data['paging'] = $this->data['paging_max'];
+
 		$this->data['start'] = ($this->data['paging'] - 1) * $this->data['offset'];
+		$this->data['start'] = ($this->data['start'] < 0) ? 0 : $this->data['start'];
+		print_r($this->data);
+
 		$this->data['db']['all_media'] = $this->load->model('media', 'get_media_from_to', $this->data);
 
 		$this->data['title'] = "Gallery";
@@ -28,6 +35,7 @@ class gallery extends controller
 		$this->files['views']['center'] = 'gallery/gallery';
 		$this->files['views']['footer'] = 'gallery/paging';
 		$this->render();
+
 	}
 
 	public function focus($params = NULL)

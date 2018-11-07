@@ -3,29 +3,30 @@ if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
+silent tabonly
 exe "cd " . escape(expand("<sfile>:p:h"), ' ')
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +14 index.php
-badd +113 core/controller.php
-badd +6 core/loader.php
+badd +1 index.php
+badd +1 core/controller.php
+badd +1 core/loader.php
 badd +1 core/model.php
 badd +1 core/route.php
-badd +61 app/controllers/login.php
+badd +1 app/controllers/login.php
 badd +1 app/controllers/home.php
 badd +196 app/assets/css/style.css
-badd +23 app/controllers/editor.php
-badd +8 app/controllers/gallery.php
+badd +1 app/controllers/editor.php
+badd +1 app/controllers/gallery.php
 badd +3 app/models/login.php
-badd +56 app/controllers/register.php
+badd +1 app/controllers/register.php
 badd +15 app/models/register.php
 badd +1 app/assets/css/login.css
 badd +1 app/assets/css/register.css
-badd +8 config/setup.php
-badd +1 config/database.php
-badd +1 config/config.php
+badd +32 config/setup.php
+badd +2 config/database.php
+badd +8 config/config.php
 badd +60 app/assets/css/editor.css
 badd +50 app/script/js/webcam.js
 badd +86 app/assets/css/gallery.css
@@ -74,18 +75,247 @@ badd +1 app/controllers/comment.php
 badd +1 app/assets/css/paging.css
 badd +1 app/views/prompter.html
 badd +1 app/views/gallery/focus_right.php
-badd +5 config/camagru.sql
+badd +399 config/camagru.sql
 badd +1 config/camagru1.sql
 badd +1 app/models
 badd +1 app/models/comments.php
 badd +1 app/controllers
 badd +1 app/entity/email.php
 badd +1 app/entity/user.php
-badd +1 app/models/settings.php
+badd +66 app/models/settings.php
+badd +1 config/camagru.sql2
+badd +9 config/setup/main.html
+badd +62 config/setup/db.php
+badd +4 config/setup/status.php
+badd +5 config/setup/status.html
+badd +1 config/setup
+badd +1 config/tables.sql
+badd +1 config/sample.sql
 argglobal
 silent! argdel *
 $argadd ~/cursus/camagru/index.php
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnext -12
 edit config/database.php
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+wincmd _ | wincmd |
+split
+2wincmd k
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 7 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 68 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 192 + 181) / 362)
+exe '5resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 192 + 181) / 362)
+exe '6resize ' . ((&lines * 44 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 95 + 181) / 362)
+exe '7resize ' . ((&lines * 44 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 96 + 181) / 362)
+argglobal
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=1
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 6 - ((5 * winheight(0) + 3) / 7)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+6
+normal! 0
+wincmd w
+argglobal
+if bufexists('config/setup.php') | buffer config/setup.php | else | edit config/setup.php | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=3
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+22
+normal! zo
+24
+normal! zo
+34
+normal! zo
+44
+normal! zo
+46
+normal! zo
+49
+normal! zo
+49
+normal! zo
+let s:l = 49 - ((48 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+49
+normal! 039|
+wincmd w
+argglobal
+if bufexists('config/setup/db.php') | buffer config/setup/db.php | else | edit config/setup/db.php | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=3
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+22
+normal! zo
+39
+normal! zo
+54
+normal! zo
+72
+normal! zo
+let s:l = 73 - ((53 * winheight(0) + 38) / 76)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+73
+normal! 034|
+wincmd w
+argglobal
+if bufexists('config/setup/status.html') | buffer config/setup/status.html | else | edit config/setup/status.html | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 2 - ((1 * winheight(0) + 7) / 15)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+2
+normal! 0
+lcd ~/cursus/camagru
+wincmd w
+argglobal
+if bufexists('~/cursus/camagru/config/setup/main.html') | buffer ~/cursus/camagru/config/setup/main.html | else | edit ~/cursus/camagru/config/setup/main.html | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+2
+normal! zo
+3
+normal! zo
+6
+normal! zo
+9
+normal! zo
+let s:l = 12 - ((11 * winheight(0) + 7) / 15)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+12
+normal! 0
+lcd ~/cursus/camagru
+wincmd w
+argglobal
+if bufexists('~/cursus/camagru/config/sample.sql') | buffer ~/cursus/camagru/config/sample.sql | else | edit ~/cursus/camagru/config/sample.sql | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 06|
+lcd ~/cursus/camagru
+wincmd w
+argglobal
+if bufexists('~/cursus/camagru/config/tables.sql') | buffer ~/cursus/camagru/config/tables.sql | else | edit ~/cursus/camagru/config/tables.sql | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=1
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 9 - ((8 * winheight(0) + 22) / 44)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+9
+normal! 046|
+lcd ~/cursus/camagru
+wincmd w
+exe '1resize ' . ((&lines * 7 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 68 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 192 + 181) / 362)
+exe '5resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 192 + 181) / 362)
+exe '6resize ' . ((&lines * 44 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 95 + 181) / 362)
+exe '7resize ' . ((&lines * 44 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 96 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/config/database.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -96,10 +326,7 @@ wincmd _ | wincmd |
 split
 wincmd _ | wincmd |
 split
-wincmd _ | wincmd |
-split
-3wincmd k
-wincmd w
+2wincmd k
 wincmd w
 wincmd w
 wincmd w
@@ -119,27 +346,28 @@ split
 wincmd w
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 5 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 17 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 23 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe '4resize ' . ((&lines * 32 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 84 + 182) / 364)
-exe '5resize ' . ((&lines * 11 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 139 + 182) / 364)
-exe '6resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 139 + 182) / 364)
-exe '7resize ' . ((&lines * 46 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 139 + 182) / 364)
-exe '8resize ' . ((&lines * 14 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 139 + 182) / 364)
-exe '9resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 139 + 182) / 364)
-exe '10resize ' . ((&lines * 38 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 139 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 7 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 33 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 34 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 10 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 138 + 181) / 362)
+exe '5resize ' . ((&lines * 39 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 138 + 181) / 362)
+exe '6resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 138 + 181) / 362)
+exe '7resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 138 + 181) / 362)
+exe '8resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 138 + 181) / 362)
+exe '9resize ' . ((&lines * 36 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 138 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -150,15 +378,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 2) / 5)
+let s:l = 2 - ((1 * winheight(0) + 3) / 7)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 026|
+2
+normal! 05|
 wincmd w
 argglobal
-if bufexists('config/config.php') | buffer config/config.php | else | edit config/config.php | endif
+if bufexists('~/cursus/camagru/config/config.php') | buffer ~/cursus/camagru/config/config.php | else | edit ~/cursus/camagru/config/config.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -168,15 +396,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 20 - ((7 * winheight(0) + 8) / 17)
+let s:l = 3 - ((2 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-20
-normal! 0
+3
+normal! 023|
 wincmd w
 argglobal
-if bufexists('core/TOOL.php') | buffer core/TOOL.php | else | edit core/TOOL.php | endif
+if bufexists('~/cursus/camagru/core/TOOL.php') | buffer ~/cursus/camagru/core/TOOL.php | else | edit ~/cursus/camagru/core/TOOL.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -186,16 +414,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 39 - ((13 * winheight(0) + 11) / 23)
+let s:l = 37 - ((8 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-39
+37
 normal! 011|
 wincmd w
 argglobal
-if bufexists('config/setup.php') | buffer config/setup.php | else | edit config/setup.php | endif
-setlocal fdm=indent
+if bufexists('~/cursus/camagru/.htaccess') | buffer ~/cursus/camagru/.htaccess | else | edit ~/cursus/camagru/.htaccess | endif
+setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -203,7 +431,8 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 8 - ((7 * winheight(0) + 16) / 32)
+silent! normal! zE
+let s:l = 8 - ((7 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -211,7 +440,7 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-if bufexists('.htaccess') | buffer .htaccess | else | edit .htaccess | endif
+if bufexists('~/cursus/camagru/core/route.php') | buffer ~/cursus/camagru/core/route.php | else | edit ~/cursus/camagru/core/route.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -221,7 +450,25 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 5) / 11)
+let s:l = 42 - ((37 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+42
+normal! 0
+wincmd w
+argglobal
+if bufexists('~/cursus/camagru/index.php') | buffer ~/cursus/camagru/index.php | else | edit ~/cursus/camagru/index.php | endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -229,7 +476,7 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-if bufexists('core/route.php') | buffer core/route.php | else | edit core/route.php | endif
+if bufexists('~/cursus/camagru/core/model.php') | buffer ~/cursus/camagru/core/model.php | else | edit ~/cursus/camagru/core/model.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -239,15 +486,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 15 - ((7 * winheight(0) + 10) / 21)
+let s:l = 7 - ((6 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
+7
 normal! 0
 wincmd w
 argglobal
-if bufexists('index.php') | buffer index.php | else | edit index.php | endif
+if bufexists('~/cursus/camagru/core/loader.php') | buffer ~/cursus/camagru/core/loader.php | else | edit ~/cursus/camagru/core/loader.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -257,89 +504,51 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 13 - ((12 * winheight(0) + 23) / 46)
+let s:l = 7 - ((6 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-13
+7
+normal! 032|
+wincmd w
+argglobal
+if bufexists('~/cursus/camagru/core/controller.php') | buffer ~/cursus/camagru/core/controller.php | else | edit ~/cursus/camagru/core/controller.php | endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 18) / 36)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
 normal! 0
 wincmd w
-argglobal
-if bufexists('core/model.php') | buffer core/model.php | else | edit core/model.php | endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 10 - ((6 * winheight(0) + 7) / 14)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-10
-normal! 0
-wincmd w
-argglobal
-if bufexists('core/loader.php') | buffer core/loader.php | else | edit core/loader.php | endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 12 - ((9 * winheight(0) + 13) / 26)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-12
-normal! 028|
-wincmd w
-argglobal
-if bufexists('core/controller.php') | buffer core/controller.php | else | edit core/controller.php | endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 142 - ((8 * winheight(0) + 19) / 38)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-142
-normal! 015|
-wincmd w
-4wincmd w
-exe '1resize ' . ((&lines * 5 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 17 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 23 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe '4resize ' . ((&lines * 32 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 84 + 182) / 364)
-exe '5resize ' . ((&lines * 11 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 139 + 182) / 364)
-exe '6resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 139 + 182) / 364)
-exe '7resize ' . ((&lines * 46 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 139 + 182) / 364)
-exe '8resize ' . ((&lines * 14 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 139 + 182) / 364)
-exe '9resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 139 + 182) / 364)
-exe '10resize ' . ((&lines * 38 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 139 + 182) / 364)
-tabedit core/controller.php
+exe '1resize ' . ((&lines * 7 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 33 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 34 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 10 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 138 + 181) / 362)
+exe '5resize ' . ((&lines * 39 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 138 + 181) / 362)
+exe '6resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 138 + 181) / 362)
+exe '7resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 138 + 181) / 362)
+exe '8resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 138 + 181) / 362)
+exe '9resize ' . ((&lines * 36 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 138 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/core/controller.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -367,22 +576,25 @@ split
 1wincmd k
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 92 + 182) / 364)
-exe '3resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 92 + 182) / 364)
-exe '4resize ' . ((&lines * 16 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 93 + 182) / 364)
-exe '5resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 93 + 182) / 364)
-exe '6resize ' . ((&lines * 44 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 93 + 182) / 364)
-exe '7resize ' . ((&lines * 28 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 92 + 182) / 364)
-exe '8resize ' . ((&lines * 51 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 92 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 91 + 181) / 362)
+exe '3resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 91 + 181) / 362)
+exe '4resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 93 + 181) / 362)
+exe '5resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 93 + 181) / 362)
+exe '6resize ' . ((&lines * 41 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 93 + 181) / 362)
+exe '7resize ' . ((&lines * 27 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 91 + 181) / 362)
+exe '8resize ' . ((&lines * 48 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 91 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -393,15 +605,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 31 - ((30 * winheight(0) + 40) / 80)
+let s:l = 4 - ((3 * winheight(0) + 38) / 76)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-31
-normal! 010|
+4
+normal! 0
 wincmd w
 argglobal
-if bufexists('app/controllers/login.php') | buffer app/controllers/login.php | else | edit app/controllers/login.php | endif
+if bufexists('~/cursus/camagru/app/controllers/login.php') | buffer ~/cursus/camagru/app/controllers/login.php | else | edit ~/cursus/camagru/app/controllers/login.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -411,7 +623,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 26 - ((19 * winheight(0) + 19) / 39)
+let s:l = 26 - ((18 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -419,7 +631,7 @@ normal! zt
 normal! 021|
 wincmd w
 argglobal
-if bufexists('app/controllers/register.php') | buffer app/controllers/register.php | else | edit app/controllers/register.php | endif
+if bufexists('~/cursus/camagru/app/controllers/register.php') | buffer ~/cursus/camagru/app/controllers/register.php | else | edit ~/cursus/camagru/app/controllers/register.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -429,7 +641,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 19 - ((8 * winheight(0) + 20) / 40)
+let s:l = 19 - ((8 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -437,7 +649,7 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-if bufexists('app/controllers/logout.php') | buffer app/controllers/logout.php | else | edit app/controllers/logout.php | endif
+if bufexists('~/cursus/camagru/app/controllers/logout.php') | buffer ~/cursus/camagru/app/controllers/logout.php | else | edit ~/cursus/camagru/app/controllers/logout.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -447,7 +659,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 8) / 16)
+let s:l = 6 - ((5 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -455,7 +667,7 @@ normal! zt
 normal! 05|
 wincmd w
 argglobal
-if bufexists('app/controllers/home.php') | buffer app/controllers/home.php | else | edit app/controllers/home.php | endif
+if bufexists('~/cursus/camagru/app/controllers/home.php') | buffer ~/cursus/camagru/app/controllers/home.php | else | edit ~/cursus/camagru/app/controllers/home.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -473,7 +685,7 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-if bufexists('app/controllers/gallery.php') | buffer app/controllers/gallery.php | else | edit app/controllers/gallery.php | endif
+if bufexists('~/cursus/camagru/app/controllers/gallery.php') | buffer ~/cursus/camagru/app/controllers/gallery.php | else | edit ~/cursus/camagru/app/controllers/gallery.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -483,15 +695,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 51 - ((23 * winheight(0) + 22) / 44)
+let s:l = 38 - ((33 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-51
+38
 normal! 0
 wincmd w
 argglobal
-if bufexists('app/controllers/editor.php') | buffer app/controllers/editor.php | else | edit app/controllers/editor.php | endif
+if bufexists('~/cursus/camagru/app/controllers/editor.php') | buffer ~/cursus/camagru/app/controllers/editor.php | else | edit ~/cursus/camagru/app/controllers/editor.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -501,15 +713,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 17 - ((15 * winheight(0) + 14) / 28)
+let s:l = 19 - ((16 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-17
-normal! 033|
+19
+normal! 0
 wincmd w
 argglobal
-if bufexists('app/controllers/settings.php') | buffer app/controllers/settings.php | else | edit app/controllers/settings.php | endif
+if bufexists('~/cursus/camagru/app/controllers/settings.php') | buffer ~/cursus/camagru/app/controllers/settings.php | else | edit ~/cursus/camagru/app/controllers/settings.php | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -519,29 +731,30 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 15 - ((14 * winheight(0) + 25) / 51)
+let s:l = 15 - ((13 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 15
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 92 + 182) / 364)
-exe '3resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 92 + 182) / 364)
-exe '4resize ' . ((&lines * 16 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 93 + 182) / 364)
-exe '5resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 93 + 182) / 364)
-exe '6resize ' . ((&lines * 44 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 93 + 182) / 364)
-exe '7resize ' . ((&lines * 28 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 92 + 182) / 364)
-exe '8resize ' . ((&lines * 51 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 92 + 182) / 364)
-tabedit app/controllers/media.php
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 91 + 181) / 362)
+exe '3resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 91 + 181) / 362)
+exe '4resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 93 + 181) / 362)
+exe '5resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 93 + 181) / 362)
+exe '6resize ' . ((&lines * 41 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 93 + 181) / 362)
+exe '7resize ' . ((&lines * 27 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 91 + 181) / 362)
+exe '8resize ' . ((&lines * 48 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 91 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/app/controllers/media.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -555,13 +768,16 @@ split
 1wincmd k
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 120 + 182) / 364)
-exe 'vert 2resize ' . ((&columns * 120 + 182) / 364)
-exe '3resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 122 + 182) / 364)
-exe '4resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 122 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 119 + 181) / 362)
+exe 'vert 2resize ' . ((&columns * 120 + 181) / 362)
+exe '3resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 121 + 181) / 362)
+exe '4resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 121 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -572,11 +788,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 40) / 80)
+let s:l = 4 - ((3 * winheight(0) + 38) / 76)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
+4
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
@@ -591,7 +807,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 23 - ((22 * winheight(0) + 40) / 80)
+let s:l = 23 - ((21 * winheight(0) + 38) / 76)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -610,7 +826,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 28 - ((16 * winheight(0) + 20) / 40)
+let s:l = 28 - ((15 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -629,7 +845,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 19) / 39)
+let s:l = 1 - ((0 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -637,13 +853,14 @@ normal! zt
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
-exe 'vert 1resize ' . ((&columns * 120 + 182) / 364)
-exe 'vert 2resize ' . ((&columns * 120 + 182) / 364)
-exe '3resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 122 + 182) / 364)
-exe '4resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 122 + 182) / 364)
-tabedit ~/cursus/camagru/core/model.php
+exe 'vert 1resize ' . ((&columns * 119 + 181) / 362)
+exe 'vert 2resize ' . ((&columns * 120 + 181) / 362)
+exe '3resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 121 + 181) / 362)
+exe '4resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 121 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/core/model.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -671,22 +888,25 @@ split
 wincmd w
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 92 + 182) / 364)
-exe '3resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 92 + 182) / 364)
-exe '4resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 93 + 182) / 364)
-exe '5resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 93 + 182) / 364)
-exe '6resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 92 + 182) / 364)
-exe '7resize ' . ((&lines * 28 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 92 + 182) / 364)
-exe '8resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 92 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 91 + 181) / 362)
+exe '3resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 91 + 181) / 362)
+exe '4resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 93 + 181) / 362)
+exe '5resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 93 + 181) / 362)
+exe '6resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 91 + 181) / 362)
+exe '7resize ' . ((&lines * 27 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 91 + 181) / 362)
+exe '8resize ' . ((&lines * 22 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 91 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -697,11 +917,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 40) / 80)
+let s:l = 16 - ((15 * winheight(0) + 38) / 76)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+16
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
@@ -716,7 +936,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 20) / 40)
+let s:l = 6 - ((5 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -735,7 +955,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 19) / 39)
+let s:l = 1 - ((0 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -754,7 +974,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 16 - ((15 * winheight(0) + 20) / 40)
+let s:l = 16 - ((14 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -773,7 +993,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 19) / 39)
+let s:l = 6 - ((5 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -792,12 +1012,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 13) / 26)
+let s:l = 64 - ((17 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 05|
+64
+normal! 0
 lcd ~/cursus/camagru
 wincmd w
 argglobal
@@ -811,7 +1031,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 14) / 28)
+let s:l = 1 - ((0 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -830,7 +1050,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 10 - ((9 * winheight(0) + 12) / 24)
+let s:l = 10 - ((9 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -838,22 +1058,23 @@ normal! zt
 normal! 017|
 lcd ~/cursus/camagru
 wincmd w
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 92 + 182) / 364)
-exe '3resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 92 + 182) / 364)
-exe '4resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 93 + 182) / 364)
-exe '5resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 93 + 182) / 364)
-exe '6resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 92 + 182) / 364)
-exe '7resize ' . ((&lines * 28 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 92 + 182) / 364)
-exe '8resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 92 + 182) / 364)
-tabedit ~/cursus/camagru/app/controllers/home.php
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 91 + 181) / 362)
+exe '3resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 91 + 181) / 362)
+exe '4resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 93 + 181) / 362)
+exe '5resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 93 + 181) / 362)
+exe '6resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 91 + 181) / 362)
+exe '7resize ' . ((&lines * 27 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 91 + 181) / 362)
+exe '8resize ' . ((&lines * 22 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 91 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/app/controllers/home.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -896,33 +1117,36 @@ split
 wincmd w
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 19 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 121 + 182) / 364)
-exe '2resize ' . ((&lines * 19 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 121 + 182) / 364)
-exe '3resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 121 + 182) / 364)
-exe '4resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 121 + 182) / 364)
-exe '5resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 120 + 182) / 364)
-exe '6resize ' . ((&lines * 4 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 120 + 182) / 364)
-exe '7resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 120 + 182) / 364)
-exe '8resize ' . ((&lines * 4 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 120 + 182) / 364)
-exe '9resize ' . ((&lines * 14 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 120 + 182) / 364)
-exe '10resize ' . ((&lines * 11 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 120 + 182) / 364)
-exe '11resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 11resize ' . ((&columns * 121 + 182) / 364)
-exe '12resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 12resize ' . ((&columns * 121 + 182) / 364)
-exe '13resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 13resize ' . ((&columns * 121 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 120 + 181) / 362)
+exe '2resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 120 + 181) / 362)
+exe '3resize ' . ((&lines * 21 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 120 + 181) / 362)
+exe '4resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 120 + 181) / 362)
+exe '5resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 120 + 181) / 362)
+exe '6resize ' . ((&lines * 4 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 120 + 181) / 362)
+exe '7resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 120 + 181) / 362)
+exe '8resize ' . ((&lines * 4 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 120 + 181) / 362)
+exe '9resize ' . ((&lines * 13 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 120 + 181) / 362)
+exe '10resize ' . ((&lines * 11 + 40) / 80)
+exe 'vert 10resize ' . ((&columns * 120 + 181) / 362)
+exe '11resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 11resize ' . ((&columns * 120 + 181) / 362)
+exe '12resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 12resize ' . ((&columns * 120 + 181) / 362)
+exe '13resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 13resize ' . ((&columns * 120 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -933,7 +1157,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 9) / 19)
+let s:l = 6 - ((5 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -952,7 +1176,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 9) / 19)
+let s:l = 6 - ((5 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -990,7 +1214,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 36 - ((15 * winheight(0) + 9) / 18)
+let s:l = 36 - ((14 * winheight(0) + 8) / 17)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1009,7 +1233,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 10 - ((9 * winheight(0) + 10) / 21)
+let s:l = 10 - ((9 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1047,7 +1271,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 10) / 21)
+let s:l = 4 - ((3 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1085,7 +1309,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 7) / 14)
+let s:l = 2 - ((1 * winheight(0) + 6) / 13)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1123,7 +1347,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 110 - ((19 * winheight(0) + 13) / 27)
+let s:l = 110 - ((18 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1142,7 +1366,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 92 - ((22 * winheight(0) + 13) / 27)
+let s:l = 92 - ((21 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1161,7 +1385,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 12) / 24)
+let s:l = 8 - ((7 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1169,33 +1393,34 @@ normal! zt
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
-exe '1resize ' . ((&lines * 19 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 121 + 182) / 364)
-exe '2resize ' . ((&lines * 19 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 121 + 182) / 364)
-exe '3resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 121 + 182) / 364)
-exe '4resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 121 + 182) / 364)
-exe '5resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 120 + 182) / 364)
-exe '6resize ' . ((&lines * 4 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 120 + 182) / 364)
-exe '7resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 120 + 182) / 364)
-exe '8resize ' . ((&lines * 4 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 120 + 182) / 364)
-exe '9resize ' . ((&lines * 14 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 120 + 182) / 364)
-exe '10resize ' . ((&lines * 11 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 120 + 182) / 364)
-exe '11resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 11resize ' . ((&columns * 121 + 182) / 364)
-exe '12resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 12resize ' . ((&columns * 121 + 182) / 364)
-exe '13resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 13resize ' . ((&columns * 121 + 182) / 364)
-tabedit ~/cursus/camagru/app/script/js/lunch.js
+exe '1resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 120 + 181) / 362)
+exe '2resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 120 + 181) / 362)
+exe '3resize ' . ((&lines * 21 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 120 + 181) / 362)
+exe '4resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 120 + 181) / 362)
+exe '5resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 120 + 181) / 362)
+exe '6resize ' . ((&lines * 4 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 120 + 181) / 362)
+exe '7resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 120 + 181) / 362)
+exe '8resize ' . ((&lines * 4 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 120 + 181) / 362)
+exe '9resize ' . ((&lines * 13 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 120 + 181) / 362)
+exe '10resize ' . ((&lines * 11 + 40) / 80)
+exe 'vert 10resize ' . ((&columns * 120 + 181) / 362)
+exe '11resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 11resize ' . ((&columns * 120 + 181) / 362)
+exe '12resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 12resize ' . ((&columns * 120 + 181) / 362)
+exe '13resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 13resize ' . ((&columns * 120 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/app/script/js/lunch.js
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -1223,22 +1448,25 @@ split
 1wincmd k
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 12 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 44 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 22 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe 'vert 4resize ' . ((&columns * 94 + 182) / 364)
-exe '5resize ' . ((&lines * 63 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 99 + 182) / 364)
-exe '6resize ' . ((&lines * 16 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 99 + 182) / 364)
-exe '7resize ' . ((&lines * 19 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 84 + 182) / 364)
-exe '8resize ' . ((&lines * 60 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 84 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 12 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 42 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 21 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe 'vert 4resize ' . ((&columns * 93 + 181) / 362)
+exe '5resize ' . ((&lines * 61 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 98 + 181) / 362)
+exe '6resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 98 + 181) / 362)
+exe '7resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 84 + 181) / 362)
+exe '8resize ' . ((&lines * 58 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 84 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -1268,7 +1496,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 19 - ((17 * winheight(0) + 22) / 44)
+let s:l = 19 - ((16 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1287,7 +1515,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 77 - ((8 * winheight(0) + 11) / 22)
+let s:l = 77 - ((8 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1306,7 +1534,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 47 - ((45 * winheight(0) + 40) / 80)
+let s:l = 47 - ((43 * winheight(0) + 38) / 77)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1325,7 +1553,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 95 - ((40 * winheight(0) + 31) / 63)
+let s:l = 95 - ((39 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1344,7 +1572,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 10 - ((9 * winheight(0) + 8) / 16)
+let s:l = 10 - ((8 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1363,11 +1591,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 20 - ((10 * winheight(0) + 9) / 19)
+let s:l = 21 - ((10 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-20
+21
 normal! 041|
 lcd ~/cursus/camagru
 wincmd w
@@ -1382,7 +1610,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 67 - ((16 * winheight(0) + 30) / 60)
+let s:l = 67 - ((15 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1390,22 +1618,23 @@ normal! zt
 normal! 046|
 lcd ~/cursus/camagru
 wincmd w
-exe '1resize ' . ((&lines * 12 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 44 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 22 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe 'vert 4resize ' . ((&columns * 94 + 182) / 364)
-exe '5resize ' . ((&lines * 63 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 99 + 182) / 364)
-exe '6resize ' . ((&lines * 16 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 99 + 182) / 364)
-exe '7resize ' . ((&lines * 19 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 84 + 182) / 364)
-exe '8resize ' . ((&lines * 60 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 84 + 182) / 364)
-tabedit ~/cursus/camagru/app/controllers/register.php
+exe '1resize ' . ((&lines * 12 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 42 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 21 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe 'vert 4resize ' . ((&columns * 93 + 181) / 362)
+exe '5resize ' . ((&lines * 61 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 98 + 181) / 362)
+exe '6resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 98 + 181) / 362)
+exe '7resize ' . ((&lines * 18 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 84 + 181) / 362)
+exe '8resize ' . ((&lines * 58 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 84 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/app/controllers/register.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -1437,25 +1666,28 @@ split
 wincmd w
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 47 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 32 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 57 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 92 + 182) / 364)
-exe '4resize ' . ((&lines * 22 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 92 + 182) / 364)
-exe '5resize ' . ((&lines * 41 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 93 + 182) / 364)
-exe '6resize ' . ((&lines * 38 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 93 + 182) / 364)
-exe '7resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 92 + 182) / 364)
-exe '8resize ' . ((&lines * 29 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 92 + 182) / 364)
-exe '9resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 92 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 45 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 31 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 55 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 91 + 181) / 362)
+exe '4resize ' . ((&lines * 21 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 91 + 181) / 362)
+exe '5resize ' . ((&lines * 39 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 93 + 181) / 362)
+exe '6resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 93 + 181) / 362)
+exe '7resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 91 + 181) / 362)
+exe '8resize ' . ((&lines * 28 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 91 + 181) / 362)
+exe '9resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 91 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -1466,7 +1698,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 23) / 47)
+let s:l = 8 - ((7 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1485,7 +1717,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 16) / 32)
+let s:l = 2 - ((1 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1504,7 +1736,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 49 - ((46 * winheight(0) + 28) / 57)
+let s:l = 49 - ((44 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1523,7 +1755,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 11) / 22)
+let s:l = 1 - ((0 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1542,7 +1774,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 18 - ((17 * winheight(0) + 20) / 41)
+let s:l = 18 - ((16 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1561,7 +1793,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 19) / 38)
+let s:l = 8 - ((7 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1580,7 +1812,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 330 - ((13 * winheight(0) + 12) / 25)
+let s:l = 330 - ((12 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1599,7 +1831,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 67 - ((13 * winheight(0) + 14) / 29)
+let s:l = 67 - ((13 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1618,7 +1850,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 23 - ((16 * winheight(0) + 12) / 24)
+let s:l = 23 - ((15 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1626,25 +1858,26 @@ normal! zt
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
-exe '1resize ' . ((&lines * 47 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 32 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 57 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 92 + 182) / 364)
-exe '4resize ' . ((&lines * 22 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 92 + 182) / 364)
-exe '5resize ' . ((&lines * 41 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 93 + 182) / 364)
-exe '6resize ' . ((&lines * 38 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 93 + 182) / 364)
-exe '7resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 92 + 182) / 364)
-exe '8resize ' . ((&lines * 29 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 92 + 182) / 364)
-exe '9resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 92 + 182) / 364)
-tabedit ~/cursus/camagru/app/controllers/login.php
+exe '1resize ' . ((&lines * 45 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 31 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 55 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 91 + 181) / 362)
+exe '4resize ' . ((&lines * 21 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 91 + 181) / 362)
+exe '5resize ' . ((&lines * 39 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 93 + 181) / 362)
+exe '6resize ' . ((&lines * 37 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 93 + 181) / 362)
+exe '7resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 91 + 181) / 362)
+exe '8resize ' . ((&lines * 28 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 91 + 181) / 362)
+exe '9resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 91 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/app/controllers/login.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -1688,33 +1921,36 @@ split
 wincmd w
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 93 + 182) / 364)
-exe '2resize ' . ((&lines * 6 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 93 + 182) / 364)
-exe '3resize ' . ((&lines * 10 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 93 + 182) / 364)
-exe '4resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 93 + 182) / 364)
-exe '5resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 93 + 182) / 364)
-exe '6resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 93 + 182) / 364)
-exe '7resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 93 + 182) / 364)
-exe '8resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 91 + 182) / 364)
-exe '9resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 91 + 182) / 364)
-exe '10resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 91 + 182) / 364)
-exe '11resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 11resize ' . ((&columns * 84 + 182) / 364)
-exe '12resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 12resize ' . ((&columns * 84 + 182) / 364)
-exe '13resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 13resize ' . ((&columns * 84 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 39 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 92 + 181) / 362)
+exe '2resize ' . ((&lines * 6 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 92 + 181) / 362)
+exe '3resize ' . ((&lines * 9 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 92 + 181) / 362)
+exe '4resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 92 + 181) / 362)
+exe '5resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 92 + 181) / 362)
+exe '6resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 92 + 181) / 362)
+exe '7resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 92 + 181) / 362)
+exe '8resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 91 + 181) / 362)
+exe '9resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 91 + 181) / 362)
+exe '10resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 10resize ' . ((&columns * 91 + 181) / 362)
+exe '11resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 11resize ' . ((&columns * 84 + 181) / 362)
+exe '12resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 12resize ' . ((&columns * 84 + 181) / 362)
+exe '13resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 13resize ' . ((&columns * 84 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -1725,7 +1961,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 35 - ((14 * winheight(0) + 20) / 40)
+let s:l = 35 - ((14 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1763,7 +1999,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 11 - ((4 * winheight(0) + 5) / 10)
+let s:l = 11 - ((4 * winheight(0) + 4) / 9)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1782,7 +2018,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 66 - ((9 * winheight(0) + 10) / 21)
+let s:l = 66 - ((9 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1801,7 +2037,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 12 - ((11 * winheight(0) + 13) / 26)
+let s:l = 12 - ((11 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1820,7 +2056,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 34 - ((18 * winheight(0) + 13) / 27)
+let s:l = 34 - ((17 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1839,7 +2075,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 12) / 25)
+let s:l = 1 - ((0 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1858,7 +2094,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 13 - ((12 * winheight(0) + 13) / 26)
+let s:l = 13 - ((12 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1877,7 +2113,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 13) / 27)
+let s:l = 7 - ((6 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1896,7 +2132,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 11 - ((8 * winheight(0) + 12) / 25)
+let s:l = 11 - ((8 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1920,7 +2156,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 69 - ((12 * winheight(0) + 13) / 26)
+let s:l = 69 - ((12 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1939,7 +2175,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 13 - ((10 * winheight(0) + 13) / 27)
+let s:l = 13 - ((10 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1958,7 +2194,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 20 - ((11 * winheight(0) + 12) / 25)
+let s:l = 20 - ((11 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1966,33 +2202,34 @@ normal! zt
 normal! 021|
 lcd ~/cursus/camagru
 wincmd w
-exe '1resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 93 + 182) / 364)
-exe '2resize ' . ((&lines * 6 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 93 + 182) / 364)
-exe '3resize ' . ((&lines * 10 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 93 + 182) / 364)
-exe '4resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 93 + 182) / 364)
-exe '5resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 93 + 182) / 364)
-exe '6resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 93 + 182) / 364)
-exe '7resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 93 + 182) / 364)
-exe '8resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 91 + 182) / 364)
-exe '9resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 91 + 182) / 364)
-exe '10resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 91 + 182) / 364)
-exe '11resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 11resize ' . ((&columns * 84 + 182) / 364)
-exe '12resize ' . ((&lines * 27 + 42) / 84)
-exe 'vert 12resize ' . ((&columns * 84 + 182) / 364)
-exe '13resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 13resize ' . ((&columns * 84 + 182) / 364)
-tabedit ~/cursus/camagru/app/controllers/gallery.php
+exe '1resize ' . ((&lines * 39 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 92 + 181) / 362)
+exe '2resize ' . ((&lines * 6 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 92 + 181) / 362)
+exe '3resize ' . ((&lines * 9 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 92 + 181) / 362)
+exe '4resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 92 + 181) / 362)
+exe '5resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 92 + 181) / 362)
+exe '6resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 92 + 181) / 362)
+exe '7resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 92 + 181) / 362)
+exe '8resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 91 + 181) / 362)
+exe '9resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 91 + 181) / 362)
+exe '10resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 10resize ' . ((&columns * 91 + 181) / 362)
+exe '11resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 11resize ' . ((&columns * 84 + 181) / 362)
+exe '12resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 12resize ' . ((&columns * 84 + 181) / 362)
+exe '13resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 13resize ' . ((&columns * 84 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/app/controllers/gallery.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -2033,31 +2270,34 @@ wincmd w
 wincmd w
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 45 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 92 + 182) / 364)
-exe '2resize ' . ((&lines * 34 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 92 + 182) / 364)
-exe '3resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 92 + 182) / 364)
-exe '4resize ' . ((&lines * 3 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 92 + 182) / 364)
-exe '5resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 92 + 182) / 364)
-exe '6resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 92 + 182) / 364)
-exe '7resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 85 + 182) / 364)
-exe '8resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 85 + 182) / 364)
-exe '9resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 92 + 182) / 364)
-exe '10resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 92 + 182) / 364)
-exe '11resize ' . ((&lines * 23 + 42) / 84)
-exe 'vert 11resize ' . ((&columns * 92 + 182) / 364)
-exe '12resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 12resize ' . ((&columns * 92 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 43 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 91 + 181) / 362)
+exe '2resize ' . ((&lines * 33 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 91 + 181) / 362)
+exe '3resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 91 + 181) / 362)
+exe '4resize ' . ((&lines * 3 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 91 + 181) / 362)
+exe '5resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 91 + 181) / 362)
+exe '6resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 91 + 181) / 362)
+exe '7resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 86 + 181) / 362)
+exe '8resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 86 + 181) / 362)
+exe '9resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 91 + 181) / 362)
+exe '10resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 10resize ' . ((&columns * 91 + 181) / 362)
+exe '11resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 11resize ' . ((&columns * 91 + 181) / 362)
+exe '12resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 12resize ' . ((&columns * 91 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -2068,11 +2308,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 48 - ((20 * winheight(0) + 22) / 45)
+let s:l = 56 - ((20 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-48
+56
 normal! 058|
 lcd ~/cursus/camagru
 wincmd w
@@ -2087,11 +2327,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 103 - ((19 * winheight(0) + 17) / 34)
+let s:l = 91 - ((18 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-103
+91
 normal! 05|
 lcd ~/cursus/camagru
 wincmd w
@@ -2106,7 +2346,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 16 - ((14 * winheight(0) + 12) / 25)
+let s:l = 16 - ((13 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2144,7 +2384,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 12) / 24)
+let s:l = 1 - ((0 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2163,7 +2403,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 12) / 25)
+let s:l = 6 - ((5 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2182,7 +2422,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 22 - ((21 * winheight(0) + 20) / 40)
+let s:l = 22 - ((20 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2201,7 +2441,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 14 - ((13 * winheight(0) + 19) / 39)
+let s:l = 14 - ((13 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2220,7 +2460,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 87 - ((7 * winheight(0) + 9) / 18)
+let s:l = 87 - ((7 * winheight(0) + 8) / 17)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2239,7 +2479,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 10 - ((8 * winheight(0) + 9) / 18)
+let s:l = 10 - ((8 * winheight(0) + 8) / 17)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2277,7 +2517,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 37 - ((13 * winheight(0) + 9) / 18)
+let s:l = 37 - ((12 * winheight(0) + 8) / 17)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2285,31 +2525,32 @@ normal! zt
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
-exe '1resize ' . ((&lines * 45 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 92 + 182) / 364)
-exe '2resize ' . ((&lines * 34 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 92 + 182) / 364)
-exe '3resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 92 + 182) / 364)
-exe '4resize ' . ((&lines * 3 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 92 + 182) / 364)
-exe '5resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 92 + 182) / 364)
-exe '6resize ' . ((&lines * 25 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 92 + 182) / 364)
-exe '7resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 85 + 182) / 364)
-exe '8resize ' . ((&lines * 39 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 85 + 182) / 364)
-exe '9resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 92 + 182) / 364)
-exe '10resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 92 + 182) / 364)
-exe '11resize ' . ((&lines * 23 + 42) / 84)
-exe 'vert 11resize ' . ((&columns * 92 + 182) / 364)
-exe '12resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 12resize ' . ((&columns * 92 + 182) / 364)
-tabedit ~/cursus/camagru/app/controllers/editor.php
+exe '1resize ' . ((&lines * 43 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 91 + 181) / 362)
+exe '2resize ' . ((&lines * 33 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 91 + 181) / 362)
+exe '3resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 91 + 181) / 362)
+exe '4resize ' . ((&lines * 3 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 91 + 181) / 362)
+exe '5resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 91 + 181) / 362)
+exe '6resize ' . ((&lines * 24 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 91 + 181) / 362)
+exe '7resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 86 + 181) / 362)
+exe '8resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 86 + 181) / 362)
+exe '9resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 91 + 181) / 362)
+exe '10resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 10resize ' . ((&columns * 91 + 181) / 362)
+exe '11resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 11resize ' . ((&columns * 91 + 181) / 362)
+exe '12resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 12resize ' . ((&columns * 91 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/app/controllers/editor.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -2320,7 +2561,10 @@ vsplit
 3wincmd h
 wincmd _ | wincmd |
 split
-1wincmd k
+wincmd _ | wincmd |
+split
+2wincmd k
+wincmd w
 wincmd w
 wincmd w
 wincmd _ | wincmd |
@@ -2350,31 +2594,36 @@ split
 wincmd w
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 38 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 41 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 41 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe '4resize ' . ((&lines * 16 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 84 + 182) / 364)
-exe '5resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 84 + 182) / 364)
-exe '6resize ' . ((&lines * 2 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 84 + 182) / 364)
-exe '7resize ' . ((&lines * 29 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 97 + 182) / 364)
-exe '8resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 97 + 182) / 364)
-exe '9resize ' . ((&lines * 28 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 97 + 182) / 364)
-exe '10resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 96 + 182) / 364)
-exe '11resize ' . ((&lines * 14 + 42) / 84)
-exe 'vert 11resize ' . ((&columns * 96 + 182) / 364)
-exe '12resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 12resize ' . ((&columns * 96 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 36 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 19 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 19 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 40 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 84 + 181) / 362)
+exe '5resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 84 + 181) / 362)
+exe '6resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 84 + 181) / 362)
+exe '7resize ' . ((&lines * 1 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 84 + 181) / 362)
+exe '8resize ' . ((&lines * 28 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 96 + 181) / 362)
+exe '9resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 96 + 181) / 362)
+exe '10resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 10resize ' . ((&columns * 96 + 181) / 362)
+exe '11resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 11resize ' . ((&columns * 95 + 181) / 362)
+exe '12resize ' . ((&lines * 13 + 40) / 80)
+exe 'vert 12resize ' . ((&columns * 95 + 181) / 362)
+exe '13resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 13resize ' . ((&columns * 95 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -2385,12 +2634,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 29 - ((28 * winheight(0) + 19) / 38)
+let s:l = 16 - ((15 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-29
-normal! 0
+16
+normal! 05|
 lcd ~/cursus/camagru
 wincmd w
 argglobal
@@ -2404,11 +2653,29 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 20) / 41)
+let s:l = 65 - ((8 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
+65
+normal! 029|
+lcd ~/cursus/camagru
+wincmd w
+argglobal
+if bufexists('~/cursus/camagru/app/controllers/media.php') | buffer ~/cursus/camagru/app/controllers/media.php | else | edit ~/cursus/camagru/app/controllers/media.php | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=4
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 37 - ((7 * winheight(0) + 9) / 19)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+37
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
@@ -2423,7 +2690,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 35 - ((33 * winheight(0) + 20) / 41)
+let s:l = 35 - ((32 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2442,7 +2709,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 77 - ((9 * winheight(0) + 8) / 16)
+let s:l = 77 - ((8 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2461,7 +2728,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 31 - ((12 * winheight(0) + 9) / 18)
+let s:l = 31 - ((11 * winheight(0) + 8) / 17)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2480,7 +2747,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 1) / 2)
+let s:l = 1 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2499,11 +2766,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 15 - ((14 * winheight(0) + 14) / 29)
+let s:l = 17 - ((16 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
+17
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
@@ -2518,7 +2785,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 10) / 21)
+let s:l = 8 - ((7 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2537,11 +2804,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 16 - ((15 * winheight(0) + 14) / 28)
+let s:l = 5 - ((4 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-16
+5
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
@@ -2556,7 +2823,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 18 - ((15 * winheight(0) + 12) / 24)
+let s:l = 18 - ((14 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2575,7 +2842,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 40 - ((6 * winheight(0) + 7) / 14)
+let s:l = 40 - ((6 * winheight(0) + 6) / 13)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2594,7 +2861,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 128 - ((17 * winheight(0) + 20) / 40)
+let s:l = 128 - ((17 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2602,31 +2869,35 @@ normal! zt
 normal! 017|
 lcd ~/cursus/camagru
 wincmd w
-exe '1resize ' . ((&lines * 38 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 41 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 41 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe '4resize ' . ((&lines * 16 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 84 + 182) / 364)
-exe '5resize ' . ((&lines * 18 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 84 + 182) / 364)
-exe '6resize ' . ((&lines * 2 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 84 + 182) / 364)
-exe '7resize ' . ((&lines * 29 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 97 + 182) / 364)
-exe '8resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 97 + 182) / 364)
-exe '9resize ' . ((&lines * 28 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 97 + 182) / 364)
-exe '10resize ' . ((&lines * 24 + 42) / 84)
-exe 'vert 10resize ' . ((&columns * 96 + 182) / 364)
-exe '11resize ' . ((&lines * 14 + 42) / 84)
-exe 'vert 11resize ' . ((&columns * 96 + 182) / 364)
-exe '12resize ' . ((&lines * 40 + 42) / 84)
-exe 'vert 12resize ' . ((&columns * 96 + 182) / 364)
-tabedit ~/cursus/camagru/app/controllers/settings.php
+3wincmd w
+exe '1resize ' . ((&lines * 36 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 19 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 19 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 40 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 84 + 181) / 362)
+exe '5resize ' . ((&lines * 15 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 84 + 181) / 362)
+exe '6resize ' . ((&lines * 17 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 84 + 181) / 362)
+exe '7resize ' . ((&lines * 1 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 84 + 181) / 362)
+exe '8resize ' . ((&lines * 28 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 96 + 181) / 362)
+exe '9resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 96 + 181) / 362)
+exe '10resize ' . ((&lines * 26 + 40) / 80)
+exe 'vert 10resize ' . ((&columns * 96 + 181) / 362)
+exe '11resize ' . ((&lines * 23 + 40) / 80)
+exe 'vert 11resize ' . ((&columns * 95 + 181) / 362)
+exe '12resize ' . ((&lines * 13 + 40) / 80)
+exe 'vert 12resize ' . ((&columns * 95 + 181) / 362)
+exe '13resize ' . ((&lines * 38 + 40) / 80)
+exe 'vert 13resize ' . ((&columns * 95 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/app/controllers/settings.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -2657,24 +2928,27 @@ split
 wincmd w
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 44 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 35 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe '4resize ' . ((&lines * 22 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 84 + 182) / 364)
-exe '5resize ' . ((&lines * 35 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 84 + 182) / 364)
-exe 'vert 6resize ' . ((&columns * 86 + 182) / 364)
-exe '7resize ' . ((&lines * 36 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 107 + 182) / 364)
-exe '8resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 107 + 182) / 364)
-exe '9resize ' . ((&lines * 16 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 107 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 42 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 33 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 21 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 84 + 181) / 362)
+exe '5resize ' . ((&lines * 33 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 84 + 181) / 362)
+exe 'vert 6resize ' . ((&columns * 85 + 181) / 362)
+exe '7resize ' . ((&lines * 35 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 106 + 181) / 362)
+exe '8resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 106 + 181) / 362)
+exe '9resize ' . ((&lines * 14 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 106 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -2685,7 +2959,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 50 - ((16 * winheight(0) + 22) / 44)
+let s:l = 50 - ((15 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2704,7 +2978,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 17) / 35)
+let s:l = 8 - ((7 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2723,7 +2997,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 31 - ((13 * winheight(0) + 10) / 21)
+let s:l = 31 - ((12 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2742,7 +3016,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 13 - ((12 * winheight(0) + 11) / 22)
+let s:l = 13 - ((11 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2761,7 +3035,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 15 - ((14 * winheight(0) + 17) / 35)
+let s:l = 15 - ((14 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2780,7 +3054,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 28 - ((27 * winheight(0) + 40) / 80)
+let s:l = 28 - ((26 * winheight(0) + 38) / 76)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2799,7 +3073,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 122 - ((21 * winheight(0) + 18) / 36)
+let s:l = 122 - ((20 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2818,7 +3092,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 21 - ((18 * winheight(0) + 13) / 26)
+let s:l = 21 - ((17 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2837,7 +3111,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 8) / 16)
+let s:l = 4 - ((3 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2845,24 +3119,25 @@ normal! zt
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
-exe '1resize ' . ((&lines * 44 + 42) / 84)
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 35 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 84 + 182) / 364)
-exe '3resize ' . ((&lines * 21 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 84 + 182) / 364)
-exe '4resize ' . ((&lines * 22 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 84 + 182) / 364)
-exe '5resize ' . ((&lines * 35 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 84 + 182) / 364)
-exe 'vert 6resize ' . ((&columns * 86 + 182) / 364)
-exe '7resize ' . ((&lines * 36 + 42) / 84)
-exe 'vert 7resize ' . ((&columns * 107 + 182) / 364)
-exe '8resize ' . ((&lines * 26 + 42) / 84)
-exe 'vert 8resize ' . ((&columns * 107 + 182) / 364)
-exe '9resize ' . ((&lines * 16 + 42) / 84)
-exe 'vert 9resize ' . ((&columns * 107 + 182) / 364)
-tabedit ~/cursus/camagru/core/loader.php
+exe '1resize ' . ((&lines * 42 + 40) / 80)
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 33 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 84 + 181) / 362)
+exe '3resize ' . ((&lines * 20 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 21 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 84 + 181) / 362)
+exe '5resize ' . ((&lines * 33 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 84 + 181) / 362)
+exe 'vert 6resize ' . ((&columns * 85 + 181) / 362)
+exe '7resize ' . ((&lines * 35 + 40) / 80)
+exe 'vert 7resize ' . ((&columns * 106 + 181) / 362)
+exe '8resize ' . ((&lines * 25 + 40) / 80)
+exe 'vert 8resize ' . ((&columns * 106 + 181) / 362)
+exe '9resize ' . ((&lines * 14 + 40) / 80)
+exe 'vert 9resize ' . ((&columns * 106 + 181) / 362)
+tabnext
+edit ~/cursus/camagru/core/loader.php
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -2884,18 +3159,21 @@ vsplit
 1wincmd h
 wincmd w
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 42 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 139 + 182) / 364)
-exe '3resize ' . ((&lines * 42 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 85 + 182) / 364)
-exe '4resize ' . ((&lines * 42 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 53 + 182) / 364)
-exe '5resize ' . ((&lines * 37 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 90 + 182) / 364)
-exe '6resize ' . ((&lines * 37 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 188 + 182) / 364)
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 40 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 138 + 181) / 362)
+exe '3resize ' . ((&lines * 40 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 40 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 53 + 181) / 362)
+exe '5resize ' . ((&lines * 35 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 89 + 181) / 362)
+exe '6resize ' . ((&lines * 35 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 187 + 181) / 362)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -2906,7 +3184,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 17 - ((16 * winheight(0) + 40) / 80)
+let s:l = 17 - ((7 * winheight(0) + 38) / 76)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2925,7 +3203,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 49 - ((26 * winheight(0) + 21) / 42)
+let s:l = 49 - ((25 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2944,7 +3222,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 16 - ((15 * winheight(0) + 21) / 42)
+let s:l = 16 - ((14 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2963,7 +3241,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 24 - ((23 * winheight(0) + 21) / 42)
+let s:l = 24 - ((22 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2982,7 +3260,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 26 - ((22 * winheight(0) + 18) / 37)
+let s:l = 26 - ((20 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -3001,7 +3279,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 24 - ((8 * winheight(0) + 18) / 37)
+let s:l = 24 - ((8 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -3009,19 +3287,19 @@ normal! zt
 normal! 0
 lcd ~/cursus/camagru
 wincmd w
-exe 'vert 1resize ' . ((&columns * 84 + 182) / 364)
-exe '2resize ' . ((&lines * 42 + 42) / 84)
-exe 'vert 2resize ' . ((&columns * 139 + 182) / 364)
-exe '3resize ' . ((&lines * 42 + 42) / 84)
-exe 'vert 3resize ' . ((&columns * 85 + 182) / 364)
-exe '4resize ' . ((&lines * 42 + 42) / 84)
-exe 'vert 4resize ' . ((&columns * 53 + 182) / 364)
-exe '5resize ' . ((&lines * 37 + 42) / 84)
-exe 'vert 5resize ' . ((&columns * 90 + 182) / 364)
-exe '6resize ' . ((&lines * 37 + 42) / 84)
-exe 'vert 6resize ' . ((&columns * 188 + 182) / 364)
-tabnext 1
-if exists('s:wipebuf') && s:wipebuf != bufnr('%')
+exe 'vert 1resize ' . ((&columns * 84 + 181) / 362)
+exe '2resize ' . ((&lines * 40 + 40) / 80)
+exe 'vert 2resize ' . ((&columns * 138 + 181) / 362)
+exe '3resize ' . ((&lines * 40 + 40) / 80)
+exe 'vert 3resize ' . ((&columns * 84 + 181) / 362)
+exe '4resize ' . ((&lines * 40 + 40) / 80)
+exe 'vert 4resize ' . ((&columns * 53 + 181) / 362)
+exe '5resize ' . ((&lines * 35 + 40) / 80)
+exe 'vert 5resize ' . ((&columns * 89 + 181) / 362)
+exe '6resize ' . ((&lines * 35 + 40) / 80)
+exe 'vert 6resize ' . ((&columns * 187 + 181) / 362)
+tabnext 11
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf

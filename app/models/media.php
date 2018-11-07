@@ -67,18 +67,6 @@ class Db_media extends model
 		return ($all_media);
 	}
 
-	function get_all_masks(array $data = null)
-	{
-		$sql = "
-			SELECT *
-			FROM masks
-		";
-		$this->pdo_stm = $this->pdo->prepare($sql);
-		$this->execute_pdo();
-		$all_masks = $this->pdo_stm->fetchall(PDO::FETCH_ASSOC);
-		return ($all_masks);
-	}
-
 	function get_media_by_user_id(array $data = null)
 	{
 		$sql = "
