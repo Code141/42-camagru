@@ -9,7 +9,7 @@ if (DEV_MODE)
 }
 
 define('APP_NAME', 'camagru');
-define('SITE_ROOT', '/correction/');
+define('SITE_ROOT', '/camagru/');
 
 define('DEFAULT_CONTROLLER', 'home');
 define('DEFAUT_ACTION', 'main');
