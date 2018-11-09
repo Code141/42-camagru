@@ -37,7 +37,6 @@ class register extends controller_public_only
 				$this->fail($field . " field is unset", "main", "register");
 			else
 				$this->data['register'][$field] = $_POST[$field];
-
 		$err = check_password($this->data['register']['password'], $this->data['register']['passwordbis']);
 		if ($err !== TRUE)
 			$this->fail($err, "main", "register");
@@ -46,16 +45,13 @@ class register extends controller_public_only
 			$this->fail($err, "main", "register");
 		if (($err = check_username($this->data['register']['username'])) !== TRUE)
 			$this->fail($err, "main", "register");
-
 		$this->data['register']['token'] = hash('whirlpool', uniqid());
 		$id_user = $this->load->model('register', 'register', $this->data['register']);
-
 		$user_to = new entity_user($id_user);
 		if ($user_to === NULL)
 			$this->fail("Probleme encountered while creating user");
 		$mail = new entity_email($user_to);
 		$mail->sing_up($this->data['register']['token']);
-
 		$this->success("You succesfully registered", "register_success", "register");
 	}
 

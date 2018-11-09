@@ -39,7 +39,7 @@ if (isset($_GET['action']))
 		if ($data['db_existe'] == FALSE)
 		{
 			create_db($db);
-			execute_file($db, 'tables.sql');
+			execute_file($db, 'sql/tables.sql');
 			$data['msg'] = "Database created !";
 			$data['db_existe'] = TRUE;
 		}
@@ -49,8 +49,8 @@ if (isset($_GET['action']))
 		if ($data['db_existe'] == FALSE)
 		{
 			create_db($db);
-			execute_file($db, 'tables.sql');
-			execute_file($db, 'sample.sql');
+			execute_file($db, 'sql/tables.sql');
+			execute_file($db, '../sample/sample.sql');
 			copy_png($sample, $media);
 			copy_png($sample . "thumbs/", $media . "thumbs/");
 			$data['db_existe'] = TRUE;
