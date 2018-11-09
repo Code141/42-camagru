@@ -76,6 +76,8 @@ function execute_file($db, $file)
 
 function	delete_png($folder)
 {
+	if (!is_dir($folder))
+		return;
 	$files = scandir($folder);
 	$files = preg_grep("/^([0-9]+.png)$/", $files);
 	foreach ($files as $file)
