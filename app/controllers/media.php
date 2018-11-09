@@ -16,6 +16,8 @@ class media extends controller_restricted
 		{
 			$filename = $media['id'] . ".png";
 			$filepath = "app/assets/media/user_media/";
+			if (!is_dir($filepath))
+				mkdir($filepath);
 			$target = $filepath . $filename;
 			$target_thumb = $filepath . "thumbs/" . $filename;
 			$pic = imagecreatefromstring(file_get_contents($target));
@@ -54,13 +56,10 @@ class media extends controller_restricted
 		$filepath = "app/assets/media/user_media/";
 		$target = $filepath . $filename;
 		$target_thumb = $filepath . "thumbs/" . $filename;
-
 		if (!is_dir($filepath))
 			mkdir($filepath);
 		if (!is_dir($filepath . "thumbs/"))
 			mkdir($filepath. "thumbs/");
-
-
 		imagepng($new_pic, $target);
 		imagepng($thumb, $target_thumb);
 		$this->success("Image correctly treated");
