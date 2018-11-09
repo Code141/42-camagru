@@ -1,6 +1,6 @@
 <?php
 
-define('DEV_MODE', TRUE);
+define('DEV_MODE', FALSE);
 
 if (DEV_MODE)
 {
@@ -8,12 +8,14 @@ if (DEV_MODE)
 	ini_set('display_errors', 'on');
 }
 
+define('APP_NAME', 'camagru');
+define('SITE_ROOT', '/camagru/');
+
+define('DEFAULT_CONTROLLER', 'home');
+define('DEFAUT_ACTION', 'main');
+
 //--------------------VARIABLES D'ENVIRONEMENT
 
-define('APP_NAME', 'camagru');
-
-
-define('SITE_ROOT', '/camagru/');
 define('SERVER_ROOT', $_SERVER['DOCUMENT_ROOT'] . SITE_ROOT);
 define('SITE_ABSOLUTE', $_SERVER['HTTP_HOST'] . SITE_ROOT);
 
@@ -26,7 +28,3 @@ define('IMG_PATH', SITE_ROOT . 'app/assets/img/');
 define('MEDIA_PATH', SITE_ROOT . 'app/assets/media/');
 define('JS_PATH', SITE_ROOT . 'app/script/js/');
 
-//--------------------ROUTE PAR DEFAUT
-
-define('DEFAULT_CONTROLLER', 'home');
-define('DEFAUT_ACTION', 'main');

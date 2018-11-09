@@ -3,6 +3,9 @@ session_start();
 
 require_once('config/config.php');
 
+if (!is_readable(CORE_PATH . 'route.php'))
+	die ('The app don\'t seem to be correcty configured, please see /config/config.php');
+
 require_once(CORE_PATH . 'route.php');
 require_once(CORE_PATH . 'model.php');
 require_once(CORE_PATH . 'loader.php');
