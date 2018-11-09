@@ -95,8 +95,8 @@ class controller
 		$basic_css[] = 'style';
 		$basic_css[] = 'input';
 		$basic_css[] = 'glyphicons';
-
 		$this->files['css'] = array_merge($basic_css, $this->files['css']);
+		$this->files['css'][] = 'responsive';
 
 		$this->files['js'][] = 'lunch';
 		if (!isset($this->files['views']['header']))
@@ -139,12 +139,15 @@ class controller
 	{
 		if ($msg === NULL)
 			$msg = "Success";
+
 		if ($action == NULL)
 			$action = $_SESSION['last_url']['action'];
 		if ($controller == NULL)
 			$controller = $_SESSION['last_url']['controller'];
-		if ($params == NULL)
+		if ($params == NULL && isset($_SESSION['last_url']['params']))
+		{
 			$params = $_SESSION['last_url']['params'];
+		}
 
 		$controller = $this->load->controller($controller);
 		$controller->prompter['success'] = $msg;

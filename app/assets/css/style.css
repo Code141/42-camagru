@@ -118,7 +118,7 @@ section#prompter div
 {
 	position: absolute;
 	left: 50%;
-	top: 0px;
+	top: -20px;
 	transform: translate(-50%, -50%); 
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
 	font-size: 20px;
@@ -359,7 +359,27 @@ div#like_box div.liker:hover > a
 	background-image: url("../img/glyphicons_black/glyphicons-50-star.png");
 }
 
+section.home
+{
+	text-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
+	text-align: center;
+	line-height: 30px;
+	font-family: din1451;
+	font-size: 25px;
+	color:white;
+}
 
-
+section.home p
+{
+	text-align: left;
+	font-size: 15px;
+	width:300px;
+	margin-top: 35px;
+	margin-left: 100px;
+	display:block;
+	font-family: geo;
+	line-height: 20px;
+	color: #BBB;
+}
 
 

@@ -29,7 +29,13 @@ if ($ctrl !== "login"
 	$_SESSION['last_url']['params'] = $request['params'];
 }
 
-if (empty($_SESSION['last_url']['controller']))
+if (!isset($_SESSION['last_url']))
+{
+	$_SESSION['last_url']['controller'] = DEFAULT_CONTROLLER;
+	$_SESSION['last_url']['action'] = DEFAUT_ACTION;
+}
+
+if (!isset($_SESSION['last_url']['controller']))
 {
 	$_SESSION['last_url']['controller'] = DEFAULT_CONTROLLER;
 	$_SESSION['last_url']['action'] = DEFAUT_ACTION;
