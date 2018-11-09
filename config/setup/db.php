@@ -84,6 +84,8 @@ function	delete_png($folder)
 
 function	copy_png($src, $dest)
 {
+	if (!is_dir($dest))
+		mkdir($dest);
 	$files = scandir($src);
 	$files = preg_grep("/^([0-9]+.png)$/", $files);
 	foreach ($files as $file)
