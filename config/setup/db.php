@@ -33,7 +33,6 @@ function	create_db($db)
 	}
 }
 
-
 function delete_all($db)
 {
 	try
@@ -64,7 +63,6 @@ function execute_file($db, $file)
 	if (!is_readable($file))
 		die ("Can't read " . $file);
 	$sql_content = file_get_contents($file);
-	$sql_content = preg_replace('/\n/', '', $sql_content);
 	try
 	{
 		$pdo->exec($sql_content);
@@ -74,4 +72,20 @@ function execute_file($db, $file)
 		echo 'Erreur : ' . $exception->getMessage();
 		die ();
 	}
+}
+
+function	delete_png($folder)
+{
+	$files = scandir($folder);
+	$files = preg_grep("/^([0-9]+.png)$/", $files);
+	foreach ($files as $file)
+		unlink($folder . $file);
+}
+
+function	copy_png($src, $dest)
+{
+	$files = scandir($src);
+	$files = preg_grep("/^([0-9]+.png)$/", $files);
+	foreach ($files as $file)
+		copy($src . $file, $dest . $file);
 }

@@ -18,6 +18,9 @@ $db['password'] = $DB_PASSWORD;
 $data['db_existe'] = db_existe($db);
 
 
+$sample = SERVER_ROOT . "sample/user_media/";
+$media = SERVER_ROOT . "app/assets/media/user_media/";
+
 if (isset($_GET['action']))
 {
 	if ($_GET['action'] == "reset_db")
@@ -27,9 +30,8 @@ if (isset($_GET['action']))
 			delete_all($db);
 			$data['msg'] = "Database deleted !";
 			$data['db_existe'] = FALSE;
-			// DELETE PICTURES
-			// DELETE PICTURES
-			// DELETE PICTURES
+			delete_png($media);
+			delete_png($media . "thumbs/");
 		}
 	}
 	if ($_GET['action'] == "create_db")
@@ -49,9 +51,9 @@ if (isset($_GET['action']))
 			create_db($db);
 			execute_file($db, 'tables.sql');
 			execute_file($db, 'sample.sql');
-			// COPY PICTURES
-				//copy ( string $source , string $dest [, resource $context ] )
-			// COPY PICTURES
+			copy_png($sample, $media);
+			copy_png($sample . "thumbs/", $media . "thumbs/");
+			$data['db_existe'] = TRUE;
 			$data['msg'] = "Sample generated";
 		}
 	}
@@ -60,6 +62,4 @@ if (isset($_GET['action']))
 include("./setup/status.html");
 if (isset($data['db_existe']))
 	include("./setup/main.html");
-
-
 

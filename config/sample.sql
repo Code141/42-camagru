@@ -1,3 +1,11 @@
+INSERT INTO `user` (`id`, `email`, `password`, `username`, `notif_like`, `notif_comment`, `notif_message`, `validated_account`, `reset_password`) VALUES
+(1, 'geogeo@gmail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', 'Geoffrey', 0, 0, 0, 'TRUE', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86'),
+(2, 'admin@admin.fr', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', 'admin', 1, 1, 1, 'TRUE', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86'),
+(4, 'toto@toto.fr', '10e06b990d44de0091a2113fd95c92fc905166af147aa7632639c41aa7f26b1620c47443813c605b924c05591c161ecc35944fc69c4433a49d10fc6b04a33611', 'toto', 0, 0, 0, 'TRUE', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86'),
+(5, 'test@test.fr', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', 'test', 0, 0, 0, 'TRUE', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86');
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
 INSERT INTO `comments` (`id`, `id_media`, `id_user`, `comment`, `date`) VALUES
 (18, 239, 2, 'Helllo', '2018-10-24 15:54:44'),
 (19, 239, 2, 'qsdg', '2018-10-24 15:55:33'),
@@ -350,28 +358,4 @@ INSERT INTO `media` (`id`, `id_user`, `date`) VALUES
 (306, 2, '2018-10-31 23:15:39');
 ALTER TABLE `media`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=307;
-
-INSERT INTO `user` (`id`, `email`, `password`, `username`, `notif_like`, `notif_comment`, `notif_message`, `validated_account`) VALUES
-(1, 'lambinet.141@gmail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', 'Geoffrey', 0, 0, 0, 'TRUE'),
-(2, 'admin@admin.fr', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', 'admin', 1, 1, 1, 'TRUE'),
-(4, 'toto@toto.fr', '10e06b990d44de0091a2113fd95c92fc905166af147aa7632639c41aa7f26b1620c47443813c605b924c05591c161ecc35944fc69c4433a49d10fc6b04a33611', 'toto', 0, 0, 0, '1'),
-(5, 'test@test.fr', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', 'test', 0, 0, 0, '1'),
-(6, 'test2@test2.fr', 'test', 'test2', 0, 0, 0, '0'),
-(7, 'test3@test.fr', 'test', 'test3', 0, 0, 0, '0'),
-(8, 'test4@test4.fr', 'test', 'test4', 0, 0, 0, '0'),
-(9, 'test5@test.fr', 'test', 'test5', 0, 0, 0, '0'),
-(10, 'test6@test.fr', 'test', 'test6&lt;br&gt;', 1, 1, 1, '0'),
-(11, 'test7@gmail.com', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'test7&lt;br&gt;', 1, 1, 1, '0'),
-(12, 'toti@th.fr', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 'qsdf', 1, 1, 1, '0'),
-(13, 'toto@qsedgsdg.fd', '8ccd69818f7842ec8c81d326e5529dfeaa52f0f7c29ca35b96c16035b41cbb28f275a7b2b47326d2ff34e09d9bd2780cd8f33c9e76434e73a8c34ab841705932', 'test1', 1, 1, 1, '0'),
-(14, 'ezd1@gmail.com', 'ebaf712eda5c02793bec8513a6a0e7c8b03bd0b92a5d5d8ae8e18d131aa5929ff52a84e83a7df486457ee3e88f58761d9fb5aa64e8346a1535d01cf306561bb8', 'haha12', 1, 1, 1, '1'),
-(15, 'test7@fe.fr', '1f996cae93b07ef7c0299806fb715381a7b2719c4c365e77afae074cc2e4dc2dba856f6fc77520cd27a252955e9dd5677b0fb1e88e313ed6d73a59a78b066170', 'test7', 1, 1, 1, '0'),
-(16, 'test8@hotmail.fr', 'e18f8c446be118872f4128684d2eba303efbbfb48405d2738f4162599ecdb84e9dc269db0f4deddeb4ad3490e76a0a63c88161966f46f95a1c1e8a429688dd8d', 'test8', 1, 1, 1, '0'),
-(17, 'test7@hotmail.fr', 'e18f8c446be118872f4128684d2eba303efbbfb48405d2738f4162599ecdb84e9dc269db0f4deddeb4ad3490e76a0a63c88161966f46f95a1c1e8a429688dd8d', 'test9', 1, 1, 1, '0'),
-(18, 'test10@test.fr', 'e18f8c446be118872f4128684d2eba303efbbfb48405d2738f4162599ecdb84e9dc269db0f4deddeb4ad3490e76a0a63c88161966f46f95a1c1e8a429688dd8d', 'test10', 1, 1, 1, '1e1d8a0a25e870d6a12fb03889188137e61f6f909e31d70390ec46d86cb59af3908d207d80329ef0ad3ea5b0d3b5c99f06bcddd16d926e228fa49b407985b33d'),
-(19, 'test11@test.com', 'e18f8c446be118872f4128684d2eba303efbbfb48405d2738f4162599ecdb84e9dc269db0f4deddeb4ad3490e76a0a63c88161966f46f95a1c1e8a429688dd8d', 'test11', 1, 1, 1, 'de764775b9efe850cb739c97ff9b0449c99bf295a7cdcf8715f86fcb0bcb8112afa183b52684e859e47cfe682e4f99c9527117d652fc56aef7fad25307b07897'),
-(37, 'r@r', 'HAha12345678@', 'RRR', 1, 1, 1, 'TRUE'),
-(38, 'x@x', 'HAha12345678@', 'xxx', 1, 1, 1, '1f20cfa224c54b47fae638bb9287d2d119ea36db7e301be5f0f0177943a391f0245924150f8297634559bbc0d74373d262d871a891e6089c4febd43ff0d782a3');
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 

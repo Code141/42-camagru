@@ -12,8 +12,9 @@ if (DEV_MODE)
 
 define('APP_NAME', 'camagru');
 
-define('SERVER_ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
+
 define('SITE_ROOT', '/camagru/');
+define('SERVER_ROOT', $_SERVER['DOCUMENT_ROOT'] . SITE_ROOT);
 define('SITE_ABSOLUTE', $_SERVER['HTTP_HOST'] . SITE_ROOT);
 
 define('CORE_PATH', SERVER_ROOT.'core/');
