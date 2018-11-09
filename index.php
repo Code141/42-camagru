@@ -7,7 +7,7 @@ require_once(CORE_PATH . 'route.php');
 require_once(CORE_PATH . 'model.php');
 require_once(CORE_PATH . 'loader.php');
 require_once(CORE_PATH . 'controller.php');
-require_once(CORE_PATH . 'TOOL.php');
+require_once(CORE_PATH . 'tool.php');
 
 $load = new Loader();
 
