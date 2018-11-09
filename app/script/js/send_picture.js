@@ -32,7 +32,7 @@ function xhr_upload(blobOrFile, html_img)
 	formData.append("img", blobOrFile);
 
 	var xhr = new XMLHttpRequest();
-	xhr.open('POST', '/camagru/media/add?is_ajax=1', true);
+	xhr.open('POST', <?php echo 'HELLO';?>'/camagru/media/add?is_ajax=1', true);
 
 	xhr.upload.onprogress = function(e) {
 		if (e.lengthComputable) {
