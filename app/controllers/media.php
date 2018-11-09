@@ -7,7 +7,7 @@ class media extends controller_restricted
 		parent::__construct();
 	}
 
-	public function remake_all_thumbs($params = NULL)
+	private function remake_all_thumbs($params = NULL)
 	{
 		$this->load->script('php', 'pictures');
 		$all_media = $this->load->model('media', 'get_all_media', $this->data);
@@ -54,6 +54,13 @@ class media extends controller_restricted
 		$filepath = "app/assets/media/user_media/";
 		$target = $filepath . $filename;
 		$target_thumb = $filepath . "thumbs/" . $filename;
+
+		if (!is_dir($filepath))
+			mkdir($filepath);
+		if (!is_dir($filepath . "thumbs/"))
+			mkdir($filepath. "thumbs/");
+
+
 		imagepng($new_pic, $target);
 		imagepng($thumb, $target_thumb);
 		$this->success("Image correctly treated");
