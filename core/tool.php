@@ -32,8 +32,6 @@ function	loggued_id()
 
 function	human_date($str)
 {
-//	date_default_timezone_set($timezone_identifier );
-
 	$timestamp = strtotime($str);
 	$date = localtime($timestamp, true);
 	$now = localtime(time(), true);
@@ -51,7 +49,6 @@ function	human_date($str)
 function	redirect($path = "")
 {
 	header ('location:'.SITE_ROOT. $path);
-//	header( "refresh:1;url=" .SITE_ROOT. $path);
 	die();
 }
 
