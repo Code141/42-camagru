@@ -2,11 +2,6 @@
 
 class like extends controller_restricted
 {
-	public function	__construct()
-	{
-		parent::__construct();
-	}
-
 	public function add($params = NULL)
 	{
 		$this->data["id_media"] = intval($params[0]);
@@ -20,7 +15,6 @@ class like extends controller_restricted
 			$this->load->model('likes', 'update_like_on_media_by_id', $this->data);
 		else
 			$this->load->model('likes', 'add_like_on_media_by_id', $this->data);
-
 		$user_to = new entity_user($media["id_user"]);
 		if ($user_to === NULL)
 			$this->fail("User to mail don't existe.");
@@ -29,7 +23,6 @@ class like extends controller_restricted
 			$this->fail("User from mail don't existe.");
 		$mail = new entity_email($user_to);
 		$mail->notif_like($user_from, $media, $this->data['grade']);
-
 		$this->success("You liked it");
 	}
 }

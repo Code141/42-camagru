@@ -2,12 +2,6 @@
 
 class editor extends controller_restricted
 {
-	public function	__construct()
-	{
-		parent::__construct();
-
-	}
-
 	public function main($params = NULL)
 	{
 		$this->data['id_user'] = $_SESSION['user']['id'];
@@ -24,7 +18,6 @@ class editor extends controller_restricted
 		$this->files['views']['left'] = 'editor/left_side';
 		$this->files['views']['center'] = 'editor/editor';
 		$this->files['views']['right'] = 'editor/right_side';
-
 		$this->render();
 	}
 }

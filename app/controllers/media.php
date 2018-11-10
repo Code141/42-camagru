@@ -2,16 +2,10 @@
 
 class media extends controller_restricted
 {
-	public function	__construct()
-	{
-		parent::__construct();
-	}
-
 	private function remake_all_thumbs($params = NULL)
 	{
 		$this->load->script('php', 'pictures');
 		$all_media = $this->load->model('media', 'get_all_media', $this->data);
-
 		foreach ($all_media as $media)
 		{
 			$filename = $media['id'] . ".png";
@@ -84,7 +78,6 @@ class media extends controller_restricted
 			unlink($filepath . "thumbs/" . $filename);
 		$this->load->model('likes', 'delete_likes_by_media_id', $this->data);
 		$this->load->model('comments', 'delete_comments_by_media_id', $this->data);
-
 		$this->success("Media deleted");
 	}
 }

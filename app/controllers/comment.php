@@ -2,11 +2,6 @@
 
 class comment extends controller_restricted
 {
-	public function	__construct()
-	{
-		parent::__construct();
-	}
-
 	public function add($params = NULL)
 	{
 		if (!isset($_POST['comment']))
@@ -32,7 +27,6 @@ class comment extends controller_restricted
 			$this->fail("User from mail don't existe.");
 		$mail = new entity_email($user_to);
 		$mail->notif_comment($user_from, $media, $this->data['comment']);
-
 		$this->success("Comment added !");
 	}
 
@@ -40,7 +34,6 @@ class comment extends controller_restricted
 	{
 		if (!isset($params[0]))
 			$this->fail("Comment invalid");
-
 		$this->data['id_comment'] = intval($params[0]);
 		$comment = $this->load->model('comments', 'get_comment_by_id', $this->data);
 		if ($comment == NULL)
@@ -48,7 +41,6 @@ class comment extends controller_restricted
 		if ($comment['id_user'] != loggued_id())
 			$this->fail("This comment is not your property !");
 		$this->load->model('comments', 'delete_comment_by_id', $this->data);
-
 		$this->success("Comment deleted !");
 	}
 

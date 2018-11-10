@@ -2,11 +2,6 @@
 
 class logout extends controller
 {
-	public function __construct()
-	{
-		parent::__construct();
-	}
-
 	public function main($params = NULL)
 	{
 		$_SESSION['user'] = NULL;

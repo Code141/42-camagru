@@ -2,11 +2,6 @@
 
 class register extends controller_public_only
 {
-	public function	__construct()
-	{
-		parent::__construct();
-	}
-
 	public function main($params = NULL)
 	{
 		$this->data['title'] = 'Register';
@@ -21,7 +16,6 @@ class register extends controller_public_only
 			$this->data['email'] = $params[0];
 		else
 			$this->data['email'] = "your email";
-
 		$this->data['title'] = 'Register success';
 		$this->files['css'][] = 'register';
 		$this->files['views']['center'] = 'register/success';

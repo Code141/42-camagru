@@ -2,12 +2,6 @@
 
 class gallery extends controller
 {
-	public function	__construct()
-	{
-		parent::__construct();
-
-	}
-
 	public function main($params = NULL)
 	{
 		$this->data['offset'] = 30;
@@ -38,9 +32,7 @@ class gallery extends controller
 		$this->data['media'] = $this->load->model('media', 'get_media_by_id', $this->data);
 		if (!$this->data["media"])
 			$this->fail ("Media Error","main", "gallery");
-
 		$this->data['db']['comments'] = $this->load->model('comments', 'get_comments_by_media_id', $this->data);
-
 		$this->data['title'] = "Gallery";
 		$this->files['css'][] = 'gallery';
 		$this->files['css'][] = 'focus';
@@ -64,7 +56,6 @@ class gallery extends controller
 		$this->data['id_user'] = $this->data["db"]["user"]['id'];
 		$this->data['db']['user_media'] =
 			$this->load->model('media', 'get_media_by_user_id', $this->data);
-
 		$this->data['title'] = 'User';
 		$this->files['css'][] = 'gallery';
 		$this->files['css'][] = 'user';

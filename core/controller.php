@@ -20,7 +20,6 @@ class controller
 		$this->load->entity('email');
 	}
 
-
 	protected function reset_controller()
 	{
 		$this->data = array();
@@ -51,7 +50,6 @@ class controller
 				$data[$key] = $value;
 		return ($data);
 	}
-
 
 	protected function save_url()
 	{
@@ -175,7 +173,6 @@ class controller
 				$new_array[$key] = $array[$key];
 		return ($new_array);
 	}
-
 
 	public function __destruct()
 	{

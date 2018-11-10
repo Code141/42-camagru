@@ -2,11 +2,6 @@
 
 class login extends controller_public_only
 {
-	public function	__construct()
-	{
-		parent::__construct();
-	}
-
 	public function main($params = null)
 	{
 		$this->data['title'] = "login";
@@ -75,7 +70,6 @@ class login extends controller_public_only
 		$this->data['user'] = $this->load->model('user', 'get_user_by_email', $this->data);
 		if ($this->data['user']['reset_password'] !== $this->data['token'])
 			$this->fail("Bad token", "main", "login");
-		
 		$this->data['title'] = 'Reset password';
 		$this->files['css'][] = 'login';
 		$this->files['views']['center'] = 'login/reset_password';
@@ -86,22 +80,18 @@ class login extends controller_public_only
 	{
 		$this->load->script('php', 'login');
 		$register_fields = array("email", "token", "password", "passwordbis");
-
 		foreach ($register_fields as $field)
 			if (!isset($_POST[$field]) || empty($_POST[$field]))
 				$this->fail($field . " field is unset", "main", "login");
-
 		$this->data['email'] = $_POST['email'];
 		$this->data['password'] = $_POST['password'];
 		$this->data['passwordbis'] = $_POST['passwordbis'];
 		$this->data['token'] = $_POST['token'];
-
 		$this->data['user'] = $this->load->model('user', 'get_user_by_email', $this->data);
 		if ($this->data['user']['reset_password'] !== $this->data['token'])
 			$this->fail("Bad token", "main", "login");
 		if (($err = check_password($this->data['password'], $this->data['passwordbis'])) !== TRUE)
 			$this->fail($err, "main", "login");
-
 		$this->data['new_password'] = hash_password($this->data['password']);
 		$this->data['id_user'] = $this->data['user']['id'];
 		$this->load->model('settings', 'update_password', $this->data);
