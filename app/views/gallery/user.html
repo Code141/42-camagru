@@ -7,6 +7,7 @@
 
 <?php
 	$this->load->script('php', 'like_bar');
+	if (!empty($this->data['db']['user_media']))
 	foreach ($this->data['db']['user_media'] as $media)
 	{
 ?>
@@ -29,6 +30,10 @@
 </a>
 		</div>
 <?php
+	}
+	else
+	{
+		echo "<p>No pictures yet !</p>";
 	}
 ?>
 </section>
